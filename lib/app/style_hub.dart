@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylehub/config/router/app_router.dart';
 import 'package:stylehub/config/router/routes.dart';
 import 'package:stylehub/config/theme/dark_theme.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:stylehub/config/theme/light_theme.dart';
 
 class StyleHub extends StatelessWidget {
@@ -16,15 +16,9 @@ class StyleHub extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('en'),
-          Locale('ar'),
-        ],
+        title: 'StyleHub',
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
         theme: LightTheme.lightTheme,
         darkTheme: DarkTheme.darkTheme,
