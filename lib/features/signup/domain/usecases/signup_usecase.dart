@@ -1,0 +1,3 @@
+class SignUpUsecase {
+  void call() {}
+}
