@@ -12,8 +12,10 @@ class SignUp extends StatelessWidget {
         builder: (context, state) {
           if (state is SignupError) {
             return Center(child: Text(state.message));
+          } else if (state is SignupSuccess) {
+            return Center(child: Text(state.userEntity.token??' no token '));
           } else {
-            return const Center(child: Text('There is no error'));
+            return Center(child: Text('SignUp'));
           }
         },
       ),

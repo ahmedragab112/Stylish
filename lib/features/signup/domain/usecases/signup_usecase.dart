@@ -4,8 +4,8 @@ import 'package:stylehub/features/signup/domain/entities/singup_entitey.dart';
 import 'package:stylehub/features/signup/domain/repositories/signup_repo.dart';
 
 class SignUpUsecase {
-  SignUpRepo signUpRepo;
-  SignUpUsecase({required this.signUpRepo});
+ final SignUpRepo signUpRepo;
+ const SignUpUsecase({required this.signUpRepo});
   Future<ApiResponse<UserEntity>> call({required UserData userData}) =>
       signUpRepo.signUp(userData: userData);
 }

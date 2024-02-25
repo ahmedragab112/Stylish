@@ -15,4 +15,8 @@ class SignupError extends SignupState {
   final String message;
   const SignupError({required this.message});
 }
-class SignupSuccess extends SignupState {}
+
+class SignupSuccess extends SignupState {
+ final UserEntity userEntity;
+  const SignupSuccess({required this.userEntity});
+}
