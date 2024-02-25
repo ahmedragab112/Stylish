@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:stylehub/features/signup/data/models/user_data.dart';
-import 'package:stylehub/features/signup/domain/entities/singup_entitey.dart';
+import 'package:stylehub/core/utils/entity/singup_entitey.dart';
 import 'package:stylehub/features/signup/domain/usecases/signup_usecase.dart';
 
 part 'signup_state.dart';

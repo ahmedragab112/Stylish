@@ -1,4 +1,4 @@
-import 'package:stylehub/features/signup/domain/entities/singup_entitey.dart';
+import 'package:stylehub/core/utils/entity/singup_entitey.dart';
 
 class UserModel extends UserEntity {
   String? message;
