@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/config/router/routes.dart';
+import 'package:stylehub/core/api/api_manger.dart';
+import 'package:stylehub/core/api/dio_singelton.dart';
 import 'package:stylehub/core/di/injection.dart';
 import 'package:stylehub/features/home/presentation/pages/home.dart';
+import 'package:stylehub/features/login/data/datasources/remote_datasoucre_implementation.dart';
+import 'package:stylehub/features/login/data/repositories/data_repo.dart';
+import 'package:stylehub/features/login/domain/usecases/login_usecase.dart';
+import 'package:stylehub/features/login/presentation/cubit/login_cubit.dart';
 import 'package:stylehub/features/login/presentation/pages/login.dart';
 import 'package:stylehub/features/signup/presentation/cubit/signup_cubit.dart';
 import 'package:stylehub/features/signup/presentation/pages/singup.dart';
@@ -19,7 +25,20 @@ class AppRouter {
         );
       case AppRoutes.signIn:
         return MaterialPageRoute(
-          builder: (context) => const Login(),
+          builder: (context) => BlocProvider(
+            create: (context) => LoginCubit(
+              loginUseCase: LoginUseCase(
+                loginRepo: LoginDataRepo(
+                  loginRemoteDataSouce: LoginRemoteDataSoucreImplementation(
+                    apiManager: ApiManager(
+                      DioFactory.getDio(),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            child: const Login(),
+          ),
         );
       case AppRoutes.home:
         return MaterialPageRoute(
