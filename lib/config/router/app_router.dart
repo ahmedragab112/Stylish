@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/config/router/routes.dart';
+import 'package:stylehub/core/di/injection.dart';
 import 'package:stylehub/features/home/presentation/pages/home.dart';
 import 'package:stylehub/features/login/presentation/pages/login.dart';
+import 'package:stylehub/features/signup/presentation/cubit/signup_cubit.dart';
 import 'package:stylehub/features/signup/presentation/pages/singup.dart';
 
 class AppRouter {
@@ -9,7 +12,10 @@ class AppRouter {
     switch (settings.name) {
       case AppRoutes.signUp:
         return MaterialPageRoute(
-          builder: (context) => const SignUp(),
+          builder: (context) => BlocProvider(
+            create: (context) => locator<SignupCubit>(),
+            child: const SignUp(),
+          ),
         );
       case AppRoutes.signIn:
         return MaterialPageRoute(

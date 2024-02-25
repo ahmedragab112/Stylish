@@ -1,15 +1,15 @@
-class SignUpEntity {
-  User? user;
+class UserEntity {
+  UserDataEntity? user;
   String? token;
 
-  SignUpEntity({this.user, this.token});
+  UserEntity({this.user, this.token});
 }
 
-class User {
+class UserDataEntity {
   String? name;
   String? email;
 
-  User({
+  UserDataEntity({
     this.name,
     this.email,
   });

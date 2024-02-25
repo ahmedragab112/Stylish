@@ -1,28 +1,25 @@
-import 'package:json_annotation/json_annotation.dart';
-part 'user_model.g.dart';
+import 'package:stylehub/features/signup/domain/entities/singup_entitey.dart';
 
-@JsonSerializable()
-class UserModel {
+class UserModel extends UserEntity {
   String? message;
-  User? user;
-  String? token;
 
-  UserModel({this.message, this.user, this.token});
+  UserModel({this.message, super.user, super.token});
 
-  factory UserModel.fromJson(Map<String, dynamic> json) =>
-      _$UserModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$UserModelToJson(this);
+  UserModel.fromJson(Map<String, dynamic> json) {
+    message = json['message'];
+    user = json['user'] != null ? User.fromJson(json['user']) : null;
+    token = json['token'];
+  }
 }
 
-@JsonSerializable()
-class User {
-  String? name;
-  String? email;
+class User extends UserDataEntity {
   String? role;
 
-  User({this.name, this.email, this.role});
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  User({super.name, super.email, this.role});
 
-  Map<String, dynamic> toJson() => _$UserToJson(this);
+  User.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    email = json['email'];
+    role = json['role'];
+  }
 }
