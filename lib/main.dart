@@ -8,5 +8,5 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   setupLocator();
-  runApp(const StyleHub());
+  runApp(const StyLish());
 }

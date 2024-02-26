@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/config/router/routes.dart';
 import 'package:stylehub/core/extentions/extention.dart';
-import 'package:stylehub/features/login/presentation/pages/login.dart';
 import 'package:stylehub/features/signup/presentation/cubit/signup_cubit.dart';
 
 class SignUp extends StatelessWidget {

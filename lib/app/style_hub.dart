@@ -6,8 +6,8 @@ import 'package:stylehub/config/theme/dark_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:stylehub/config/theme/light_theme.dart';
 
-class StyleHub extends StatelessWidget {
-  const StyleHub({super.key});
+class StyLish extends StatelessWidget {
+  const StyLish({super.key});
 
   @override
   Widget build(BuildContext context) {
