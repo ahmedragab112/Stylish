@@ -12,7 +12,7 @@ class SignUpDataRepo implements SignUpRepo {
   @override
   Future<ApiResponse<UserEntity>> signUp({required UserData userData}) async {
     try {
-      var data = await remoteDataSource.signup(userData: userData);
+      var data = await remoteDataSource.signUp(userData: userData);
       return ApiResponse.data(data);
     } catch (e) {
       return ApiResponse.error(

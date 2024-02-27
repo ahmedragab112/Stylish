@@ -5,6 +5,7 @@ import 'package:stylehub/config/router/routes.dart';
 import 'package:stylehub/config/theme/dark_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:stylehub/config/theme/light_theme.dart';
+import 'package:stylehub/core/utils/strings/app_strings.dart';
 
 class StyLish extends StatelessWidget {
   const StyLish({super.key});
@@ -12,11 +13,11 @@ class StyLish extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(430, 932),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
-        title: 'StyleHub',
+        title: AppStrings.styLish,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
@@ -24,7 +25,7 @@ class StyLish extends StatelessWidget {
         darkTheme: DarkTheme.darkTheme,
         themeMode: ThemeMode.system,
         onGenerateRoute: AppRouter.onGenrateRoute,
-        initialRoute: AppRoutes.signUp,
+        initialRoute: AppRoutes.onBoarding,
         locale: const Locale('en'),
       ),
     );
