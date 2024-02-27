@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/features/login/data/model/login_data.dart';
-import 'package:stylehub/features/login/presentation/cubit/login_cubit.dart';
+import 'package:stylehub/features/login/presentation/manager/login_cubit.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
