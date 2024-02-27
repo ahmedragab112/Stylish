@@ -8,10 +8,12 @@ import 'package:stylehub/features/home/presentation/pages/home.dart';
 import 'package:stylehub/features/login/data/datasources/remote_datasoucre_implementation.dart';
 import 'package:stylehub/features/login/data/repositories/data_repo.dart';
 import 'package:stylehub/features/login/domain/usecases/login_usecase.dart';
-import 'package:stylehub/features/login/presentation/cubit/login_cubit.dart';
 import 'package:stylehub/features/login/presentation/pages/login.dart';
-import 'package:stylehub/features/signup/presentation/cubit/signup_cubit.dart';
+import 'package:stylehub/features/onboarding/manager/onboarding_cubit.dart';
+import 'package:stylehub/features/onboarding/view/onboarding_view.dart';
 import 'package:stylehub/features/signup/presentation/pages/singup.dart';
+import '../../features/login/presentation/manager/login_cubit.dart';
+import '../../features/signup/presentation/cubit/signup_cubit.dart';
 
 class AppRouter {
   static Route<Widget> onGenrateRoute(RouteSettings settings) {
@@ -43,6 +45,14 @@ class AppRouter {
       case AppRoutes.home:
         return MaterialPageRoute(
           builder: (context) => const Home(),
+        );
+
+      case AppRoutes.onBoarding:
+        return MaterialPageRoute(
+          builder: (context) =>  BlocProvider(
+            create: (context) => OnboardingCubit(),
+            child:const OnBoardingView(),
+          ),
         );
 
       default:
