@@ -25,7 +25,7 @@ class StyLish extends StatelessWidget {
         darkTheme: DarkTheme.darkTheme,
         themeMode: ThemeMode.system,
         onGenerateRoute: AppRouter.onGenrateRoute,
-        initialRoute: AppRoutes.onBoarding,
+        initialRoute: AppRoutes.signIn,
         locale: const Locale('en'),
       ),
     );
