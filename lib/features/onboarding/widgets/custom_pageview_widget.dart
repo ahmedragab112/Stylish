@@ -14,30 +14,24 @@ class CustomPageViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OnboardingCubit, OnboardingState>(
-      builder: (context, state) {
-        var bloc = context.read<OnboardingCubit>();
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            InBoardingAppBar(
-              index: bloc.index,
+    var bloc = context.read<OnboardingCubit>();
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const InBoardingAppBar(),
+        const VerticalSpace(110),
+        Expanded(
+          child: PageView.builder(
+            physics: const BouncingScrollPhysics(),
+            controller: bloc.controller,
+            itemBuilder: (context, index) => PageViewBody(
+              data: bloc.pages[index] ,
             ),
-            const VerticalSpace(110),
-            Expanded(
-              child: PageView.builder(
-                physics: const BouncingScrollPhysics(),
-                controller: bloc.controller,
-                itemBuilder: (context, index) => PageViewBody(
-                  data: bloc.pages[index],
-                ),
-                itemCount: bloc.pages.length,
-                onPageChanged: bloc.onPageChanged,
-              ),
-            ),
-          ],
-        ).setPadding(context, horizontal: 16.w, vertical: 22.h);
-      },
-    );
+            itemCount: bloc.pages.length,
+            onPageChanged: bloc.onPageChanged,
+          ),
+        ),
+      ],
+    ).setPadding(context, horizontal: 16.w, vertical: 22.h);
   }
 }
