@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension NavigatorHelper on BuildContext {
   void push(Widget widget) {
@@ -47,8 +48,8 @@ extension PaddingToWidget on Widget {
   }) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          vertical: vertical,
-          horizontal: horizontal),
+          vertical: vertical.h,
+          horizontal: horizontal.w),
       child: this,
     );
   }
@@ -74,6 +75,16 @@ extension PaddingToWidget on Widget {
     return Padding(
       padding: EdgeInsets.all(padding),
       child: this,
+    );
+  }
+}
+
+extension ShowSnakbar on BuildContext {
+  void showSnackBar(String message) {
+    ScaffoldMessenger.of(this).showSnackBar(
+      SnackBar(
+        content: Text(message),
+      ),
     );
   }
 }
