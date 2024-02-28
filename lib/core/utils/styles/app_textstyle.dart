@@ -4,6 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
 
 class AppTextStyle {
+  static TextStyle font12RegularPrimery = GoogleFonts.montserrat(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColor.primeryColor,
+  );
   static TextStyle font24ExtraBoldBlack = GoogleFonts.montserrat(
     fontSize: 24.sp,
     fontWeight: FontWeight.w800,
@@ -18,5 +23,16 @@ class AppTextStyle {
     fontSize: 18.sp,
     fontWeight: FontWeight.w600,
     color: AppColor.primeryColor,
+  );
+
+  static TextStyle font36BoldBlack = GoogleFonts.montserrat(
+    fontSize: 36.sp,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
+  static TextStyle font20SemiBoldWhite = GoogleFonts.montserrat(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
   );
 }

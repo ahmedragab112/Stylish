@@ -15,19 +15,18 @@ enum DataSource {
   sendTimeout,
   cacheError,
   noInternetConnection,
-  // apiLogicError,
   defaultError
 }
 
 class ResponseCode {
-  static const int success = 200; // success with data
-  static const int noContent = 201; // success with no data (no content)
-  static const int badRequest = 400; // failure, API rejected request
-  static const int unauthorized = 401; // failure, user is not authorised
-  static const int forbidden = 403; // failure, API rejected request
-  static const int internalServerError = 500; // failure, crash in server side
-  static const int notFound = 404; // failure, not found
-  static const int apiLogicError = 422; // API , logic error
+  static const int success = 200; 
+  static const int noContent = 201; 
+  static const int badRequest = 400; 
+  static const int unauthorized = 401; 
+  static const int forbidden = 403; 
+  static const int internalServerError = 500; 
+  static const int notFound = 404; 
+  static const int apiLogicError = 422; 
 
   // local status code
   static const int connectTimeout = -1;
@@ -67,31 +66,33 @@ extension DataSourceExtension on DataSource {
   ApiErrorModel getFailure() {
     switch (this) {
       case DataSource.noContent:
-        return ApiErrorModel(message: ResponseMessage.noContent);
+        return const ApiErrorModel(message: ResponseMessage.noContent ,errors: Errors(msg: ApiErrors.noContent) );
       case DataSource.badRequest:
-        return ApiErrorModel(message: ResponseMessage.badRequest);
+        return const ApiErrorModel(message: ResponseMessage.badRequest, errors: Errors(msg: ApiErrors.noContent));
       case DataSource.forbidden:
-        return ApiErrorModel(message: ResponseMessage.forbidden);
+        return const ApiErrorModel(message: ResponseMessage.forbidden, errors: Errors(msg: ApiErrors.noContent));
       case DataSource.unauthorized:
-        return ApiErrorModel(message: ResponseMessage.unauthorized);
+        return const ApiErrorModel(message: ResponseMessage.unauthorized, errors: Errors(msg: ApiErrors.noContent));
       case DataSource.notFound:
-        return ApiErrorModel(message: ResponseMessage.notFound);
+        return const ApiErrorModel(message: ResponseMessage.notFound, errors: Errors(msg: ApiErrors.noContent));
       case DataSource.internalServerError:
-        return ApiErrorModel(message: ResponseMessage.internalServerError);
+        return const ApiErrorModel(
+            message: ResponseMessage.internalServerError, errors: Errors(msg: ApiErrors.noContent));
       case DataSource.connectTimeout:
-        return ApiErrorModel(message: ResponseMessage.connectTimeout);
+        return const ApiErrorModel(message: ResponseMessage.connectTimeout,);
       case DataSource.cancel:
-        return ApiErrorModel(message: ResponseMessage.cancel);
+        return const ApiErrorModel(message: ResponseMessage.cancel);
       case DataSource.receiveTimeout:
-        return ApiErrorModel(message: ResponseMessage.receiveTimeout);
+        return const ApiErrorModel(message: ResponseMessage.receiveTimeout);
       case DataSource.sendTimeout:
-        return ApiErrorModel(message: ResponseMessage.sendTimeout);
+        return const ApiErrorModel(message: ResponseMessage.sendTimeout);
       case DataSource.cacheError:
-        return ApiErrorModel(message: ResponseMessage.cacheError);
+        return const ApiErrorModel(message: ResponseMessage.cacheError);
       case DataSource.noInternetConnection:
-        return ApiErrorModel(message: ResponseMessage.noInternetConnection);
+        return const ApiErrorModel(
+            message: ResponseMessage.noInternetConnection);
       case DataSource.defaultError:
-        return ApiErrorModel(message: ResponseMessage.defaultError);
+        return const ApiErrorModel(message: ResponseMessage.defaultError);
     }
   }
 }
