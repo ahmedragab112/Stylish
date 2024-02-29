@@ -10,18 +10,17 @@ class CustomEye extends StatelessWidget {
   Widget build(BuildContext context) {
     var bloc = context.watch<LoginCubit>();
     return GestureDetector(
-      onTap: () {
-        bloc.changeObscureText();
-      },
-      child: bloc.isobscureText
-          ? const Icon(
-              Icons.remove_red_eye,
-              color: AppColor.greyPrimary,
-            )
-          : const Icon(
-              Icons.visibility_off,
-              color: AppColor.greyPrimary,
-            ),
-    );
+        onTap: () {
+          bloc.changeObscureText();
+        },
+        child: bloc.isobscureText
+            ? const Icon(
+                Icons.visibility_off,
+                color: AppColor.greyPrimary,
+              )
+            : const Icon(
+                Icons.remove_red_eye,
+                color: AppColor.greyPrimary,
+              ));
   }
 }

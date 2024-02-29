@@ -12,15 +12,14 @@ class SignupCubit extends Cubit<SignupState> {
   SignUpUsecase signUpUsecase;
   SignupCubit({required this.signUpUsecase}) : super(SignupInitial());
   Future<void> signUp() async {
-    log('here');
     emit(SignupLoading());
     var data = await signUpUsecase.call(
         userData: UserData(
-            name: 'AHMED123213',
-            rePassword: 'ahmedragab123',
+            name: 'AHMED123213213213',
+            rePassword: 'ahmedragab12333',
             phone: '01096626385',
-            email: 'vvvvvvvvvvvvvvvvvv112222020@gmail.com',
-            password: 'ahmedragab123'));
+            email: 'vvvvvvvvvvvvvvvvvv11222202032323@gmail.com',
+            password: 'ahmedragab12333'));
     data.when(
         data: (data) => emit(SignupSuccess(userEntity: data)),
         error: (error) =>

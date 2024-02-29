@@ -1,13 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'login_data.g.dart';
+
 @JsonSerializable()
 class LoginData {
-  String email;
-  String password;
+  final String email;
+  final String password;
 
-  LoginData({required this.email,required this.password});
-
-  factory LoginData.fromJson(Map<String, dynamic> json) =>_$LoginDataFromJson(json);
+  const LoginData({required this.email, required this.password});
 
   Map<String, dynamic> toJson() => _$LoginDataToJson(this);
 }

@@ -1,5 +1,7 @@
 class AppStrings {
   static const String styLish = "StyLish";
+  static const String pleaseEnterValidEmail = "Please Enter Valid Email";
+  static const String pleaseEnterValidPassword = "Please Enter Valid Password";
   static const String signup = "Sign Up";
   static const String chooseProducts = "Choose Products";
   static const String onBoarding1Description =

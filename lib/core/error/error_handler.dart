@@ -19,14 +19,14 @@ enum DataSource {
 }
 
 class ResponseCode {
-  static const int success = 200; 
-  static const int noContent = 201; 
-  static const int badRequest = 400; 
-  static const int unauthorized = 401; 
-  static const int forbidden = 403; 
-  static const int internalServerError = 500; 
-  static const int notFound = 404; 
-  static const int apiLogicError = 422; 
+  static const int success = 200;
+  static const int noContent = 201;
+  static const int badRequest = 400;
+  static const int unauthorized = 401;
+  static const int forbidden = 403;
+  static const int internalServerError = 500;
+  static const int notFound = 404;
+  static const int apiLogicError = 422;
 
   // local status code
   static const int connectTimeout = -1;
@@ -66,20 +66,23 @@ extension DataSourceExtension on DataSource {
   ApiErrorModel getFailure() {
     switch (this) {
       case DataSource.noContent:
-        return const ApiErrorModel(message: ResponseMessage.noContent ,errors: Errors(msg: ApiErrors.noContent) );
+        return const ApiErrorModel(message: ResponseMessage.noContent);
       case DataSource.badRequest:
-        return const ApiErrorModel(message: ResponseMessage.badRequest, errors: Errors(msg: ApiErrors.noContent));
+        return const ApiErrorModel(message: ResponseMessage.badRequest);
       case DataSource.forbidden:
-        return const ApiErrorModel(message: ResponseMessage.forbidden, errors: Errors(msg: ApiErrors.noContent));
+        return const ApiErrorModel(message: ResponseMessage.forbidden);
       case DataSource.unauthorized:
-        return const ApiErrorModel(message: ResponseMessage.unauthorized, errors: Errors(msg: ApiErrors.noContent));
+        return const ApiErrorModel(message: ResponseMessage.unauthorized);
       case DataSource.notFound:
-        return const ApiErrorModel(message: ResponseMessage.notFound, errors: Errors(msg: ApiErrors.noContent));
+        return const ApiErrorModel(message: ResponseMessage.notFound);
       case DataSource.internalServerError:
         return const ApiErrorModel(
-            message: ResponseMessage.internalServerError, errors: Errors(msg: ApiErrors.noContent));
+          message: ResponseMessage.internalServerError,
+        );
       case DataSource.connectTimeout:
-        return const ApiErrorModel(message: ResponseMessage.connectTimeout,);
+        return const ApiErrorModel(
+          message: ResponseMessage.connectTimeout,
+        );
       case DataSource.cancel:
         return const ApiErrorModel(message: ResponseMessage.cancel);
       case DataSource.receiveTimeout:

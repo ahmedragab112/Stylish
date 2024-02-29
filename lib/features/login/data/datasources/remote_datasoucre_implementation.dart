@@ -4,9 +4,15 @@ import 'package:stylehub/features/login/data/datasources/remote_datasoucre.dart'
 import 'package:stylehub/features/login/data/model/login_data.dart';
 
 class LoginRemoteDataSoucreImplementation implements LoginRemoteDataSouce {
-  ApiManager apiManager;
+  final ApiManager apiManager;
 
-  LoginRemoteDataSoucreImplementation({required this.apiManager});
+  const LoginRemoteDataSoucreImplementation({required this.apiManager});
   @override
-  Future<UserModel> login({required LoginData loginData}) async => await apiManager.loginUser(loginData);
+  Future<UserModel> login({required LoginData loginData}) {
+    try {
+      return apiManager.loginUser(loginData);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

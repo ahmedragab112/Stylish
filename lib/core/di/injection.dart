@@ -17,12 +17,12 @@ GetIt locator = GetIt.instance;
 
 void setupLocator() {
   // Register SignUpDataRepo with its dependencies
-  locator.registerLazySingleton(() => RemoteDataSoucresImplementation(
+  locator.registerLazySingleton(() => SignUpRemoteDataSoucresImplementation(
       apiManager:
           ApiManager(DioFactory.getDio(), baseUrl: AppConstant.signUpBaseUrl)));
 
   locator.registerLazySingleton(() => SignUpDataRepo(
-        remoteDataSource: locator<RemoteDataSoucresImplementation>(),
+        remoteDataSource: locator<SignUpRemoteDataSoucresImplementation>(),
       ));
 
   locator.registerLazySingleton(() => SignUpUsecase(
@@ -36,8 +36,8 @@ void setupLocator() {
   locator.registerLazySingleton<CacheHelper>(() => CacheHelper());
 
   // Register LoginDataRepo with its dependencies
-  locator.registerLazySingleton(() =>
-      LoginRemoteDataSoucreImplementation(apiManager: ApiManager(DioFactory.getDio())));
+  locator.registerLazySingleton(() => LoginRemoteDataSoucreImplementation(
+      apiManager: ApiManager(DioFactory.getDio())));
 
   locator.registerLazySingleton(() => LoginDataRepo(
         loginRemoteDataSouce: locator<LoginRemoteDataSoucreImplementation>(),
