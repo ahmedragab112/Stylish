@@ -1,4 +1,5 @@
 class AppStrings {
+  static const String enterAtLeast8Characters = "Enter At Least 8 Characters";
   static const String youAgree = "button, you agree to the public offer";
   static const String byClickingThe = "By clicking the ";
   static const String email = "Email";
@@ -7,10 +8,20 @@ class AppStrings {
   static const String name = "Name";
   static const String confirmPassword = "Confirm Password";
   static const String phone = "Phone";
-
+  static const String enterOnlyEgyptionNumber = "Enter Only Egyptian Number";
+  static const String enterUpperAtLeastOneUpperCase =
+      " Enter Upper At Least One Upper Case";
+  static const String enterLowerAtLeastOneLowerCase =
+      "Enter Lower At Least Eight Lower Case";
+  static const String enterAtLeastOneNumber = "Enter At Least One Number";
+  static const String enterAtLeastOneSpecialCharacter =
+      "Enter At Least One Special Character";
   static const String pleaseEnterValidEmail = "Please Enter Valid Email";
+  static const String pleaseEnterValidPhone = "Please Enter Valid Phone";
   static const String pleaseEnterValidPassword = "Please Enter Valid Password";
-  static const String signup = "Sign Up";
+  static const String signup = "Sign Up ";
+  static const String pleaseConfirmTheRightPassword =
+      "Please Confirm The Right Password";
   static const String chooseProducts = "Choose Products";
   static const String onBoarding1Description =
       "Discover a wide range of stylish items tailored to your preferences. Find exactly what you're looking for.";

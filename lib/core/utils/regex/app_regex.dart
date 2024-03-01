@@ -29,4 +29,8 @@ class AppRegex {
   static bool hasMinLength(String password) {
     return RegExp(r'^(?=.{8,})').hasMatch(password);
   }
+
+  static bool hasMatchPhoneNumber(String phoneNumber) {
+    return RegExp(r'^(02\d{7}|01\d{9})$').hasMatch(phoneNumber);
+  }
 }
