@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
 import 'package:stylehub/features/signup/presentation/manager/signup_cubit.dart';
 
 class SignUpEye extends StatelessWidget {
-  const SignUpEye({super.key});
-
+  const SignUpEye({super.key, required this.bloc});
+ final SignupCubit bloc;
   @override
   Widget build(BuildContext context) {
-    var bloc = context.read<SignupCubit>();
+  
     return GestureDetector(
         onTap: () {
           bloc.changeObscureText();

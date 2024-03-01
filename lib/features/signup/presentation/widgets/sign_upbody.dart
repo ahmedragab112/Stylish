@@ -9,7 +9,7 @@ import 'package:stylehub/core/utils/strings/app_strings.dart';
 import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 import 'package:stylehub/core/utils/widget/custom_button.dart';
 import 'package:stylehub/core/utils/widget/custom_rich_text.dart';
-import 'package:stylehub/features/login/presentation/widgets/another_login_way.dart';
+import 'package:stylehub/core/utils/widget/another_login_way.dart';
 import 'package:stylehub/features/signup/presentation/manager/signup_cubit.dart';
 import 'package:stylehub/features/signup/presentation/widgets/custom_signup_lister.dart';
 import 'package:stylehub/features/signup/presentation/widgets/gree_to_ourrules.dart';
@@ -60,7 +60,7 @@ class SignUpBody extends StatelessWidget {
           thickness: .2,
         ),
         const VerticalSpace(20),
-        const LoginWays(),
+        const AnOtherLoginWays(),
         const VerticalSpace(28),
         CustomRichText(
           text: AppStrings.alreadyHaveAccount,
