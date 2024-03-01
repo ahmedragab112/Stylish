@@ -5,7 +5,7 @@ class CacheHelper {
 
   Future<void> setInstance({required dynamic data, required String key}) async {
     if (_prefs == null) {
-      await CacheHelper.init();
+      await init();
     }
     if (data is int) {
       _prefs!.setInt(key, data);
@@ -18,7 +18,7 @@ class CacheHelper {
     }
   }
 
-  static Future<void> init() async {
+   Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
   }
 

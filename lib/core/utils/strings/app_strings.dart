@@ -1,5 +1,15 @@
 class AppStrings {
+  static const String youAgree = "button, you agree to the public offer";
+  static const String byClickingThe = "By clicking the ";
+  static const String email = "Email";
+  static const String pleaseEnterValidName = "Please Enter Valid Name";
   static const String styLish = "StyLish";
+  static const String name = "Name";
+  static const String confirmPassword = "Confirm Password";
+  static const String phone = "Phone";
+
+  static const String pleaseEnterValidEmail = "Please Enter Valid Email";
+  static const String pleaseEnterValidPassword = "Please Enter Valid Password";
   static const String signup = "Sign Up";
   static const String chooseProducts = "Choose Products";
   static const String onBoarding1Description =
@@ -25,7 +35,8 @@ class AppStrings {
   static const String weWillSendAMassageRest =
       "* We will send you a message to set or reset your new password";
   static const String cacheKeyIsVisited = "is visited";
-  static const String cacheKeyIsLogin = "is login";
+  static const String cacheKeyUserToken = "is login";
   static const String userNameOrEmail = "Username or Email";
   static const String password = "Password";
+  static const String cacheKeyIsLogin = 'Logiended';
 }
