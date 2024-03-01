@@ -1,4 +1,4 @@
-part of 'login_cubit_cubit.dart';
+part of 'login_cubit.dart';
 
 @freezed
 class LoginState with _$LoginState {
@@ -8,4 +8,5 @@ class LoginState with _$LoginState {
   const factory LoginState.fail({required String message}) = Fail;
   const factory LoginState.loading() = Loading;
   const factory LoginState.changeObsuerText() = _ChangeObsuerText;
+
 }

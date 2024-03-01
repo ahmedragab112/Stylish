@@ -5,7 +5,7 @@ import 'package:stylehub/core/cache/shared_prefrences.dart';
 import 'package:stylehub/core/di/injection.dart';
 import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/strings/app_strings.dart';
-import 'package:stylehub/features/login/presentation/manager/login_cubit_cubit.dart';
+import 'package:stylehub/features/login/presentation/manager/login_cubit.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
 class CustomLoginLister extends StatelessWidget {

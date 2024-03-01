@@ -5,9 +5,12 @@ import 'package:stylehub/core/utils/strings/app_strings.dart';
 
 String getInitRoute() {
   if (locator<CacheHelper>().getBool(AppStrings.cacheKeyIsVisited) == true) {
+    if (locator<CacheHelper>()
+        .getString(AppStrings.cacheKeyUserToken)
+        .isNotEmpty) {
+      return AppRoutes.home;
+    }
     return AppRoutes.signIn;
-  } else if (locator<CacheHelper>().getBool(AppStrings.cacheKeyIsLogin) ==true) {
-    return AppRoutes.home;
   } else {
     return AppRoutes.onBoarding;
   }

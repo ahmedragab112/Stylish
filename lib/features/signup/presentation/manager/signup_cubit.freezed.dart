@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_cubit_cubit.dart';
+part of 'signup_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,31 +15,31 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$LoginState {
+mixin _$SignupState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserEntity userEntity) success,
-    required TResult Function(String message) fail,
     required TResult Function() loading,
+    required TResult Function(UserEntity userEntity) success,
+    required TResult Function(String message) error,
     required TResult Function() changeObsuerText,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserEntity userEntity)? success,
-    TResult? Function(String message)? fail,
     TResult? Function()? loading,
+    TResult? Function(UserEntity userEntity)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? changeObsuerText,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserEntity userEntity)? success,
-    TResult Function(String message)? fail,
     TResult Function()? loading,
+    TResult Function(UserEntity userEntity)? success,
+    TResult Function(String message)? error,
     TResult Function()? changeObsuerText,
     required TResult orElse(),
   }) =>
@@ -47,44 +47,44 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(Success value) success,
-    required TResult Function(Fail value) fail,
     required TResult Function(Loading value) loading,
-    required TResult Function(_ChangeObsuerText value) changeObsuerText,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
+    required TResult Function(ChangeObsuerText value) changeObsuerText,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(Success value)? success,
-    TResult? Function(Fail value)? fail,
     TResult? Function(Loading value)? loading,
-    TResult? Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
+    TResult? Function(ChangeObsuerText value)? changeObsuerText,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(Success value)? success,
-    TResult Function(Fail value)? fail,
     TResult Function(Loading value)? loading,
-    TResult Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
+    TResult Function(ChangeObsuerText value)? changeObsuerText,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginStateCopyWith<$Res> {
-  factory $LoginStateCopyWith(
-          LoginState value, $Res Function(LoginState) then) =
-      _$LoginStateCopyWithImpl<$Res, LoginState>;
+abstract class $SignupStateCopyWith<$Res> {
+  factory $SignupStateCopyWith(
+          SignupState value, $Res Function(SignupState) then) =
+      _$SignupStateCopyWithImpl<$Res, SignupState>;
 }
 
 /// @nodoc
-class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
-    implements $LoginStateCopyWith<$Res> {
-  _$LoginStateCopyWithImpl(this._value, this._then);
+class _$SignupStateCopyWithImpl<$Res, $Val extends SignupState>
+    implements $SignupStateCopyWith<$Res> {
+  _$SignupStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -101,7 +101,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$SignupStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -115,7 +115,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'LoginState.initial()';
+    return 'SignupState.initial()';
   }
 
   @override
@@ -131,9 +131,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserEntity userEntity) success,
-    required TResult Function(String message) fail,
     required TResult Function() loading,
+    required TResult Function(UserEntity userEntity) success,
+    required TResult Function(String message) error,
     required TResult Function() changeObsuerText,
   }) {
     return initial();
@@ -143,9 +143,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserEntity userEntity)? success,
-    TResult? Function(String message)? fail,
     TResult? Function()? loading,
+    TResult? Function(UserEntity userEntity)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? changeObsuerText,
   }) {
     return initial?.call();
@@ -155,9 +155,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserEntity userEntity)? success,
-    TResult Function(String message)? fail,
     TResult Function()? loading,
+    TResult Function(UserEntity userEntity)? success,
+    TResult Function(String message)? error,
     TResult Function()? changeObsuerText,
     required TResult orElse(),
   }) {
@@ -171,10 +171,10 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(Success value) success,
-    required TResult Function(Fail value) fail,
     required TResult Function(Loading value) loading,
-    required TResult Function(_ChangeObsuerText value) changeObsuerText,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
+    required TResult Function(ChangeObsuerText value) changeObsuerText,
   }) {
     return initial(this);
   }
@@ -183,10 +183,10 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(Success value)? success,
-    TResult? Function(Fail value)? fail,
     TResult? Function(Loading value)? loading,
-    TResult? Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
+    TResult? Function(ChangeObsuerText value)? changeObsuerText,
   }) {
     return initial?.call(this);
   }
@@ -195,10 +195,10 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(Success value)? success,
-    TResult Function(Fail value)? fail,
     TResult Function(Loading value)? loading,
-    TResult Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
+    TResult Function(ChangeObsuerText value)? changeObsuerText,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -208,8 +208,128 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements LoginState {
+abstract class _Initial implements SignupState {
   const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$SignupStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingImpl implements Loading {
+  const _$LoadingImpl();
+
+  @override
+  String toString() {
+    return 'SignupState.loading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(UserEntity userEntity) success,
+    required TResult Function(String message) error,
+    required TResult Function() changeObsuerText,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(UserEntity userEntity)? success,
+    TResult? Function(String message)? error,
+    TResult? Function()? changeObsuerText,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(UserEntity userEntity)? success,
+    TResult Function(String message)? error,
+    TResult Function()? changeObsuerText,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
+    required TResult Function(ChangeObsuerText value) changeObsuerText,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
+    TResult? Function(ChangeObsuerText value)? changeObsuerText,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
+    TResult Function(ChangeObsuerText value)? changeObsuerText,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Loading implements SignupState {
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -223,7 +343,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$SignupStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
@@ -253,7 +373,7 @@ class _$SuccessImpl implements Success {
 
   @override
   String toString() {
-    return 'LoginState.success(userEntity: $userEntity)';
+    return 'SignupState.success(userEntity: $userEntity)';
   }
 
   @override
@@ -278,9 +398,9 @@ class _$SuccessImpl implements Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserEntity userEntity) success,
-    required TResult Function(String message) fail,
     required TResult Function() loading,
+    required TResult Function(UserEntity userEntity) success,
+    required TResult Function(String message) error,
     required TResult Function() changeObsuerText,
   }) {
     return success(userEntity);
@@ -290,9 +410,9 @@ class _$SuccessImpl implements Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserEntity userEntity)? success,
-    TResult? Function(String message)? fail,
     TResult? Function()? loading,
+    TResult? Function(UserEntity userEntity)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? changeObsuerText,
   }) {
     return success?.call(userEntity);
@@ -302,9 +422,9 @@ class _$SuccessImpl implements Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserEntity userEntity)? success,
-    TResult Function(String message)? fail,
     TResult Function()? loading,
+    TResult Function(UserEntity userEntity)? success,
+    TResult Function(String message)? error,
     TResult Function()? changeObsuerText,
     required TResult orElse(),
   }) {
@@ -318,10 +438,10 @@ class _$SuccessImpl implements Success {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(Success value) success,
-    required TResult Function(Fail value) fail,
     required TResult Function(Loading value) loading,
-    required TResult Function(_ChangeObsuerText value) changeObsuerText,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
+    required TResult Function(ChangeObsuerText value) changeObsuerText,
   }) {
     return success(this);
   }
@@ -330,10 +450,10 @@ class _$SuccessImpl implements Success {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(Success value)? success,
-    TResult? Function(Fail value)? fail,
     TResult? Function(Loading value)? loading,
-    TResult? Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
+    TResult? Function(ChangeObsuerText value)? changeObsuerText,
   }) {
     return success?.call(this);
   }
@@ -342,10 +462,10 @@ class _$SuccessImpl implements Success {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(Success value)? success,
-    TResult Function(Fail value)? fail,
     TResult Function(Loading value)? loading,
-    TResult Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
+    TResult Function(ChangeObsuerText value)? changeObsuerText,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -355,7 +475,7 @@ class _$SuccessImpl implements Success {
   }
 }
 
-abstract class Success implements LoginState {
+abstract class Success implements SignupState {
   const factory Success({required final UserEntity userEntity}) = _$SuccessImpl;
 
   UserEntity get userEntity;
@@ -365,19 +485,20 @@ abstract class Success implements LoginState {
 }
 
 /// @nodoc
-abstract class _$$FailImplCopyWith<$Res> {
-  factory _$$FailImplCopyWith(
-          _$FailImpl value, $Res Function(_$FailImpl) then) =
-      __$$FailImplCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$FailImplCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$FailImpl>
-    implements _$$FailImplCopyWith<$Res> {
-  __$$FailImplCopyWithImpl(_$FailImpl _value, $Res Function(_$FailImpl) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$SignupStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -385,7 +506,7 @@ class __$$FailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$FailImpl(
+    return _then(_$ErrorImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -396,22 +517,22 @@ class __$$FailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailImpl implements Fail {
-  const _$FailImpl({required this.message});
+class _$ErrorImpl implements Error {
+  const _$ErrorImpl({required this.message});
 
   @override
   final String message;
 
   @override
   String toString() {
-    return 'LoginState.fail(message: $message)';
+    return 'SignupState.error(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FailImpl &&
+            other is _$ErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -421,45 +542,45 @@ class _$FailImpl implements Fail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FailImplCopyWith<_$FailImpl> get copyWith =>
-      __$$FailImplCopyWithImpl<_$FailImpl>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserEntity userEntity) success,
-    required TResult Function(String message) fail,
     required TResult Function() loading,
+    required TResult Function(UserEntity userEntity) success,
+    required TResult Function(String message) error,
     required TResult Function() changeObsuerText,
   }) {
-    return fail(message);
+    return error(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserEntity userEntity)? success,
-    TResult? Function(String message)? fail,
     TResult? Function()? loading,
+    TResult? Function(UserEntity userEntity)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? changeObsuerText,
   }) {
-    return fail?.call(message);
+    return error?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserEntity userEntity)? success,
-    TResult Function(String message)? fail,
     TResult Function()? loading,
+    TResult Function(UserEntity userEntity)? success,
+    TResult Function(String message)? error,
     TResult Function()? changeObsuerText,
     required TResult orElse(),
   }) {
-    if (fail != null) {
-      return fail(message);
+    if (error != null) {
+      return error(message);
     }
     return orElse();
   }
@@ -468,170 +589,50 @@ class _$FailImpl implements Fail {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(Success value) success,
-    required TResult Function(Fail value) fail,
     required TResult Function(Loading value) loading,
-    required TResult Function(_ChangeObsuerText value) changeObsuerText,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
+    required TResult Function(ChangeObsuerText value) changeObsuerText,
   }) {
-    return fail(this);
+    return error(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(Success value)? success,
-    TResult? Function(Fail value)? fail,
     TResult? Function(Loading value)? loading,
-    TResult? Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
+    TResult? Function(ChangeObsuerText value)? changeObsuerText,
   }) {
-    return fail?.call(this);
+    return error?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(Success value)? success,
-    TResult Function(Fail value)? fail,
     TResult Function(Loading value)? loading,
-    TResult Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
+    TResult Function(ChangeObsuerText value)? changeObsuerText,
     required TResult orElse(),
   }) {
-    if (fail != null) {
-      return fail(this);
+    if (error != null) {
+      return error(this);
     }
     return orElse();
   }
 }
 
-abstract class Fail implements LoginState {
-  const factory Fail({required final String message}) = _$FailImpl;
+abstract class Error implements SignupState {
+  const factory Error({required final String message}) = _$ErrorImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$FailImplCopyWith<_$FailImpl> get copyWith =>
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadingImpl implements Loading {
-  const _$LoadingImpl();
-
-  @override
-  String toString() {
-    return 'LoginState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(UserEntity userEntity) success,
-    required TResult Function(String message) fail,
-    required TResult Function() loading,
-    required TResult Function() changeObsuerText,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(UserEntity userEntity)? success,
-    TResult? Function(String message)? fail,
-    TResult? Function()? loading,
-    TResult? Function()? changeObsuerText,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(UserEntity userEntity)? success,
-    TResult Function(String message)? fail,
-    TResult Function()? loading,
-    TResult Function()? changeObsuerText,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Success value) success,
-    required TResult Function(Fail value) fail,
-    required TResult Function(Loading value) loading,
-    required TResult Function(_ChangeObsuerText value) changeObsuerText,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Success value)? success,
-    TResult? Function(Fail value)? fail,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(_ChangeObsuerText value)? changeObsuerText,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Success value)? success,
-    TResult Function(Fail value)? fail,
-    TResult Function(Loading value)? loading,
-    TResult Function(_ChangeObsuerText value)? changeObsuerText,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Loading implements LoginState {
-  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -643,7 +644,7 @@ abstract class _$$ChangeObsuerTextImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ChangeObsuerTextImplCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$ChangeObsuerTextImpl>
+    extends _$SignupStateCopyWithImpl<$Res, _$ChangeObsuerTextImpl>
     implements _$$ChangeObsuerTextImplCopyWith<$Res> {
   __$$ChangeObsuerTextImplCopyWithImpl(_$ChangeObsuerTextImpl _value,
       $Res Function(_$ChangeObsuerTextImpl) _then)
@@ -652,12 +653,12 @@ class __$$ChangeObsuerTextImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
+class _$ChangeObsuerTextImpl implements ChangeObsuerText {
   const _$ChangeObsuerTextImpl();
 
   @override
   String toString() {
-    return 'LoginState.changeObsuerText()';
+    return 'SignupState.changeObsuerText()';
   }
 
   @override
@@ -673,9 +674,9 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserEntity userEntity) success,
-    required TResult Function(String message) fail,
     required TResult Function() loading,
+    required TResult Function(UserEntity userEntity) success,
+    required TResult Function(String message) error,
     required TResult Function() changeObsuerText,
   }) {
     return changeObsuerText();
@@ -685,9 +686,9 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserEntity userEntity)? success,
-    TResult? Function(String message)? fail,
     TResult? Function()? loading,
+    TResult? Function(UserEntity userEntity)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? changeObsuerText,
   }) {
     return changeObsuerText?.call();
@@ -697,9 +698,9 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserEntity userEntity)? success,
-    TResult Function(String message)? fail,
     TResult Function()? loading,
+    TResult Function(UserEntity userEntity)? success,
+    TResult Function(String message)? error,
     TResult Function()? changeObsuerText,
     required TResult orElse(),
   }) {
@@ -713,10 +714,10 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(Success value) success,
-    required TResult Function(Fail value) fail,
     required TResult Function(Loading value) loading,
-    required TResult Function(_ChangeObsuerText value) changeObsuerText,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
+    required TResult Function(ChangeObsuerText value) changeObsuerText,
   }) {
     return changeObsuerText(this);
   }
@@ -725,10 +726,10 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(Success value)? success,
-    TResult? Function(Fail value)? fail,
     TResult? Function(Loading value)? loading,
-    TResult? Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
+    TResult? Function(ChangeObsuerText value)? changeObsuerText,
   }) {
     return changeObsuerText?.call(this);
   }
@@ -737,10 +738,10 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(Success value)? success,
-    TResult Function(Fail value)? fail,
     TResult Function(Loading value)? loading,
-    TResult Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
+    TResult Function(ChangeObsuerText value)? changeObsuerText,
     required TResult orElse(),
   }) {
     if (changeObsuerText != null) {
@@ -750,6 +751,6 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
   }
 }
 
-abstract class _ChangeObsuerText implements LoginState {
-  const factory _ChangeObsuerText() = _$ChangeObsuerTextImpl;
+abstract class ChangeObsuerText implements SignupState {
+  const factory ChangeObsuerText() = _$ChangeObsuerTextImpl;
 }

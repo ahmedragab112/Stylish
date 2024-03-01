@@ -11,7 +11,7 @@ import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 import 'package:stylehub/core/utils/widget/custom_button.dart';
 import 'package:stylehub/core/utils/widget/custom_rich_text.dart';
 import 'package:stylehub/core/utils/widget/custom_textfiled.dart';
-import 'package:stylehub/features/login/presentation/manager/login_cubit_cubit.dart';
+import 'package:stylehub/features/login/presentation/manager/login_cubit.dart';
 import 'package:stylehub/features/login/presentation/widgets/another_login_way.dart';
 import 'package:stylehub/features/login/presentation/widgets/custom_eye.dart';
 import 'package:stylehub/features/login/presentation/widgets/login_listener.dart';

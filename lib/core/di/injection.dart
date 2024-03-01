@@ -7,11 +7,11 @@ import 'package:stylehub/features/login/data/datasources/remote_datasoucre_imple
 import 'package:stylehub/features/login/data/repositories/data_repo.dart';
 import 'package:stylehub/features/login/domain/repositories/login_domainrepo.dart';
 import 'package:stylehub/features/login/domain/usecases/login_usecase.dart';
-import 'package:stylehub/features/login/presentation/manager/login_cubit_cubit.dart';
+import 'package:stylehub/features/login/presentation/manager/login_cubit.dart';
 import 'package:stylehub/features/signup/data/datasources/remote/remote_datasource_implementation.dart';
 import 'package:stylehub/features/signup/data/repositories/remote_repo_implmentation.dart';
 import 'package:stylehub/features/signup/domain/usecases/signup_usecase.dart';
-import 'package:stylehub/features/signup/presentation/cubit/signup_cubit.dart';
+import 'package:stylehub/features/signup/presentation/manager/signup_cubit.dart';
 
 GetIt locator = GetIt.instance;
 

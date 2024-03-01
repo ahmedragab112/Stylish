@@ -1,13 +1,15 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:stylehub/core/cache/shared_prefrences.dart';
+import 'package:stylehub/core/di/injection.dart';
 import 'package:stylehub/core/utils/entity/singup_entitey.dart';
+import 'package:stylehub/core/utils/strings/app_strings.dart';
 import 'package:stylehub/features/login/data/model/login_data.dart';
 import 'package:stylehub/features/login/domain/usecases/login_usecase.dart';
 
-part 'login_cubit_state.dart';
-part 'login_cubit_cubit.freezed.dart';
+part 'login_state.dart';
+part 'login_cubit.freezed.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   var formKey = GlobalKey<FormState>();
@@ -23,16 +25,17 @@ class LoginCubit extends Cubit<LoginState> {
         loginData: LoginData(
             email: emailController.text.trim(),
             password: passwordController.text.trim()));
-    data.when(
-        data: (userEntity) =>
-            emit((LoginState.success(userEntity: userEntity))),
-        error: (error) {
-          emit(LoginState.fail(message: error.apiErrorModel.message!));
-        });
+    data.when(data: (userEntity) async {
+      await locator<CacheHelper>().setInstance(
+          data: userEntity.token, key: AppStrings.cacheKeyUserToken);
+      emit((LoginState.success(userEntity: userEntity)));
+    }, error: (error) {
+      emit(LoginState.fail(message: error.apiErrorModel.message!));
+    });
   }
 
   void changeObscureText() {
-    emit(const LoginState.loading());
+    emit(const LoginState.initial());
     isobscureText = !isobscureText;
     emit(const LoginState.changeObsuerText());
   }

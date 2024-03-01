@@ -66,36 +66,58 @@ extension DataSourceExtension on DataSource {
   ApiErrorModel getFailure() {
     switch (this) {
       case DataSource.noContent:
-        return const ApiErrorModel(message: ResponseMessage.noContent);
+        return const ApiErrorModel(
+            message: ResponseMessage.noContent,
+            statusMsg: ResponseMessage.noContent);
       case DataSource.badRequest:
-        return const ApiErrorModel(message: ResponseMessage.badRequest);
+        return const ApiErrorModel(
+            message: ResponseMessage.badRequest,
+            statusMsg: ResponseMessage.badRequest);
       case DataSource.forbidden:
-        return const ApiErrorModel(message: ResponseMessage.forbidden);
+        return const ApiErrorModel(
+            message: ResponseMessage.forbidden,
+            statusMsg: ResponseMessage.forbidden);
       case DataSource.unauthorized:
-        return const ApiErrorModel(message: ResponseMessage.unauthorized);
+        return const ApiErrorModel(
+            message: ResponseMessage.unauthorized,
+            statusMsg: ResponseMessage.unauthorized);
       case DataSource.notFound:
-        return const ApiErrorModel(message: ResponseMessage.notFound);
+        return const ApiErrorModel(
+            message: ResponseMessage.notFound,
+            statusMsg: ResponseMessage.notFound);
       case DataSource.internalServerError:
         return const ApiErrorModel(
           message: ResponseMessage.internalServerError,
+          statusMsg: ResponseMessage.internalServerError,
         );
       case DataSource.connectTimeout:
         return const ApiErrorModel(
           message: ResponseMessage.connectTimeout,
+          statusMsg: ResponseMessage.connectTimeout,
         );
       case DataSource.cancel:
-        return const ApiErrorModel(message: ResponseMessage.cancel);
+        return const ApiErrorModel(
+            message: ResponseMessage.cancel, statusMsg: ResponseMessage.cancel);
       case DataSource.receiveTimeout:
-        return const ApiErrorModel(message: ResponseMessage.receiveTimeout);
+        return const ApiErrorModel(
+            message: ResponseMessage.receiveTimeout,
+            statusMsg: ResponseMessage.receiveTimeout);
       case DataSource.sendTimeout:
-        return const ApiErrorModel(message: ResponseMessage.sendTimeout);
+        return const ApiErrorModel(
+            message: ResponseMessage.sendTimeout,
+            statusMsg: ResponseMessage.sendTimeout);
       case DataSource.cacheError:
-        return const ApiErrorModel(message: ResponseMessage.cacheError);
+        return const ApiErrorModel(
+            message: ResponseMessage.cacheError,
+            statusMsg: ResponseMessage.cacheError);
       case DataSource.noInternetConnection:
         return const ApiErrorModel(
-            message: ResponseMessage.noInternetConnection);
+            message: ResponseMessage.noInternetConnection,
+            statusMsg: ResponseMessage.noInternetConnection);
       case DataSource.defaultError:
-        return const ApiErrorModel(message: ResponseMessage.defaultError);
+        return const ApiErrorModel(
+            message: ResponseMessage.defaultError,
+            statusMsg: ResponseMessage.defaultError);
     }
   }
 }
