@@ -3,12 +3,16 @@ import 'package:stylehub/features/signup/data/datasources/remote/remote_datasour
 import 'package:stylehub/features/signup/data/models/user_data.dart';
 import 'package:stylehub/core/utils/model/user_model.dart';
 
-class RemoteDataSoucresImplementation implements RemoteDataSource {
+class SignUpRemoteDataSoucresImplementation implements RemoteDataSource {
   final ApiManager apiManager;
-  const RemoteDataSoucresImplementation({required this.apiManager});
+  const SignUpRemoteDataSoucresImplementation({required this.apiManager});
   @override
   Future<UserModel> signUp({required UserData userData}) async {
-    var user = await apiManager.signUpUser(userData);
-    return user;
+    try {
+      var user = await apiManager.signUpUser(userData);
+      return user;
+    } catch (e) {
+      rethrow;
+    }
   }
 }
