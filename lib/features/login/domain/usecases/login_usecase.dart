@@ -7,5 +7,5 @@ class LoginUseCase {
  final LoginRepo loginRepo;
  const LoginUseCase({required this.loginRepo});
   Future<ApiResponse<UserEntity>> login(
-      {required LoginData loginData}) async => await loginRepo.login(loginData: loginData );
+      {required LoginData loginData})  =>  loginRepo.login(loginData: loginData );
 }
