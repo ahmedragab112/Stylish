@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stylehub/core/function/password_validation.dart';
 import 'package:stylehub/core/utils/regex/app_regex.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/core/utils/strings/app_strings.dart';
@@ -51,15 +52,27 @@ class SignUpModual extends StatelessWidget {
             ),
           ),
           const VerticalSpace(31),
+          CustomTextFiled(
+            validator: (phoneNumber) {
+              if (phoneNumber!.isEmpty) {
+                return AppStrings.pleaseEnterValidPhone;
+              } else if (!AppRegex.hasMatchPhoneNumber(phoneNumber)) {
+                return AppStrings.enterOnlyEgyptionNumber;
+              }
+              return null;
+            },
+            controller: bloc.phoneController,
+            hintText: AppStrings.phone,
+            prefixIcon: Icon(
+              Icons.phone,
+              color: Theme.of(context).primaryColor,
+            ),
+          ),
+          const VerticalSpace(31),
           BlocBuilder<SignupCubit, SignupState>(
             builder: (context, state) {
               return CustomTextFiled(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return AppStrings.pleaseEnterValidEmail;
-                  }
-                  return null;
-                },
+                validator: passwordValidation,
                 controller: bloc.passwordController,
                 hintText: AppStrings.password,
                 prefixIcon: Icon(
@@ -67,7 +80,9 @@ class SignUpModual extends StatelessWidget {
                   color: Theme.of(context).primaryColor,
                 ),
                 obscureText: bloc.isObscure,
-                suffixIcon: const SignUpEye(),
+                suffixIcon: SignUpEye(
+                  bloc: bloc,
+                ),
               );
             },
           ),
@@ -76,8 +91,9 @@ class SignUpModual extends StatelessWidget {
             builder: (context, state) {
               return CustomTextFiled(
                 validator: (value) {
-                  if (value!.isEmpty) {
-                    return AppStrings.pleaseEnterValidPassword;
+                  if (bloc.rePasswordController.text !=
+                      bloc.passwordController.text) {
+                    return AppStrings.pleaseConfirmTheRightPassword;
                   }
                   return null;
                 },
@@ -88,24 +104,11 @@ class SignUpModual extends StatelessWidget {
                   color: Theme.of(context).primaryColor,
                 ),
                 obscureText: bloc.isObscure,
-                suffixIcon: const SignUpEye(),
+                suffixIcon: SignUpEye(
+                  bloc: bloc,
+                ),
               );
             },
-          ),
-          const VerticalSpace(31),
-          CustomTextFiled(
-            validator: (value) {
-              if (value!.isEmpty) {
-                return AppStrings.pleaseEnterValidEmail;
-              }
-              return null;
-            },
-            controller: bloc.phoneController,
-            hintText: AppStrings.phone,
-            prefixIcon: Icon(
-              Icons.phone,
-              color: Theme.of(context).primaryColor,
-            ),
           ),
         ],
       ),
