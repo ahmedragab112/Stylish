@@ -3,8 +3,8 @@ import 'package:stylehub/core/utils/images/app_assets.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/features/login/presentation/widgets/custom_login_circle.dart';
 
-class LoginWays extends StatelessWidget {
-  const LoginWays({super.key});
+class AnOtherLoginWays extends StatelessWidget {
+  const AnOtherLoginWays({super.key});
 
   @override
   Widget build(BuildContext context) {
