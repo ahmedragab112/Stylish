@@ -70,7 +70,7 @@ class LoginBody extends StatelessWidget {
                   color: Theme.of(context).primaryColor,
                 ),
                 obscureText: bloc.isobscureText,
-                suffixIcon: const CustomEye(),
+                suffixIcon: CustomEye(bloc: bloc,),
               );
             },
           ),

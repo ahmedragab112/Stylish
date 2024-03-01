@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
 import 'package:stylehub/features/login/presentation/manager/login_cubit.dart';
 
 class CustomEye extends StatelessWidget {
-  const CustomEye({super.key});
-
+  const CustomEye({super.key, required this.bloc});
+  final LoginCubit bloc;
   @override
   Widget build(BuildContext context) {
-    var bloc = context.read<LoginCubit>();
+
     return GestureDetector(
         onTap: () {
           bloc.changeObscureText();

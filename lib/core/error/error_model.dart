@@ -2,15 +2,15 @@ import 'package:json_annotation/json_annotation.dart';
 part 'error_model.g.dart';
 
 @JsonSerializable()
-class ApiErrorModel {
+class ApiResponse {
   final String? statusMsg;
   final String? message;
   final Errors? errors;
-  const ApiErrorModel({this.statusMsg, this.message, this.errors});
-  factory ApiErrorModel.fromJson(Map<String, dynamic> json) =>
-      _$ApiErrorModelFromJson(json);
+  const ApiResponse({this.statusMsg, this.message, this.errors});
+  factory ApiResponse.fromJson(Map<String, dynamic> json) =>
+      _$ApiResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ApiErrorModelToJson(this);
+  Map<String, dynamic> toJson() => _$ApiResponseToJson(this);
 }
 
 @JsonSerializable()
