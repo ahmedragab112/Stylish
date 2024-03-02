@@ -77,13 +77,14 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<ApiResponse> forgotPassword(String email) async {
+  Future<ApiResponseModel> forgotPassword(ForgotPasswordBody email) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = email;
+    final _data = <String, dynamic>{};
+    _data.addAll(email.toJson());
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponseModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -99,7 +100,7 @@ class _ApiManager implements ApiManager {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse.fromJson(_result.data!);
+    final value = ApiResponseModel.fromJson(_result.data!);
     return value;
   }
 
