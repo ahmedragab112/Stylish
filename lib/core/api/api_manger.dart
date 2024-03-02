@@ -3,6 +3,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:stylehub/core/api/end_point.dart';
 import 'package:stylehub/core/error/error_model.dart';
 import 'package:stylehub/core/utils/constant/app_constant.dart';
+import 'package:stylehub/features/forgotpassword/data/model/forgotpassword_body.dart';
 import 'package:stylehub/features/login/data/model/login_data.dart';
 import 'package:stylehub/features/signup/data/models/user_data.dart';
 import 'package:stylehub/core/utils/model/user_model.dart';
@@ -18,5 +19,5 @@ abstract class ApiManager {
   @POST(EndPoint.loginEndPoint)
   Future<UserModel> loginUser(@Body() LoginData loginData);
   @POST(EndPoint.forgotPasswordEndPoint)
-  Future<ApiResponse> forgotPassword(@Body() String email);
+  Future<ApiResponseModel> forgotPassword(@Body() ForgotPasswordBody email);
 }

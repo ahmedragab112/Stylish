@@ -4,6 +4,11 @@ import 'package:stylehub/config/router/routes.dart';
 import 'package:stylehub/core/api/api_manger.dart';
 import 'package:stylehub/core/api/dio_singelton.dart';
 import 'package:stylehub/core/di/injection.dart';
+import 'package:stylehub/core/utils/constant/app_constant.dart';
+import 'package:stylehub/features/forgotpassword/data/repositories/data_repo.dart';
+import 'package:stylehub/features/forgotpassword/data/service/remote_datasource_implementation.dart';
+import 'package:stylehub/features/forgotpassword/manager/forgotpassword_cubit.dart';
+import 'package:stylehub/features/forgotpassword/presentation/pages/forgot_password.dart';
 import 'package:stylehub/features/home/presentation/pages/home.dart';
 import 'package:stylehub/features/login/data/datasources/remote_datasoucre_implementation.dart';
 import 'package:stylehub/features/login/data/repositories/data_repo.dart';
@@ -50,6 +55,17 @@ class AppRouter {
           ),
         );
 
+      case AppRoutes.forgotPassword:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => ForgotPasswordCubit(
+                repo: ForgotPasswordDataRepo(
+                    dataSource: ForgotPasswordRemoteDataSourceImplementation(
+                        apiManager: ApiManager(DioFactory.getDio(),
+                            baseUrl: AppConstant.signUpBaseUrl)))),
+            child: const ForgotPassword(),
+          ),
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => const Scaffold(
