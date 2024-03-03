@@ -28,27 +28,27 @@ class CustomTextFiled extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
             color: AppColor.textFiledBoarderColor,
-            width: 2,
+            width: 1,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
             color: AppColor.textFiledBoarderColor,
-            width: 2,
+            width: 1,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
             color: AppColor.textFiledBoarderColor,
-            width: 2,
+            width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide:
-              const BorderSide(color: AppColor.textFiledBoarderColor, width: 2),
+              const BorderSide(color: AppColor.textFiledBoarderColor, width: 1),
         ),
         filled: true,
         fillColor: AppColor.textFiledFilledColor,
