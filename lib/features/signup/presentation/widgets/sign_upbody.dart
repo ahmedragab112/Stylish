@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylehub/config/router/routes.dart';
 import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
@@ -10,6 +9,7 @@ import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 import 'package:stylehub/core/utils/widget/custom_button.dart';
 import 'package:stylehub/core/utils/widget/custom_rich_text.dart';
 import 'package:stylehub/core/utils/widget/another_login_way.dart';
+import 'package:stylehub/core/utils/widget/title_text.dart';
 import 'package:stylehub/features/signup/presentation/manager/signup_cubit.dart';
 import 'package:stylehub/features/signup/presentation/widgets/custom_signup_lister.dart';
 import 'package:stylehub/features/signup/presentation/widgets/gree_to_ourrules.dart';
@@ -24,15 +24,8 @@ class SignUpBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SizedBox(
-          width: 197.w,
-          height: 86.h,
-          child: Text(
-            AppStrings.creatAccount,
-            style: AppTextStyle.font36BoldBlack,
-            textAlign: TextAlign.start,
-            maxLines: 2,
-          ),
+        const TitileText(
+          text: AppStrings.creatAccount,
         ),
         const VerticalSpace(35),
         const SignUpModual(),
