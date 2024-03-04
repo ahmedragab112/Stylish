@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
-import 'package:stylehub/core/utils/strings/app_strings.dart';
 import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 
 class ForgotPasswordRichText extends StatelessWidget {
-  const ForgotPasswordRichText({super.key});
-
+  const ForgotPasswordRichText({super.key, required this.text});
+  final String text;
   @override
   Widget build(BuildContext context) {
     return RichText(
@@ -13,7 +12,7 @@ class ForgotPasswordRichText extends StatelessWidget {
       text: TextSpan(children: [
         TextSpan(text: "* ", style: AppTextStyle.font12RegularPrimery),
         TextSpan(
-            text: AppStrings.sendEmailRest,
+            text: text,
             style: AppTextStyle.font12RegularPrimery.copyWith(
               color: AppColor.greyColor,
             )),

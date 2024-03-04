@@ -104,6 +104,63 @@ class _ApiManager implements ApiManager {
     return value;
   }
 
+  @override
+  Future<VerificationCodeModel> verifyRestCode(RestCodeModel code) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(code.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<VerificationCodeModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/v1/auth/verifyResetCode',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = VerificationCodeModel.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<UserTokenModel> resetPassword(
+      UpdatePasswordBody updatePasswordBody) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(updatePasswordBody.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<UserTokenModel>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/v1/auth/resetPassword',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = UserTokenModel.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||
