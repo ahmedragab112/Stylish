@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylehub/config/router/routes.dart';
 import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
@@ -11,6 +10,7 @@ import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 import 'package:stylehub/core/utils/widget/custom_button.dart';
 import 'package:stylehub/core/utils/widget/custom_rich_text.dart';
 import 'package:stylehub/core/utils/widget/custom_textfiled.dart';
+import 'package:stylehub/core/utils/widget/title_text.dart';
 import 'package:stylehub/features/login/presentation/manager/login_cubit.dart';
 import 'package:stylehub/core/utils/widget/another_login_way.dart';
 import 'package:stylehub/features/login/presentation/widgets/custom_eye.dart';
@@ -28,23 +28,15 @@ class LoginBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(
-            width: 182.w,
-            height: 83.h,
-            child: Text(
-              AppStrings.welcomeBack,
-              style: AppTextStyle.font36BoldBlack,
-              textAlign: TextAlign.start,
-              maxLines: 2,
-            ),
+          const TitileText(
+            text: AppStrings.welcomeBack,
           ),
           const VerticalSpace(35),
           CustomTextFiled(
             controller: bloc.emailController,
             hintText: AppStrings.userNameOrEmail,
-            prefixIcon: Icon(
+            prefixIcon: const Icon(
               Icons.person,
-              color: Theme.of(context).primaryColor,
             ),
             validator: (value) {
               if (value!.isEmpty || !AppRegex.isEmailValid(value)) {
@@ -65,12 +57,13 @@ class LoginBody extends StatelessWidget {
                 },
                 controller: bloc.passwordController,
                 hintText: AppStrings.password,
-                prefixIcon: Icon(
+                prefixIcon: const Icon(
                   Icons.lock,
-                  color: Theme.of(context).primaryColor,
                 ),
                 obscureText: bloc.isobscureText,
-                suffixIcon: CustomEye(bloc: bloc,),
+                suffixIcon: CustomEye(
+                  bloc: bloc,
+                ),
               );
             },
           ),

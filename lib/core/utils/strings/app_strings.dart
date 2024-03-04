@@ -1,4 +1,7 @@
 class AppStrings {
+  static const String updateUserPassword = "Update User Password";
+  static const String enterRestCodeWhichSentToYourEmail = "Enter Rest Code Which Sent To Your Email";
+  static const String restCode = "Rest Code";
   static const String sendEmailRest =
       "We will send you a message to set or reset your new password";
   static const String emailAddress = "Enter your email address";
