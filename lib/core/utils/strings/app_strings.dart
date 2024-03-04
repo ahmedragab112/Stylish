@@ -1,4 +1,10 @@
 class AppStrings {
+  static const String updateUserPassword = "Update User Password";
+  static const String enterRestCodeWhichSentToYourEmail = "Enter Rest Code Which Sent To Your Email";
+  static const String restCode = "Rest Code";
+  static const String sendEmailRest =
+      "We will send you a message to set or reset your new password";
+  static const String emailAddress = "Enter your email address";
   static const String enterAtLeast8Characters = "Enter At Least 8 Characters";
   static const String youAgree = "button, you agree to the public offer";
   static const String byClickingThe = "By clicking the ";
