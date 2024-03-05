@@ -26,8 +26,8 @@ abstract class ApiManager {
   Future<ApiResponseModel> forgotPassword(@Body() ForgotPasswordBody email);
   @POST(EndPoint.verifyRestCodeEndPoint)
   Future<VerificationCodeModel> verifyRestCode(@Body() RestCodeModel code);
-
+  
   @PUT(EndPoint.resetPasswordEndPoint)
-  Future<UserTokenModel> resetPassword(@Body() UpdatePasswordBody updatePasswordBody); 
-
+  Future<UserTokenModel> resetPassword(
+      @Body() UpdatePasswordBody updatePasswordBody);
 }

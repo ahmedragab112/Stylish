@@ -5,14 +5,18 @@ import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 
 class CustomRichText extends StatelessWidget {
   const CustomRichText(
-      {super.key, required this.text, required this.headLineText, required this.onTap});
+      {super.key,
+      required this.text,
+      required this.headLineText,
+      required this.onTap, this.textAlign=TextAlign.center});
   final String text;
   final String headLineText;
+  final TextAlign textAlign;
   final Function onTap;
   @override
   Widget build(BuildContext context) {
     return RichText(
-      textAlign: TextAlign.center,
+      textAlign: textAlign,
       text: TextSpan(children: [
         TextSpan(
           text: text,
@@ -21,9 +25,10 @@ class CustomRichText extends StatelessWidget {
         ),
         const TextSpan(text: '  '),
         TextSpan(
-          recognizer: TapGestureRecognizer()..onTap = () {
-            onTap();
-          },
+          recognizer: TapGestureRecognizer()
+            ..onTap = () {
+              onTap();
+            },
           text: headLineText,
           style: AppTextStyle.font18SemiBoldPrimeryPink.copyWith(
               decoration: TextDecoration.underline,

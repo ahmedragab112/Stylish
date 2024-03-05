@@ -9,6 +9,8 @@ import 'package:stylehub/features/forgotpassword/data/repositories/data_repo.dar
 import 'package:stylehub/features/forgotpassword/data/service/remote_datasource_implementation.dart';
 import 'package:stylehub/features/forgotpassword/manager/forgotpassword_cubit.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/forgot_password.dart';
+import 'package:stylehub/features/forgotpassword/presentation/pages/rest_code.dart';
+import 'package:stylehub/features/forgotpassword/presentation/pages/update_user.dart';
 import 'package:stylehub/features/home/presentation/pages/home.dart';
 import 'package:stylehub/features/login/data/datasources/remote_datasoucre_implementation.dart';
 import 'package:stylehub/features/login/data/repositories/data_repo.dart';
@@ -66,6 +68,33 @@ class AppRouter {
             child: const ForgotPassword(),
           ),
         );
+
+      case AppRoutes.sendEmailRestCode:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => ForgotPasswordCubit(
+                    repo: ForgotPasswordDataRepo(
+                      dataSource: ForgotPasswordRemoteDataSourceImplementation(
+                        apiManager: ApiManager(
+                          DioFactory.getDio(),
+                        ),
+                      ),
+                    ),
+                  ),
+                  child: const RestCode(),
+                ));
+      case AppRoutes.updatePassword:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => ForgotPasswordCubit(
+                      repo: ForgotPasswordDataRepo(
+                          dataSource:
+                              ForgotPasswordRemoteDataSourceImplementation(
+                                  apiManager: ApiManager(
+                    DioFactory.getDio(),
+                  )))),
+                  child: const UpdateUserPassword(),
+                ));
       default:
         return MaterialPageRoute(
           builder: (context) => const Scaffold(
