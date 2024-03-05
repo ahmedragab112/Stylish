@@ -2,26 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/config/router/routes.dart';
 import 'package:stylehub/core/extentions/extention.dart';
-import 'package:stylehub/core/utils/colors/app_color.dart';
+import 'package:stylehub/core/function/password_validation.dart';
 import 'package:stylehub/core/utils/regex/app_regex.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/core/utils/strings/app_strings.dart';
-import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 import 'package:stylehub/core/utils/widget/custom_button.dart';
 import 'package:stylehub/core/utils/widget/custom_rich_text.dart';
 import 'package:stylehub/core/utils/widget/custom_textfiled.dart';
 import 'package:stylehub/core/utils/widget/title_text.dart';
-import 'package:stylehub/features/login/presentation/manager/login_cubit.dart';
-import 'package:stylehub/core/utils/widget/another_login_way.dart';
-import 'package:stylehub/features/login/presentation/widgets/custom_eye.dart';
-import 'package:stylehub/features/login/presentation/widgets/login_listener.dart';
+import 'package:stylehub/features/forgotpassword/manager/forgotpassword_cubit.dart';
+import 'package:stylehub/features/forgotpassword/presentation/widgets/custom_eye.dart';
+import 'package:stylehub/features/forgotpassword/presentation/widgets/forgot_password_linster.dart';
 
-class LoginBody extends StatelessWidget {
-  const LoginBody({super.key});
+class UpdateUserPasswordBody extends StatelessWidget {
+  const UpdateUserPasswordBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var bloc = context.read<LoginCubit>();
+    var bloc = BlocProvider.of<ForgotPasswordCubit>(context);
     return Form(
       key: bloc.formKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -29,7 +27,7 @@ class LoginBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const TitileText(
-            text: AppStrings.welcomeBack,
+            text: AppStrings.changePassword,
           ),
           const VerticalSpace(35),
           CustomTextFiled(
@@ -46,13 +44,12 @@ class LoginBody extends StatelessWidget {
             },
           ),
           const VerticalSpace(31),
-          BlocBuilder<LoginCubit, LoginState>(
+          BlocBuilder<ForgotPasswordCubit, ForgotpasswordState>(
             builder: (context, state) {
+              var cubit = BlocProvider.of<ForgotPasswordCubit>(context);
               return CustomTextFiled(
                 validator: (value) {
-                  if (value!.isEmpty) {
-                    return AppStrings.pleaseEnterValidPassword;
-                  }
+                  passwordValidation(value);
                   return null;
                 },
                 controller: bloc.passwordController,
@@ -60,58 +57,34 @@ class LoginBody extends StatelessWidget {
                 prefixIcon: const Icon(
                   Icons.lock,
                 ),
-                obscureText: bloc.isobscureText,
+                obscureText: cubit.isobscureText,
                 suffixIcon: CustomEye(
-                  bloc: bloc,
+                  bloc: cubit,
                 ),
               );
             },
           ),
-          const VerticalSpace(10),
-          GestureDetector(
-            onTap: () {
-              context.pushNamed(AppRoutes.forgotPassword);
-            },
-            child: Text(
-              AppStrings.forgotPassword,
-              textAlign: TextAlign.end,
-              style: AppTextStyle.font12RegularPrimery,
-            ),
-          ),
-          const VerticalSpace(52),
+          const VerticalSpace(30),
           CustomButton(
-            text: AppStrings.login,
+            text: AppStrings.restPassword,
             onTap: () async {
               if (bloc.formKey.currentState!.validate()) {
-                await bloc.login();
+                await bloc.resetPassword();
               }
             },
           ),
-          const VerticalSpace(75),
-          Text(
-            AppStrings.orContinueWith,
-            style: AppTextStyle.font12RegularPrimery
-                .copyWith(color: AppColor.greyColor),
-            textAlign: TextAlign.center,
-          ),
-          const VerticalSpace(20),
-          const Divider(
-            color: AppColor.greyColor,
-            thickness: .2,
-          ),
-          const VerticalSpace(20),
-          const AnOtherLoginWays(),
-          const VerticalSpace(28),
+          const VerticalSpace(30),
           CustomRichText(
+            textAlign: TextAlign.start,
             text: AppStrings.creatAccount,
             headLineText: AppStrings.signup,
             onTap: () {
-              context.pushReplacementNamed(AppRoutes.signUp);
+              context.pushNamedAndRemoveUntil(AppRoutes.signUp);
             },
           ),
-          const CustomLoginLister()
+          const ForgotPasswordListern()
         ],
-      ).setPadding(context, vertical: 20, horizontal: 20),
+      ).setPadding(context, vertical: 15, horizontal: 15),
     );
   }
 }

@@ -1,7 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:stylehub/core/cache/shared_prefrences.dart';
+import 'package:stylehub/core/di/injection.dart';
 import 'package:stylehub/core/utils/entity/singup_entitey.dart';
+import 'package:stylehub/core/utils/strings/app_strings.dart';
 import 'package:stylehub/features/signup/data/models/user_data.dart';
 import 'package:stylehub/features/signup/domain/usecases/signup_usecase.dart';
 
@@ -29,7 +32,11 @@ class SignupCubit extends Cubit<SignupState> {
             email: emailController.text,
             password: passwordController.text));
     data.when(
-        data: (data) => emit(SignupState.success(userEntity: data)),
+        data: (data) async {
+          await locator<CacheHelper>()
+              .setInstance(data: data.token, key: AppStrings.cacheKeyUserToken);
+          emit(SignupState.success(userEntity: data));
+        },
         error: (error) =>
             emit(SignupState.error(message: error.apiErrorModel.message!)));
   }

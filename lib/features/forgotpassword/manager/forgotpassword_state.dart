@@ -21,4 +21,5 @@ const factory ForgotpasswordState.updateUserLoading() = UpdateUserLoading;
   const factory ForgotpasswordState.updateUserFail(
       {required ApiResponseModel apiResponseModel}) = UpdateUserFail;
 
+const factory ForgotpasswordState.changeVisibility() = ChangeVisibility;
 }
