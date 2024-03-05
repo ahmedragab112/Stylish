@@ -38,11 +38,11 @@ class ForgotPasswordBody extends StatelessWidget {
         CustomButton(
           text: AppStrings.submit,
           onTap: () async {
-            await bloc.forgotPassword();
+            await bloc.sendEmailVerification(email: bloc.controller.text);
           },
         ),
         const ForgotPasswordListern()
       ],
-    ).setPadding(context, horizontal: 30, vertical: 20);
+    ).setPadding(context, horizontal: 15, vertical: 15);
   }
 }

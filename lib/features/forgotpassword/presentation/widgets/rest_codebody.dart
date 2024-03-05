@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/core/extentions/extention.dart';
+import 'package:stylehub/core/utils/colors/app_color.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/core/utils/strings/app_strings.dart';
 import 'package:stylehub/core/utils/widget/custom_button.dart';
@@ -28,24 +29,22 @@ class RestCodeBody extends StatelessWidget {
         const TitileText(text: AppStrings.restCode),
         const VerticalSpace(30),
         CustomTextFiled(
-          controller: cubit.restPasswordController,
-          hintText: AppStrings.restCode,
-          type: TextInputType.number,
-          prefixIcon: const Icon(Icons.lock),
-        ),
+            hintText: AppStrings.restCode,
+            controller: cubit.restPasswordController,
+            prefixIcon: const Icon(Icons.lock, color: AppColor.primeryColor)),
         const VerticalSpace(30),
         const ForgotPasswordRichText(
           text: AppStrings.enterRestCodeWhichSentToYourEmail,
         ),
         const VerticalSpace(30),
         CustomButton(
-          text: AppStrings.submit,
-          onTap: () async {
-            await cubit.verifyRestCode();
-          },
-        ),
+            text: AppStrings.submit,
+            onTap: () async {
+              await cubit.verifyRestCode(
+                  code: cubit.restPasswordController.text);
+            }),
         const ForgotPasswordListern()
       ],
-    ).setPadding(context, horizontal: 30, vertical: 20);
+    ).setPadding(context, horizontal: 15, vertical: 15);
   }
 }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:stylehub/features/forgotpassword/presentation/widgets/rest_codebody.dart';
 
 class RestCode extends StatelessWidget {
-  const RestCode({super.key});
+  const RestCode({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
