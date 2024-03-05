@@ -11,6 +11,8 @@ extension NavigatorHelper on BuildContext {
     );
   }
 
+ 
+
   void pushNamed(String routeName, {Object? arguments}) {
     Navigator.pushNamed(this, routeName, arguments: arguments);
   }
@@ -20,7 +22,7 @@ extension NavigatorHelper on BuildContext {
         this, MaterialPageRoute(builder: (context) => widget));
   }
 
-  void pushReplacementNamed(String routeName,{Object? arguments}) {
+  void pushReplacementNamed(String routeName, {Object? arguments}) {
     Navigator.pushReplacementNamed(this, routeName, arguments: arguments);
   }
 
@@ -42,29 +44,28 @@ extension NavigatorHelper on BuildContext {
 extension PaddingToWidget on Widget {
   Widget setPadding(
     BuildContext context, {
-  
     double vertical = 0,
     double horizontal = 0,
   }) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-          vertical: vertical.h,
-          horizontal: horizontal.w),
+      padding:
+          EdgeInsets.symmetric(vertical: vertical.h, horizontal: horizontal.w),
       child: this,
     );
   }
 
-  Widget setOnlyPadding(BuildContext context,
-      {double bottom = 0,
-      double left = 0,
-      double right = 0,
-      double top = 0,
-     }) {
+  Widget setOnlyPadding(
+    BuildContext context, {
+    double bottom = 0,
+    double left = 0,
+    double right = 0,
+    double top = 0,
+  }) {
     return Padding(
       padding: EdgeInsets.only(
-        bottom:  bottom,
+        bottom: bottom,
         left: left,
-        right:right,
+        right: right,
         top: top,
       ),
       child: this,

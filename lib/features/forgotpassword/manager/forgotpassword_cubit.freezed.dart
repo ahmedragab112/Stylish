@@ -29,6 +29,7 @@ mixin _$ForgotpasswordState {
     required TResult Function() updateUserLoading,
     required TResult Function(UserTokenModel userTokenModel) updateUserSuccess,
     required TResult Function(ApiResponseModel apiResponseModel) updateUserFail,
+    required TResult Function() changeVisibility,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,6 +44,7 @@ mixin _$ForgotpasswordState {
     TResult? Function()? updateUserLoading,
     TResult? Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult? Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult? Function()? changeVisibility,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +59,7 @@ mixin _$ForgotpasswordState {
     TResult Function()? updateUserLoading,
     TResult Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult Function()? changeVisibility,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,6 +75,7 @@ mixin _$ForgotpasswordState {
     required TResult Function(UpdateUserLoading value) updateUserLoading,
     required TResult Function(UpdateUserSuccess value) updateUserSuccess,
     required TResult Function(UpdateUserFail value) updateUserFail,
+    required TResult Function(ChangeVisibility value) changeVisibility,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,6 +90,7 @@ mixin _$ForgotpasswordState {
     TResult? Function(UpdateUserLoading value)? updateUserLoading,
     TResult? Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult? Function(UpdateUserFail value)? updateUserFail,
+    TResult? Function(ChangeVisibility value)? changeVisibility,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -100,6 +105,7 @@ mixin _$ForgotpasswordState {
     TResult Function(UpdateUserLoading value)? updateUserLoading,
     TResult Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult Function(UpdateUserFail value)? updateUserFail,
+    TResult Function(ChangeVisibility value)? changeVisibility,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -172,6 +178,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() updateUserLoading,
     required TResult Function(UserTokenModel userTokenModel) updateUserSuccess,
     required TResult Function(ApiResponseModel apiResponseModel) updateUserFail,
+    required TResult Function() changeVisibility,
   }) {
     return initial();
   }
@@ -189,6 +196,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? updateUserLoading,
     TResult? Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult? Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult? Function()? changeVisibility,
   }) {
     return initial?.call();
   }
@@ -206,6 +214,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? updateUserLoading,
     TResult Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult Function()? changeVisibility,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -227,6 +236,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(UpdateUserLoading value) updateUserLoading,
     required TResult Function(UpdateUserSuccess value) updateUserSuccess,
     required TResult Function(UpdateUserFail value) updateUserFail,
+    required TResult Function(ChangeVisibility value) changeVisibility,
   }) {
     return initial(this);
   }
@@ -244,6 +254,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(UpdateUserLoading value)? updateUserLoading,
     TResult? Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult? Function(UpdateUserFail value)? updateUserFail,
+    TResult? Function(ChangeVisibility value)? changeVisibility,
   }) {
     return initial?.call(this);
   }
@@ -261,6 +272,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(UpdateUserLoading value)? updateUserLoading,
     TResult Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult Function(UpdateUserFail value)? updateUserFail,
+    TResult Function(ChangeVisibility value)? changeVisibility,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -323,6 +335,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function() updateUserLoading,
     required TResult Function(UserTokenModel userTokenModel) updateUserSuccess,
     required TResult Function(ApiResponseModel apiResponseModel) updateUserFail,
+    required TResult Function() changeVisibility,
   }) {
     return loading();
   }
@@ -340,6 +353,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function()? updateUserLoading,
     TResult? Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult? Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult? Function()? changeVisibility,
   }) {
     return loading?.call();
   }
@@ -357,6 +371,7 @@ class _$LoadingImpl implements Loading {
     TResult Function()? updateUserLoading,
     TResult Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult Function()? changeVisibility,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -378,6 +393,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function(UpdateUserLoading value) updateUserLoading,
     required TResult Function(UpdateUserSuccess value) updateUserSuccess,
     required TResult Function(UpdateUserFail value) updateUserFail,
+    required TResult Function(ChangeVisibility value) changeVisibility,
   }) {
     return loading(this);
   }
@@ -395,6 +411,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function(UpdateUserLoading value)? updateUserLoading,
     TResult? Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult? Function(UpdateUserFail value)? updateUserFail,
+    TResult? Function(ChangeVisibility value)? changeVisibility,
   }) {
     return loading?.call(this);
   }
@@ -412,6 +429,7 @@ class _$LoadingImpl implements Loading {
     TResult Function(UpdateUserLoading value)? updateUserLoading,
     TResult Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult Function(UpdateUserFail value)? updateUserFail,
+    TResult Function(ChangeVisibility value)? changeVisibility,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -501,6 +519,7 @@ class _$SuccessImpl implements Success {
     required TResult Function() updateUserLoading,
     required TResult Function(UserTokenModel userTokenModel) updateUserSuccess,
     required TResult Function(ApiResponseModel apiResponseModel) updateUserFail,
+    required TResult Function() changeVisibility,
   }) {
     return success(apiResponseModel);
   }
@@ -518,6 +537,7 @@ class _$SuccessImpl implements Success {
     TResult? Function()? updateUserLoading,
     TResult? Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult? Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult? Function()? changeVisibility,
   }) {
     return success?.call(apiResponseModel);
   }
@@ -535,6 +555,7 @@ class _$SuccessImpl implements Success {
     TResult Function()? updateUserLoading,
     TResult Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult Function()? changeVisibility,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -556,6 +577,7 @@ class _$SuccessImpl implements Success {
     required TResult Function(UpdateUserLoading value) updateUserLoading,
     required TResult Function(UpdateUserSuccess value) updateUserSuccess,
     required TResult Function(UpdateUserFail value) updateUserFail,
+    required TResult Function(ChangeVisibility value) changeVisibility,
   }) {
     return success(this);
   }
@@ -573,6 +595,7 @@ class _$SuccessImpl implements Success {
     TResult? Function(UpdateUserLoading value)? updateUserLoading,
     TResult? Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult? Function(UpdateUserFail value)? updateUserFail,
+    TResult? Function(ChangeVisibility value)? changeVisibility,
   }) {
     return success?.call(this);
   }
@@ -590,6 +613,7 @@ class _$SuccessImpl implements Success {
     TResult Function(UpdateUserLoading value)? updateUserLoading,
     TResult Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult Function(UpdateUserFail value)? updateUserFail,
+    TResult Function(ChangeVisibility value)? changeVisibility,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -684,6 +708,7 @@ class _$FailImpl implements Fail {
     required TResult Function() updateUserLoading,
     required TResult Function(UserTokenModel userTokenModel) updateUserSuccess,
     required TResult Function(ApiResponseModel apiResponseModel) updateUserFail,
+    required TResult Function() changeVisibility,
   }) {
     return fail(apiResponseModel);
   }
@@ -701,6 +726,7 @@ class _$FailImpl implements Fail {
     TResult? Function()? updateUserLoading,
     TResult? Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult? Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult? Function()? changeVisibility,
   }) {
     return fail?.call(apiResponseModel);
   }
@@ -718,6 +744,7 @@ class _$FailImpl implements Fail {
     TResult Function()? updateUserLoading,
     TResult Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult Function()? changeVisibility,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -739,6 +766,7 @@ class _$FailImpl implements Fail {
     required TResult Function(UpdateUserLoading value) updateUserLoading,
     required TResult Function(UpdateUserSuccess value) updateUserSuccess,
     required TResult Function(UpdateUserFail value) updateUserFail,
+    required TResult Function(ChangeVisibility value) changeVisibility,
   }) {
     return fail(this);
   }
@@ -756,6 +784,7 @@ class _$FailImpl implements Fail {
     TResult? Function(UpdateUserLoading value)? updateUserLoading,
     TResult? Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult? Function(UpdateUserFail value)? updateUserFail,
+    TResult? Function(ChangeVisibility value)? changeVisibility,
   }) {
     return fail?.call(this);
   }
@@ -773,6 +802,7 @@ class _$FailImpl implements Fail {
     TResult Function(UpdateUserLoading value)? updateUserLoading,
     TResult Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult Function(UpdateUserFail value)? updateUserFail,
+    TResult Function(ChangeVisibility value)? changeVisibility,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -841,6 +871,7 @@ class _$LoadingRestCodeImpl implements LoadingRestCode {
     required TResult Function() updateUserLoading,
     required TResult Function(UserTokenModel userTokenModel) updateUserSuccess,
     required TResult Function(ApiResponseModel apiResponseModel) updateUserFail,
+    required TResult Function() changeVisibility,
   }) {
     return loadingRestCode();
   }
@@ -858,6 +889,7 @@ class _$LoadingRestCodeImpl implements LoadingRestCode {
     TResult? Function()? updateUserLoading,
     TResult? Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult? Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult? Function()? changeVisibility,
   }) {
     return loadingRestCode?.call();
   }
@@ -875,6 +907,7 @@ class _$LoadingRestCodeImpl implements LoadingRestCode {
     TResult Function()? updateUserLoading,
     TResult Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult Function()? changeVisibility,
     required TResult orElse(),
   }) {
     if (loadingRestCode != null) {
@@ -896,6 +929,7 @@ class _$LoadingRestCodeImpl implements LoadingRestCode {
     required TResult Function(UpdateUserLoading value) updateUserLoading,
     required TResult Function(UpdateUserSuccess value) updateUserSuccess,
     required TResult Function(UpdateUserFail value) updateUserFail,
+    required TResult Function(ChangeVisibility value) changeVisibility,
   }) {
     return loadingRestCode(this);
   }
@@ -913,6 +947,7 @@ class _$LoadingRestCodeImpl implements LoadingRestCode {
     TResult? Function(UpdateUserLoading value)? updateUserLoading,
     TResult? Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult? Function(UpdateUserFail value)? updateUserFail,
+    TResult? Function(ChangeVisibility value)? changeVisibility,
   }) {
     return loadingRestCode?.call(this);
   }
@@ -930,6 +965,7 @@ class _$LoadingRestCodeImpl implements LoadingRestCode {
     TResult Function(UpdateUserLoading value)? updateUserLoading,
     TResult Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult Function(UpdateUserFail value)? updateUserFail,
+    TResult Function(ChangeVisibility value)? changeVisibility,
     required TResult orElse(),
   }) {
     if (loadingRestCode != null) {
@@ -1020,6 +1056,7 @@ class _$SuccessRestCodeImpl implements SuccessRestCode {
     required TResult Function() updateUserLoading,
     required TResult Function(UserTokenModel userTokenModel) updateUserSuccess,
     required TResult Function(ApiResponseModel apiResponseModel) updateUserFail,
+    required TResult Function() changeVisibility,
   }) {
     return successRestCode(apiResponseModel);
   }
@@ -1037,6 +1074,7 @@ class _$SuccessRestCodeImpl implements SuccessRestCode {
     TResult? Function()? updateUserLoading,
     TResult? Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult? Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult? Function()? changeVisibility,
   }) {
     return successRestCode?.call(apiResponseModel);
   }
@@ -1054,6 +1092,7 @@ class _$SuccessRestCodeImpl implements SuccessRestCode {
     TResult Function()? updateUserLoading,
     TResult Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult Function()? changeVisibility,
     required TResult orElse(),
   }) {
     if (successRestCode != null) {
@@ -1075,6 +1114,7 @@ class _$SuccessRestCodeImpl implements SuccessRestCode {
     required TResult Function(UpdateUserLoading value) updateUserLoading,
     required TResult Function(UpdateUserSuccess value) updateUserSuccess,
     required TResult Function(UpdateUserFail value) updateUserFail,
+    required TResult Function(ChangeVisibility value) changeVisibility,
   }) {
     return successRestCode(this);
   }
@@ -1092,6 +1132,7 @@ class _$SuccessRestCodeImpl implements SuccessRestCode {
     TResult? Function(UpdateUserLoading value)? updateUserLoading,
     TResult? Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult? Function(UpdateUserFail value)? updateUserFail,
+    TResult? Function(ChangeVisibility value)? changeVisibility,
   }) {
     return successRestCode?.call(this);
   }
@@ -1109,6 +1150,7 @@ class _$SuccessRestCodeImpl implements SuccessRestCode {
     TResult Function(UpdateUserLoading value)? updateUserLoading,
     TResult Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult Function(UpdateUserFail value)? updateUserFail,
+    TResult Function(ChangeVisibility value)? changeVisibility,
     required TResult orElse(),
   }) {
     if (successRestCode != null) {
@@ -1205,6 +1247,7 @@ class _$FailRestCodeImpl implements FailRestCode {
     required TResult Function() updateUserLoading,
     required TResult Function(UserTokenModel userTokenModel) updateUserSuccess,
     required TResult Function(ApiResponseModel apiResponseModel) updateUserFail,
+    required TResult Function() changeVisibility,
   }) {
     return failRestCode(apiResponseModel);
   }
@@ -1222,6 +1265,7 @@ class _$FailRestCodeImpl implements FailRestCode {
     TResult? Function()? updateUserLoading,
     TResult? Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult? Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult? Function()? changeVisibility,
   }) {
     return failRestCode?.call(apiResponseModel);
   }
@@ -1239,6 +1283,7 @@ class _$FailRestCodeImpl implements FailRestCode {
     TResult Function()? updateUserLoading,
     TResult Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult Function()? changeVisibility,
     required TResult orElse(),
   }) {
     if (failRestCode != null) {
@@ -1260,6 +1305,7 @@ class _$FailRestCodeImpl implements FailRestCode {
     required TResult Function(UpdateUserLoading value) updateUserLoading,
     required TResult Function(UpdateUserSuccess value) updateUserSuccess,
     required TResult Function(UpdateUserFail value) updateUserFail,
+    required TResult Function(ChangeVisibility value) changeVisibility,
   }) {
     return failRestCode(this);
   }
@@ -1277,6 +1323,7 @@ class _$FailRestCodeImpl implements FailRestCode {
     TResult? Function(UpdateUserLoading value)? updateUserLoading,
     TResult? Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult? Function(UpdateUserFail value)? updateUserFail,
+    TResult? Function(ChangeVisibility value)? changeVisibility,
   }) {
     return failRestCode?.call(this);
   }
@@ -1294,6 +1341,7 @@ class _$FailRestCodeImpl implements FailRestCode {
     TResult Function(UpdateUserLoading value)? updateUserLoading,
     TResult Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult Function(UpdateUserFail value)? updateUserFail,
+    TResult Function(ChangeVisibility value)? changeVisibility,
     required TResult orElse(),
   }) {
     if (failRestCode != null) {
@@ -1362,6 +1410,7 @@ class _$UpdateUserLoadingImpl implements UpdateUserLoading {
     required TResult Function() updateUserLoading,
     required TResult Function(UserTokenModel userTokenModel) updateUserSuccess,
     required TResult Function(ApiResponseModel apiResponseModel) updateUserFail,
+    required TResult Function() changeVisibility,
   }) {
     return updateUserLoading();
   }
@@ -1379,6 +1428,7 @@ class _$UpdateUserLoadingImpl implements UpdateUserLoading {
     TResult? Function()? updateUserLoading,
     TResult? Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult? Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult? Function()? changeVisibility,
   }) {
     return updateUserLoading?.call();
   }
@@ -1396,6 +1446,7 @@ class _$UpdateUserLoadingImpl implements UpdateUserLoading {
     TResult Function()? updateUserLoading,
     TResult Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult Function()? changeVisibility,
     required TResult orElse(),
   }) {
     if (updateUserLoading != null) {
@@ -1417,6 +1468,7 @@ class _$UpdateUserLoadingImpl implements UpdateUserLoading {
     required TResult Function(UpdateUserLoading value) updateUserLoading,
     required TResult Function(UpdateUserSuccess value) updateUserSuccess,
     required TResult Function(UpdateUserFail value) updateUserFail,
+    required TResult Function(ChangeVisibility value) changeVisibility,
   }) {
     return updateUserLoading(this);
   }
@@ -1434,6 +1486,7 @@ class _$UpdateUserLoadingImpl implements UpdateUserLoading {
     TResult? Function(UpdateUserLoading value)? updateUserLoading,
     TResult? Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult? Function(UpdateUserFail value)? updateUserFail,
+    TResult? Function(ChangeVisibility value)? changeVisibility,
   }) {
     return updateUserLoading?.call(this);
   }
@@ -1451,6 +1504,7 @@ class _$UpdateUserLoadingImpl implements UpdateUserLoading {
     TResult Function(UpdateUserLoading value)? updateUserLoading,
     TResult Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult Function(UpdateUserFail value)? updateUserFail,
+    TResult Function(ChangeVisibility value)? changeVisibility,
     required TResult orElse(),
   }) {
     if (updateUserLoading != null) {
@@ -1541,6 +1595,7 @@ class _$UpdateUserSuccessImpl implements UpdateUserSuccess {
     required TResult Function() updateUserLoading,
     required TResult Function(UserTokenModel userTokenModel) updateUserSuccess,
     required TResult Function(ApiResponseModel apiResponseModel) updateUserFail,
+    required TResult Function() changeVisibility,
   }) {
     return updateUserSuccess(userTokenModel);
   }
@@ -1558,6 +1613,7 @@ class _$UpdateUserSuccessImpl implements UpdateUserSuccess {
     TResult? Function()? updateUserLoading,
     TResult? Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult? Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult? Function()? changeVisibility,
   }) {
     return updateUserSuccess?.call(userTokenModel);
   }
@@ -1575,6 +1631,7 @@ class _$UpdateUserSuccessImpl implements UpdateUserSuccess {
     TResult Function()? updateUserLoading,
     TResult Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult Function()? changeVisibility,
     required TResult orElse(),
   }) {
     if (updateUserSuccess != null) {
@@ -1596,6 +1653,7 @@ class _$UpdateUserSuccessImpl implements UpdateUserSuccess {
     required TResult Function(UpdateUserLoading value) updateUserLoading,
     required TResult Function(UpdateUserSuccess value) updateUserSuccess,
     required TResult Function(UpdateUserFail value) updateUserFail,
+    required TResult Function(ChangeVisibility value) changeVisibility,
   }) {
     return updateUserSuccess(this);
   }
@@ -1613,6 +1671,7 @@ class _$UpdateUserSuccessImpl implements UpdateUserSuccess {
     TResult? Function(UpdateUserLoading value)? updateUserLoading,
     TResult? Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult? Function(UpdateUserFail value)? updateUserFail,
+    TResult? Function(ChangeVisibility value)? changeVisibility,
   }) {
     return updateUserSuccess?.call(this);
   }
@@ -1630,6 +1689,7 @@ class _$UpdateUserSuccessImpl implements UpdateUserSuccess {
     TResult Function(UpdateUserLoading value)? updateUserLoading,
     TResult Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult Function(UpdateUserFail value)? updateUserFail,
+    TResult Function(ChangeVisibility value)? changeVisibility,
     required TResult orElse(),
   }) {
     if (updateUserSuccess != null) {
@@ -1726,6 +1786,7 @@ class _$UpdateUserFailImpl implements UpdateUserFail {
     required TResult Function() updateUserLoading,
     required TResult Function(UserTokenModel userTokenModel) updateUserSuccess,
     required TResult Function(ApiResponseModel apiResponseModel) updateUserFail,
+    required TResult Function() changeVisibility,
   }) {
     return updateUserFail(apiResponseModel);
   }
@@ -1743,6 +1804,7 @@ class _$UpdateUserFailImpl implements UpdateUserFail {
     TResult? Function()? updateUserLoading,
     TResult? Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult? Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult? Function()? changeVisibility,
   }) {
     return updateUserFail?.call(apiResponseModel);
   }
@@ -1760,6 +1822,7 @@ class _$UpdateUserFailImpl implements UpdateUserFail {
     TResult Function()? updateUserLoading,
     TResult Function(UserTokenModel userTokenModel)? updateUserSuccess,
     TResult Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult Function()? changeVisibility,
     required TResult orElse(),
   }) {
     if (updateUserFail != null) {
@@ -1781,6 +1844,7 @@ class _$UpdateUserFailImpl implements UpdateUserFail {
     required TResult Function(UpdateUserLoading value) updateUserLoading,
     required TResult Function(UpdateUserSuccess value) updateUserSuccess,
     required TResult Function(UpdateUserFail value) updateUserFail,
+    required TResult Function(ChangeVisibility value) changeVisibility,
   }) {
     return updateUserFail(this);
   }
@@ -1798,6 +1862,7 @@ class _$UpdateUserFailImpl implements UpdateUserFail {
     TResult? Function(UpdateUserLoading value)? updateUserLoading,
     TResult? Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult? Function(UpdateUserFail value)? updateUserFail,
+    TResult? Function(ChangeVisibility value)? changeVisibility,
   }) {
     return updateUserFail?.call(this);
   }
@@ -1815,6 +1880,7 @@ class _$UpdateUserFailImpl implements UpdateUserFail {
     TResult Function(UpdateUserLoading value)? updateUserLoading,
     TResult Function(UpdateUserSuccess value)? updateUserSuccess,
     TResult Function(UpdateUserFail value)? updateUserFail,
+    TResult Function(ChangeVisibility value)? changeVisibility,
     required TResult orElse(),
   }) {
     if (updateUserFail != null) {
@@ -1833,4 +1899,161 @@ abstract class UpdateUserFail implements ForgotpasswordState {
   @JsonKey(ignore: true)
   _$$UpdateUserFailImplCopyWith<_$UpdateUserFailImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeVisibilityImplCopyWith<$Res> {
+  factory _$$ChangeVisibilityImplCopyWith(_$ChangeVisibilityImpl value,
+          $Res Function(_$ChangeVisibilityImpl) then) =
+      __$$ChangeVisibilityImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ChangeVisibilityImplCopyWithImpl<$Res>
+    extends _$ForgotpasswordStateCopyWithImpl<$Res, _$ChangeVisibilityImpl>
+    implements _$$ChangeVisibilityImplCopyWith<$Res> {
+  __$$ChangeVisibilityImplCopyWithImpl(_$ChangeVisibilityImpl _value,
+      $Res Function(_$ChangeVisibilityImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ChangeVisibilityImpl implements ChangeVisibility {
+  const _$ChangeVisibilityImpl();
+
+  @override
+  String toString() {
+    return 'ForgotpasswordState.changeVisibility()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ChangeVisibilityImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(ApiResponseModel apiResponseModel) success,
+    required TResult Function(ApiResponseModel apiResponseModel) fail,
+    required TResult Function() loadingRestCode,
+    required TResult Function(VerificationCodeModel apiResponseModel)
+        successRestCode,
+    required TResult Function(ApiResponseModel apiResponseModel) failRestCode,
+    required TResult Function() updateUserLoading,
+    required TResult Function(UserTokenModel userTokenModel) updateUserSuccess,
+    required TResult Function(ApiResponseModel apiResponseModel) updateUserFail,
+    required TResult Function() changeVisibility,
+  }) {
+    return changeVisibility();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(ApiResponseModel apiResponseModel)? success,
+    TResult? Function(ApiResponseModel apiResponseModel)? fail,
+    TResult? Function()? loadingRestCode,
+    TResult? Function(VerificationCodeModel apiResponseModel)? successRestCode,
+    TResult? Function(ApiResponseModel apiResponseModel)? failRestCode,
+    TResult? Function()? updateUserLoading,
+    TResult? Function(UserTokenModel userTokenModel)? updateUserSuccess,
+    TResult? Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult? Function()? changeVisibility,
+  }) {
+    return changeVisibility?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(ApiResponseModel apiResponseModel)? success,
+    TResult Function(ApiResponseModel apiResponseModel)? fail,
+    TResult Function()? loadingRestCode,
+    TResult Function(VerificationCodeModel apiResponseModel)? successRestCode,
+    TResult Function(ApiResponseModel apiResponseModel)? failRestCode,
+    TResult Function()? updateUserLoading,
+    TResult Function(UserTokenModel userTokenModel)? updateUserSuccess,
+    TResult Function(ApiResponseModel apiResponseModel)? updateUserFail,
+    TResult Function()? changeVisibility,
+    required TResult orElse(),
+  }) {
+    if (changeVisibility != null) {
+      return changeVisibility();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Success value) success,
+    required TResult Function(Fail value) fail,
+    required TResult Function(LoadingRestCode value) loadingRestCode,
+    required TResult Function(SuccessRestCode value) successRestCode,
+    required TResult Function(FailRestCode value) failRestCode,
+    required TResult Function(UpdateUserLoading value) updateUserLoading,
+    required TResult Function(UpdateUserSuccess value) updateUserSuccess,
+    required TResult Function(UpdateUserFail value) updateUserFail,
+    required TResult Function(ChangeVisibility value) changeVisibility,
+  }) {
+    return changeVisibility(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Success value)? success,
+    TResult? Function(Fail value)? fail,
+    TResult? Function(LoadingRestCode value)? loadingRestCode,
+    TResult? Function(SuccessRestCode value)? successRestCode,
+    TResult? Function(FailRestCode value)? failRestCode,
+    TResult? Function(UpdateUserLoading value)? updateUserLoading,
+    TResult? Function(UpdateUserSuccess value)? updateUserSuccess,
+    TResult? Function(UpdateUserFail value)? updateUserFail,
+    TResult? Function(ChangeVisibility value)? changeVisibility,
+  }) {
+    return changeVisibility?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Success value)? success,
+    TResult Function(Fail value)? fail,
+    TResult Function(LoadingRestCode value)? loadingRestCode,
+    TResult Function(SuccessRestCode value)? successRestCode,
+    TResult Function(FailRestCode value)? failRestCode,
+    TResult Function(UpdateUserLoading value)? updateUserLoading,
+    TResult Function(UpdateUserSuccess value)? updateUserSuccess,
+    TResult Function(UpdateUserFail value)? updateUserFail,
+    TResult Function(ChangeVisibility value)? changeVisibility,
+    required TResult orElse(),
+  }) {
+    if (changeVisibility != null) {
+      return changeVisibility(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeVisibility implements ForgotpasswordState {
+  const factory ChangeVisibility() = _$ChangeVisibilityImpl;
 }

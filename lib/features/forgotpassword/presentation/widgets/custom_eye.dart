@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
-import 'package:stylehub/features/login/presentation/manager/login_cubit.dart';
+import 'package:stylehub/features/forgotpassword/manager/forgotpassword_cubit.dart';
 
 class CustomEye extends StatelessWidget {
   const CustomEye({super.key, required this.bloc});
-  final LoginCubit bloc;
+  final ForgotPasswordCubit bloc;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

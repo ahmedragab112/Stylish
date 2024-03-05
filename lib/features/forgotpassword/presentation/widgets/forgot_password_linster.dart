@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stylehub/core/api/api_manger.dart';
-import 'package:stylehub/core/api/dio_singelton.dart';
+import 'package:stylehub/config/router/routes.dart';
 import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
-import 'package:stylehub/features/forgotpassword/data/repositories/data_repo.dart';
-import 'package:stylehub/features/forgotpassword/data/service/remote_datasource_implementation.dart';
 import 'package:stylehub/features/forgotpassword/manager/forgotpassword_cubit.dart';
-import 'package:stylehub/features/forgotpassword/presentation/pages/rest_code.dart';
-import 'package:stylehub/features/forgotpassword/presentation/pages/update_user.dart';
 
 class ForgotPasswordListern extends StatelessWidget {
   const ForgotPasswordListern({super.key});
@@ -27,18 +22,7 @@ class ForgotPasswordListern extends StatelessWidget {
         success: (data) {
           Navigator.pop(context);
           context.showSnackBar(data.message!);
-          context.push(BlocProvider(
-            create: (context) => ForgotPasswordCubit(
-              repo: ForgotPasswordDataRepo(
-                dataSource: ForgotPasswordRemoteDataSourceImplementation(
-                  apiManager: ApiManager(
-                    DioFactory.getDio(),
-                  ),
-                ),
-              ),
-            ),
-            child: const RestCode(),
-          ));
+          context.pushNamed(AppRoutes.sendEmailRestCode);
           return null;
         },
         fail: (apiResponseModel) {
@@ -55,15 +39,7 @@ class ForgotPasswordListern extends StatelessWidget {
         successRestCode: (data) {
           Navigator.pop(context);
           context.showSnackBar(data.status);
-          context.push(BlocProvider(
-            create: (context) => ForgotPasswordCubit(
-                repo: ForgotPasswordDataRepo(
-                    dataSource: ForgotPasswordRemoteDataSourceImplementation(
-                        apiManager: ApiManager(
-              DioFactory.getDio(),
-            )))),
-            child: const UpdateUserPassword(),
-          ));
+          context.pushNamed(AppRoutes.updatePassword);
           return null;
         },
         failRestCode: (apiResponseModel) {
@@ -77,6 +53,20 @@ class ForgotPasswordListern extends StatelessWidget {
             child: CircularProgressIndicator(color: AppColor.primeryColor),
           ),
         ),
+        updateUserFail: (apiResponseModel) {
+          Navigator.pop(context);
+          context.showSnackBar(apiResponseModel.message!);
+          return null;
+        },
+        updateUserLoading: () {
+          showDialog(
+            context: context,
+            builder: (context) => const Center(
+              child: CircularProgressIndicator(color: AppColor.primeryColor),
+            ),
+          );
+          return null;
+        },
       ),
       child: const SizedBox.shrink(),
     );
