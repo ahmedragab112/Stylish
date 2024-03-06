@@ -1,5 +1,8 @@
 class AppStrings {
-  static const String restPassword='Rest Password';
+  static const String homeIntroVisited=' Home Intro Visited';
+  static const String findItHere = "Find it here, buy it now!";
+  static const String youAuthSuccess = "You want Authentic, here you go!";
+  static const String restPassword = 'Rest Password';
   static const String changePassword = 'Change Password';
   static const String updateUserPassword = "Update User Password";
   static const String enterRestCodeWhichSentToYourEmail =

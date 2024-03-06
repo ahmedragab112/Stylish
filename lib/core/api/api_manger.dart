@@ -8,6 +8,7 @@ import 'package:stylehub/features/forgotpassword/data/model/rest_code.dart';
 import 'package:stylehub/features/forgotpassword/data/model/update_password_body.dart';
 import 'package:stylehub/features/forgotpassword/data/model/user_token_model.dart';
 import 'package:stylehub/features/forgotpassword/data/model/verification_code.dart';
+import 'package:stylehub/features/home/data/models/category_data.dart';
 import 'package:stylehub/features/login/data/model/login_data.dart';
 import 'package:stylehub/features/signup/data/models/user_data.dart';
 import 'package:stylehub/core/utils/model/user_model.dart';
@@ -26,8 +27,11 @@ abstract class ApiManager {
   Future<ApiResponseModel> forgotPassword(@Body() ForgotPasswordBody email);
   @POST(EndPoint.verifyRestCodeEndPoint)
   Future<VerificationCodeModel> verifyRestCode(@Body() RestCodeModel code);
-  
+
   @PUT(EndPoint.resetPasswordEndPoint)
   Future<UserTokenModel> resetPassword(
       @Body() UpdatePasswordBody updatePasswordBody);
+
+   @GET(EndPoint.getAlllCategories)
+   Future<CategoryData> getAllCategories();   
 }

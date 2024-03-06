@@ -12,6 +12,7 @@ import 'package:stylehub/features/forgotpassword/presentation/pages/forgot_passw
 import 'package:stylehub/features/forgotpassword/presentation/pages/rest_code.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/update_user.dart';
 import 'package:stylehub/features/home/presentation/pages/home.dart';
+import 'package:stylehub/features/home/presentation/pages/homeintro.dart';
 import 'package:stylehub/features/login/data/datasources/remote_datasoucre_implementation.dart';
 import 'package:stylehub/features/login/data/repositories/data_repo.dart';
 import 'package:stylehub/features/login/domain/usecases/login_usecase.dart';
@@ -44,9 +45,9 @@ class AppRouter {
             child: const Login(),
           ),
         );
-      case AppRoutes.home:
+      case AppRoutes.homeIntro:
         return MaterialPageRoute(
-          builder: (context) => const Home(),
+          builder: (context) => const HomeIntro(),
         );
 
       case AppRoutes.onBoarding:
@@ -83,6 +84,11 @@ class AppRouter {
                   ),
                   child: const RestCode(),
                 ));
+
+      case AppRoutes.home:
+        return MaterialPageRoute(
+          builder: (context) => const Home(),
+        );
       case AppRoutes.updatePassword:
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
