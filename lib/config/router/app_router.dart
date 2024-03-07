@@ -11,6 +11,11 @@ import 'package:stylehub/features/forgotpassword/manager/forgotpassword_cubit.da
 import 'package:stylehub/features/forgotpassword/presentation/pages/forgot_password.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/rest_code.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/update_user.dart';
+import 'package:stylehub/features/home/data/datasources/remote/home_remote_datasoucre.dart';
+import 'package:stylehub/features/home/data/datasources/remote/home_remote_datasource_implementation.dart';
+import 'package:stylehub/features/home/data/repositories/home_repo.dart';
+import 'package:stylehub/features/home/domain/usecases/home_usecase.dart';
+import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 import 'package:stylehub/features/home/presentation/pages/home.dart';
 import 'package:stylehub/features/home/presentation/pages/homeintro.dart';
 import 'package:stylehub/features/login/data/datasources/remote_datasoucre_implementation.dart';
@@ -87,7 +92,15 @@ class AppRouter {
 
       case AppRoutes.home:
         return MaterialPageRoute(
-          builder: (context) => const Home(),
+          builder: (context) => BlocProvider(
+            create: (context) => HomeCubit(
+                homeUseCase: HomeUseCase(
+                    homeRepoDomain: HomeDataRepo(
+                        homeDataSoucre: HomeDataSoucreImplementation(
+                            apiManager: ApiManager(DioFactory.getDio(),
+                                baseUrl: AppConstant.baseUrl))))),
+            child: const Home(),
+          ),
         );
       case AppRoutes.updatePassword:
         return MaterialPageRoute(

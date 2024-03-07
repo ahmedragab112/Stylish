@@ -1,10 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
 
   @override
+  State<HomeBody> createState() => _HomeBodyState();
+}
+
+class _HomeBodyState extends State<HomeBody> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<HomeCubit>().getAllCategory();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column();
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        if (state is HomeInitial) {
+          return Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, index) => Container(),
+            ),
+          );
+        } else if (state is HomeCategoryLoaded) {
+          return Expanded(
+            child: ListView.builder(
+                itemBuilder: (context, index) =>
+                    Text(state.category.data![index].name!)),
+          );
+        } else {
+          return const Text('No data ');
+        }
+      },
+    );
   }
 }

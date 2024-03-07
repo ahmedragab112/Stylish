@@ -8,3 +8,15 @@ abstract class HomeState extends Equatable {
 }
 
 class HomeInitial extends HomeState {}
+
+class HomeCategoryLoading extends HomeState {}
+
+class HomeCategoryLoaded extends HomeState {
+  final CategoryEntity category;
+  const HomeCategoryLoaded({required this.category});
+}
+
+class HomeCategoryError extends HomeState {
+  final String error;
+  const HomeCategoryError({required this.error});
+}

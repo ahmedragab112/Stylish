@@ -1,52 +1,52 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
 
-part 'category_data.g.dart';
+class CategoryData extends CategoryEntity {
+  Metadata? metadata;
 
-@JsonSerializable()
-class CategoryData {
-  final int? results;
-  final Metadata? metadata;
-  final List<Data>? data;
+  CategoryData({super.results, this.metadata, super.data});
 
-  factory CategoryData.fromJson(Map<String, dynamic> json) =>
-      _$CategoryDataFromJson(json);
-  const CategoryData({this.results, this.metadata, this.data});
-
-  Map<String, dynamic> toJson() => _$CategoryDataToJson(this);
+  CategoryData.fromJson(Map<String, dynamic> json) {
+    super.results = json['results'];
+    metadata =
+        json['metadata'] != null ? Metadata.fromJson(json['metadata']) : null;
+    if (json['data'] != null) {
+      super.data = <Data>[];
+      json['data'].forEach((v) {
+        super.data!.add(Data.fromJson(v));
+      });
+    }
+  }
 }
 
-@JsonSerializable()
 class Metadata {
-  final int? currentPage;
-  final int? numberOfPages;
-  final int? limit;
+  int? currentPage;
+  int? numberOfPages;
+  int? limit;
 
-  const Metadata({this.currentPage, this.numberOfPages, this.limit});
+  Metadata({this.currentPage, this.numberOfPages, this.limit});
 
-  factory Metadata.fromJson(Map<String, dynamic> json) =>
-      _$MetadataFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MetadataToJson(this);
+  Metadata.fromJson(Map<String, dynamic> json) {
+    currentPage = json['currentPage'];
+    numberOfPages = json['numberOfPages'];
+    limit = json['limit'];
+  }
 }
 
-@JsonSerializable()
-class Data {
-  final String? sId;
-  final String? name;
-  final String? slug;
-  final String? image;
-  final String? createdAt;
-  final String? updatedAt;
+class Data extends CategoryDataEntity {
+  Data(
+      {super.sId,
+      super.name,
+      super.slug,
+      super.image,
+      super.createdAt,
+      super.updatedAt});
 
-  const Data(
-      {this.sId,
-      this.name,
-      this.slug,
-      this.image,
-      this.createdAt,
-      this.updatedAt});
-
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  Data.fromJson(Map<String, dynamic> json) {
+    sId = json['_id'];
+    name = json['name'];
+    slug = json['slug'];
+    image = json['image'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
+  }
 }
