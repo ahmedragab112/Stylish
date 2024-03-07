@@ -31,6 +31,7 @@ abstract class ApiManager {
   @PUT(EndPoint.resetPasswordEndPoint)
   Future<UserTokenModel> resetPassword(
       @Body() UpdatePasswordBody updatePasswordBody);
+      
 
    @GET(EndPoint.getAlllCategories)
    Future<CategoryData> getAllCategories();   
