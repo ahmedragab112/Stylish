@@ -11,7 +11,6 @@ class HomeDataRepo implements HomeRepoDomain {
   Future<ApiResponse<CategoryEntity>> getAllCategory() async {
     try {
       var data = await homeDataSoucre.getAllCategory();
-
       return ApiResponse.data(data);
     } catch (e) {
       return ApiResponse.error(errorHandler: ErrorHandler.handle(e));

@@ -18,24 +18,6 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
-      builder: (context, state) {
-        if (state is HomeInitial) {
-          return Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) => Container(),
-            ),
-          );
-        } else if (state is HomeCategoryLoaded) {
-          return Expanded(
-            child: ListView.builder(
-                itemBuilder: (context, index) =>
-                    Text(state.category.data![index].name!)),
-          );
-        } else {
-          return const Text('No data ');
-        }
-      },
-    );
+    return Container();
   }
 }

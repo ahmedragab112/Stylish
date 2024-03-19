@@ -63,10 +63,10 @@ extension PaddingToWidget on Widget {
   }) {
     return Padding(
       padding: EdgeInsets.only(
-        bottom: bottom,
-        left: left,
-        right: right,
-        top: top,
+        bottom: bottom.h,
+        left: left..w,
+        right: right.w,
+        top: top.h,
       ),
       child: this,
     );
