@@ -75,13 +75,6 @@ void setupLocator() {
         repo: locator<ForgotPasswordDataRepo>(),
       ));
 
-  /*HomeCubit(
-                homeUseCase: HomeUseCase(
-                    homeRepoDomain: HomeDataRepo(
-                        homeDataSoucre: HomeDataSoucreImplementation(
-                            apiManager: ApiManager(DioFactory.getDio(),
-                                baseUrl: AppConstant.baseUrl))))),*/
-
   locator.registerLazySingleton<HomeRemoteDataSource>(
       () => HomeDataSoucreImplementation(apiManager: locator<ApiManager>()));
 
