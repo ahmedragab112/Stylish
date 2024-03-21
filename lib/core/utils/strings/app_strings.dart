@@ -1,4 +1,8 @@
 class AppStrings {
+  static const String sort= 'Sort';
+  static const String filter = "Filter";
+  static const String allFeature = "All Feature";
+  static const String searchForYourBrand= "Search for your brand";
   static const String homeIntroVisited=' Home Intro Visited';
   static const String findItHere = "Find it here, buy it now!";
   static const String youAuthSuccess = "You want Authentic, here you go!";
@@ -16,7 +20,7 @@ class AppStrings {
   static const String byClickingThe = "By clicking the ";
   static const String email = "Email";
   static const String pleaseEnterValidName = "Please Enter Valid Name";
-  static const String styLish = "StyLish";
+  static const String styLish = "Stylish";
   static const String name = "Name";
   static const String confirmPassword = "Confirm Password";
   static const String phone = "Phone";

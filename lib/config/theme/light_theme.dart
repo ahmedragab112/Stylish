@@ -5,6 +5,7 @@ import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 
 class LightTheme {
   static ThemeData lightTheme = ThemeData(
+    scaffoldBackgroundColor: AppColor.backGroundColor,
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
         elevation: 0.0,

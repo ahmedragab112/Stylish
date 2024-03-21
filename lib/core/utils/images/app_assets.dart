@@ -5,5 +5,6 @@ class AppAssets {
   static const String svgOnBoarding3 = "assets/svg/onBoarding3.svg";
   static const String facebook = "assets/images/facebook.png";
   static const String google = "assets/images/google.png";
-  static const String getStarted= "assets/images/getstarted.png"; 
+  static const String getStarted = "assets/images/getstarted.png";
+  static const String person = "assets/images/person.png";
 }
