@@ -1,4 +1,5 @@
 class AppStrings {
+  static const String shopNow= 'Shop Now';
   static const String sort= 'Sort';
   static const String filter = "Filter";
   static const String allFeature = "All Feature";

@@ -3,6 +3,7 @@ import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/features/home/presentation/widgets/categores.dart';
 import 'package:stylehub/features/home/presentation/widgets/custom_search_bar.dart';
+import 'package:stylehub/features/home/presentation/widgets/home_slider.dart';
 import 'package:stylehub/features/home/presentation/widgets/sort_and_filter.dart';
 
 import 'custom_appbar.dart';
@@ -41,6 +42,9 @@ class HomeBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: VerticalSpace(16),
         ),
+        SliverToBoxAdapter(
+          child: HomeSlider(),
+        )
       ],
     ).setPadding(context, horizontal: 16);
   }
