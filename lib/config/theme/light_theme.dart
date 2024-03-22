@@ -5,6 +5,13 @@ import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 
 class LightTheme {
   static ThemeData lightTheme = ThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      elevation: 0.0,
+      type: BottomNavigationBarType.fixed,
+      unselectedItemColor: Colors.black,
+      backgroundColor: Colors.white,
+      selectedItemColor: AppColor.primeryColor,
+    ),
     scaffoldBackgroundColor: AppColor.backGroundColor,
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(

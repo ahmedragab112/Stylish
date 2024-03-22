@@ -9,6 +9,7 @@ import 'package:stylehub/features/forgotpassword/data/model/update_password_body
 import 'package:stylehub/features/forgotpassword/data/model/user_token_model.dart';
 import 'package:stylehub/features/forgotpassword/data/model/verification_code.dart';
 import 'package:stylehub/features/home/data/models/category_data.dart';
+import 'package:stylehub/features/home/data/models/product_data_model.dart';
 import 'package:stylehub/features/login/data/model/login_data.dart';
 import 'package:stylehub/features/signup/data/models/user_data.dart';
 import 'package:stylehub/core/utils/model/user_model.dart';
@@ -35,4 +36,10 @@ abstract class ApiManager {
 
    @GET(EndPoint.getAlllCategories)
    Future<CategoryData> getAllCategories();   
+
+
+   @GET(EndPoint.getAllProducts)
+   Future<ProductDataModel> getAllProducts();
+
+   
 }

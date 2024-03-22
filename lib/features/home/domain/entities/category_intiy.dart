@@ -1,9 +1,9 @@
-class CategoryEntity {
+class ProductCategoryEntity {
   int? results;
 
   List<CategoryDataEntity>? data;
 
-  CategoryEntity({this.results, this.data});
+  ProductCategoryEntity({this.results, this.data});
 }
 
 class CategoryDataEntity {

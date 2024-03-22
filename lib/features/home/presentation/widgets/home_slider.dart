@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 import 'package:stylehub/features/home/presentation/model/slider_iteam_model.dart';
 import 'package:stylehub/features/home/presentation/widgets/slider_iteam.dart';
 
@@ -9,6 +11,7 @@ class HomeSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<HomeCubit>();
     return CarouselSlider(
         items: sliderIteamModel
             .map((e) => SliderIteam(
@@ -21,6 +24,9 @@ class HomeSlider extends StatelessWidget {
                 ))
             .toList(),
         options: CarouselOptions(
+          onPageChanged: (index, reason) {
+            cubit.changeSliderIndex(index);
+          },
           height: 200.h,
           viewportFraction: 1,
           initialPage: 0,

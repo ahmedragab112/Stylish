@@ -28,6 +28,7 @@ class SliderIteam extends StatelessWidget {
       alignment: alignment,
       padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 36.h),
       height: double.infinity,
+      margin: const EdgeInsets.only(right: 8),
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),

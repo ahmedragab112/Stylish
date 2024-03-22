@@ -1,6 +1,6 @@
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
 
-class CategoryData extends CategoryEntity {
+class CategoryData extends ProductCategoryEntity {
   Metadata? metadata;
 
   CategoryData({super.results, this.metadata, super.data});

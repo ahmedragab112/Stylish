@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
 import 'package:stylehub/core/utils/images/app_assets.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
@@ -13,10 +13,9 @@ class AppTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Image.asset(
-          AppAssets.logo,
-          width: 40.w,
-          height: 30.h,
+        SvgPicture.asset(
+          AppAssets.svgLogo,
+          fit: BoxFit.fill,
         ),
         const HorizantelSpace(9),
         Text(

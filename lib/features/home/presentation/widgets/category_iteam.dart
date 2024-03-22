@@ -5,7 +5,9 @@ import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 
 class CategoryIteam extends StatelessWidget {
-  const CategoryIteam({super.key});
+  const CategoryIteam({super.key, required this.image, required this.text});
+  final String image;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -14,19 +16,18 @@ class CategoryIteam extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(50.r),
           child: CachedNetworkImage(
-            height: 56.h,
+            height: 100.h,
             fit: BoxFit.fill,
-            width: 56.w,
-            imageUrl:
-                "https://api.softwarekeep.com/media/nimbus/helpcenter/errr.png",
+            width: 100.w,
+            imageUrl: image,
             placeholder: (context, url) => const CircularProgressIndicator(),
             errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
         const VerticalSpace(4),
         Text(
-          "Categores",
-          style: AppTextStyle.font12RegularPrimery,
+          text,
+          style: AppTextStyle.font18SemiBoldPrimeryPink,
         ),
       ],
     );
