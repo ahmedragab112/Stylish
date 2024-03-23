@@ -6,11 +6,11 @@ class ProductDataModel extends ProductEntity {
   ProductDataModel({super.results, this.metadata, super.data});
 
   ProductDataModel.fromJson(Map<String, dynamic> json) {
-    results = json['results'];
+    super.results = json['results'];
     metadata =
         json['metadata'] != null ? Metadata.fromJson(json['metadata']) : null;
     if (json['data'] != null) {
-      data = <Data>[];
+     super.data = <Data>[];
       json['data'].forEach((v) {
         data!.add(Data.fromJson(v));
       });
@@ -19,10 +19,10 @@ class ProductDataModel extends ProductEntity {
 }
 
 class Metadata {
-  int? currentPage;
-  int? numberOfPages;
-  int? limit;
-  int? prevPage;
+  num? currentPage;
+  num? numberOfPages;
+  num? limit;
+  num? prevPage;
 
   Metadata({this.currentPage, this.numberOfPages, this.limit, this.prevPage});
 

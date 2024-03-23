@@ -64,7 +64,7 @@ class AppRouter {
       case AppRoutes.home:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => locator<HomeCubit>()..getAllCategory(),
+            create: (context) => locator<HomeCubit>()..getAllCategory()..getAllProducts(),
             child: const Home(),
           ),
         );

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:stylehub/core/api/api_response.dart';
 import 'package:stylehub/core/error/error_handler.dart';
 import 'package:stylehub/features/home/data/datasources/remote/home_remote_datasoucre.dart';
@@ -24,6 +26,7 @@ class HomeDataRepo implements HomeRepoDomain {
       var data = await homeDataSoucre.getAllProduct();
       return ApiResponse.data(data);
     } catch (e) {
+      log(e.toString());
       return ApiResponse.error(errorHandler: ErrorHandler.handle(e));
     }
   }

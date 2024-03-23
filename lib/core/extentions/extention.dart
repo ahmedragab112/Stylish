@@ -74,7 +74,7 @@ extension PaddingToWidget on Widget {
 
   Widget setAllPadding(double padding) {
     return Padding(
-      padding: EdgeInsets.all(padding),
+      padding: EdgeInsets.symmetric(horizontal: padding.w, vertical: padding.h),
       child: this,
     );
   }

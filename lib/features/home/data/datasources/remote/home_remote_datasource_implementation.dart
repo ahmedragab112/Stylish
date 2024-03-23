@@ -14,7 +14,7 @@ class HomeDataSoucreImplementation implements HomeRemoteDataSource {
   }
 
   @override
-  Future<ProductDataModel> getAllProduct() {
-   return apiManager.getAllProducts();
+  Future<ProductDataModel> getAllProduct() async{
+   return await apiManager.getAllProducts();
   }
 }

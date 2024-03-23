@@ -1,25 +1,25 @@
 class ProductEntity {
-  int? results;
+  num? results;
   List<DataEntity>? data;
   ProductEntity({this.results, this.data});
 }
 
 class DataEntity {
-  int? sold;
+  num? sold;
   List<String>? images;
   List<SubcategoryEntity>? subcategory;
-  int? ratingsQuantity;
+  num? ratingsQuantity;
   String? sId;
   String? title;
   String? description;
-  int? quantity;
-  int? price;
+  num? quantity;
+  num? price;
   String? imageCover;
   CategoryEntity? category;
   CategoryEntity? brand;
-  double? ratingsAverage;
+  num? ratingsAverage;
   String? id;
-  int? priceAfterDiscount;
+  num? priceAfterDiscount;
 
   DataEntity(
       {this.sold,

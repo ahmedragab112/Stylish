@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
@@ -43,12 +45,12 @@ class HomeCubit extends Cubit<HomeState> {
   void getAllProducts() async {
     emit(GetAllProductLoading());
     final result = await homeUseCase.getAllProducts();
-    result.when(
-        data: (data) {
-          productEntity = data;
-          emit(GetAllProductLoaded());
-        },
-        error: (error) =>
-            emit(GetAllProductError(error: error.apiErrorModel.message!)));
+    result.when(data: (data) {
+      emit(GetAllProductLoaded());
+         productEntity = data;
+    }, error: (error) {
+      log(error.apiErrorModel.message!);
+      emit(GetAllProductError(error: error.apiErrorModel.message!));
+    });
   }
 }
