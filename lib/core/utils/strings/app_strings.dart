@@ -1,8 +1,7 @@
 class AppStrings {
   static const String popularProducts='Popular Products';
   static const String shopNow= 'Shop Now';
-  static const String sort= 'Sort';
-  static const String filter = "Filter";
+  static const String sort= 'Sort & Filter';
   static const String allCategory = "All Category";
   static const String searchForYourBrand= "Search for your brand";
   static const String homeIntroVisited=' Home Intro Visited';

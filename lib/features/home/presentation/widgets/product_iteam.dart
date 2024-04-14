@@ -26,7 +26,7 @@ class ProductIteam extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Expanded( 
+          Expanded(
             child: Stack(
               alignment: Alignment.topRight,
               children: [
@@ -41,8 +41,8 @@ class ProductIteam extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  right: 10,
-                  top: 10,
+                  right: 10 ,
+                  top: 5,
                   child: Container(
                       padding: const EdgeInsets.all(4),
                       decoration: const BoxDecoration(
