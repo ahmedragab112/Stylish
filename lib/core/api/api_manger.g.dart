@@ -189,9 +189,22 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<ProductDataModel> getAllProducts() async {
+  Future<ProductDataModel> getProducts({
+    String? sortType,
+    String? minPrice,
+    String? maxPrice,
+    String? productsInCategory,
+    String? productsInBrand,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'sort': sortType,
+      r'price[gte]': minPrice,
+      r'price[lte]': maxPrice,
+      r'category[in]': productsInCategory,
+      r'brand': productsInBrand,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio

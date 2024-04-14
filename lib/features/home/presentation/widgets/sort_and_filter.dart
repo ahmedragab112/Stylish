@@ -12,7 +12,7 @@ class SortAndFilter extends StatelessWidget {
     return Row(
       children: [
         Text(
-          AppStrings.allFeature,
+          AppStrings.allCategory,
           style: AppTextStyle.font18SemiBoldPrimeryPink
               .copyWith(color: Colors.black),
         ),

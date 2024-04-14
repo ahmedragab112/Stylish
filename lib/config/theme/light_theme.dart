@@ -8,8 +8,10 @@ class LightTheme {
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       elevation: 0.0,
       type: BottomNavigationBarType.fixed,
-      unselectedItemColor: Colors.black,
-      backgroundColor: Colors.white,
+      unselectedItemColor: Colors.white,
+      backgroundColor: AppColor.primeryColor,
+      showUnselectedLabels: false,
+      showSelectedLabels: false,
       selectedItemColor: AppColor.primeryColor,
     ),
     scaffoldBackgroundColor: AppColor.backGroundColor,

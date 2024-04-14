@@ -32,14 +32,16 @@ abstract class ApiManager {
   @PUT(EndPoint.resetPasswordEndPoint)
   Future<UserTokenModel> resetPassword(
       @Body() UpdatePasswordBody updatePasswordBody);
-      
 
-   @GET(EndPoint.getAlllCategories)
-   Future<CategoryData> getAllCategories();   
+  @GET(EndPoint.getAlllCategories)
+  Future<CategoryData> getAllCategories();
 
-
-   @GET(EndPoint.getAllProducts)
-   Future<ProductDataModel> getAllProducts();
-
-   
+  @GET(EndPoint.getAllProducts)
+  Future<ProductDataModel> getProducts({
+    @Query('sort') String? sortType,
+    @Query('price[gte]') String? minPrice,
+    @Query('price[lte]') String? maxPrice,
+    @Query('category[in]') String? productsInCategory,
+    @Query('brand') String? productsInBrand,
+  });
 }

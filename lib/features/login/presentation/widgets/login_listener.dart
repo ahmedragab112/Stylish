@@ -37,7 +37,10 @@ class CustomLoginLister extends StatelessWidget {
           });
         },
         fail: (message) {
-          return Navigator.pop(context);
+          Navigator.pop(context);
+          return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(message),
+          ));
         },
       ),
       child: const SizedBox.shrink(),

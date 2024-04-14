@@ -14,4 +14,9 @@ class HomeUseCase {
 
   Future<ApiResponse<ProductEntity>> getAllProducts() async =>
       await homeRepoDomain.getAllProducts();
+
+
+  Future<ApiResponse<ProductEntity>> getProductInCategory(
+          {required String categoryId}) async =>
+      await homeRepoDomain.getProductInCategory(categoryId: categoryId);
 }

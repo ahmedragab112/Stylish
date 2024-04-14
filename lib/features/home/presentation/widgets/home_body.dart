@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
+import 'package:stylehub/features/home/domain/entities/product_entity.dart';
 import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 import 'package:stylehub/features/home/presentation/widgets/categores.dart';
 import 'package:stylehub/features/home/presentation/widgets/custom_search_bar.dart';
 import 'package:stylehub/features/home/presentation/widgets/home_slider.dart';
+import 'package:stylehub/features/home/presentation/widgets/popular_products.dart';
 import 'package:stylehub/features/home/presentation/widgets/product_iteam.dart';
 import 'package:stylehub/features/home/presentation/widgets/slider_indecator.dart';
 import 'package:stylehub/features/home/presentation/widgets/sort_and_filter.dart';
@@ -60,38 +62,46 @@ class HomeBody extends StatelessWidget {
         const SliverToBoxAdapter(
           child: VerticalSpace(12),
         ),
-        SliverGrid.builder(
-            itemCount: cubit.productEntity?.data?.length ?? 0,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisExtent: 340.h,
-              crossAxisSpacing: 16.w,
-              mainAxisSpacing: 16.h,
-            ),
-            itemBuilder: (context, index) =>
-                BlocBuilder<HomeCubit, HomeState>(
-                  builder: (context, state) {
-                    return ProductIteam(
-                      imagePath: cubit.productEntity?.data?[index].images?[0] ??
-                          'https://th.bing.com/th/id/OIP.C9Hk-iAjCOAmb0w-9d7pIgHaGw?w=159&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-                      ratingAverage: double.parse(
-                          (cubit.productEntity?.data?[index].ratingsAverage ??
-                                  0)
-                              .toString()),
-                      productTitle:
-                          cubit.productEntity?.data?[index].title ?? '',
-                      productDescription:
-                          cubit.productEntity?.data?[index].description ?? '',
-                      productPrice:
-                          (cubit.productEntity?.data?[index].price ?? 0)
-                              .toString(),
-                      ratingsQuantity: int.parse(
-                          (cubit.productEntity?.data?[index].ratingsQuantity ??
-                                  0)
-                              .toString()),
-                    );
-                  },
-                )),
+        const SliverToBoxAdapter(
+          child: PopularProducts(),
+        ),
+        const SliverToBoxAdapter(
+          child: VerticalSpace(12),
+        ),
+        BlocBuilder<HomeCubit, HomeState>(
+          buildWhen: (previous, current) =>
+              current is GetAllProductLoading ||
+              current is GetAllProductError ||
+              current is GetAllProductLoaded,
+          builder: (context, state) {
+            if (state is GetAllProductLoading) {
+              return const SliverToBoxAdapter(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            } else if (state is GetAllProductError) {
+              return SliverToBoxAdapter(
+                child: Center(
+                  child: Text(state.error),
+                ),
+              );
+            } else {
+              return SliverGrid.builder(
+                itemCount: cubit.homeProducts?.data?.length ?? 0,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisExtent: 340.h,
+                  crossAxisSpacing: 16.w,
+                  mainAxisSpacing: 16.h,
+                ),
+                itemBuilder: (context, index) => ProductIteam(
+                  data: cubit.homeProducts?.data?[index] ?? DataEntity(),
+                ),
+              );
+            }
+          },
+        ),
       ],
     ).setPadding(context, horizontal: 16);
   }

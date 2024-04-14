@@ -21,9 +21,22 @@ class HomeDataRepo implements HomeRepoDomain {
   }
 
   @override
-  Future<ApiResponse<ProductEntity>> getAllProducts() async{
-     try {
+  Future<ApiResponse<ProductEntity>> getAllProducts() async {
+    try {
       var data = await homeDataSoucre.getAllProduct();
+      return ApiResponse.data(data);
+    } catch (e) {
+      log(e.toString());
+      return ApiResponse.error(errorHandler: ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<ApiResponse<ProductEntity>> getProductInCategory(
+      {required String categoryId}) async {
+    try {
+      var data =
+          await homeDataSoucre.getProductInCategory(categoryId: categoryId);
       return ApiResponse.data(data);
     } catch (e) {
       log(e.toString());

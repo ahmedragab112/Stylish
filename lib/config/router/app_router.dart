@@ -7,6 +7,7 @@ import 'package:stylehub/features/forgotpassword/presentation/pages/forgot_passw
 import 'package:stylehub/features/forgotpassword/presentation/pages/rest_code.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/update_user.dart';
 import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
+import 'package:stylehub/features/home/presentation/pages/category_iteams.dart';
 import 'package:stylehub/features/home/presentation/pages/home.dart';
 import 'package:stylehub/features/home/presentation/pages/homeintro.dart';
 import 'package:stylehub/features/login/presentation/manager/login_cubit.dart';
@@ -21,6 +22,7 @@ class AppRouter {
     switch (settings.name) {
       case AppRoutes.signUp:
         return MaterialPageRoute(
+          settings: settings,
           builder: (context) => BlocProvider(
             create: (context) => locator<SignupCubit>(),
             child: const SignUp(),
@@ -61,10 +63,18 @@ class AppRouter {
                   child: const RestCode(),
                 ));
 
+      case AppRoutes.categoryIteamPage:
+        return MaterialPageRoute(
+          settings: settings ,
+          
+          builder: (context) => const CategoryPage());
+
       case AppRoutes.home:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => locator<HomeCubit>()..getAllCategory()..getAllProducts(),
+            create: (context) => locator<HomeCubit>()
+              ..getAllCategory()
+              ..getAllProducts(),
             child: const Home(),
           ),
         );

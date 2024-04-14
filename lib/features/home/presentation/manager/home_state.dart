@@ -36,3 +36,15 @@ class GetAllProductError extends HomeState {
 }
 
 class ChangePageIndex extends HomeState {}
+
+
+class GetProductInCategoryLoading extends HomeState {}
+
+class GetProductInCategoryLoaded extends HomeState {
+ 
+}
+
+class GetProductInCategoryError extends HomeState {
+  final String error;
+  const GetProductInCategoryError({required this.error});
+}

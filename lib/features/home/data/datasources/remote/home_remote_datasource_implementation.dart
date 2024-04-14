@@ -4,17 +4,23 @@ import 'package:stylehub/features/home/data/models/category_data.dart';
 import 'package:stylehub/features/home/data/models/product_data_model.dart';
 
 class HomeDataSoucreImplementation implements HomeRemoteDataSource {
-  ApiManager apiManager;
+  final ApiManager apiManager;
 
-  HomeDataSoucreImplementation({required this.apiManager});
+  const HomeDataSoucreImplementation({required this.apiManager});
 
   @override
-  Future<CategoryData> getAllCategory() async{
-   return await apiManager.getAllCategories();
+  Future<CategoryData> getAllCategory() async {
+    return await apiManager.getAllCategories();
   }
 
   @override
-  Future<ProductDataModel> getAllProduct() async{
-   return await apiManager.getAllProducts();
+  Future<ProductDataModel> getAllProduct() async {
+    return await apiManager.getProducts();
+  }
+
+  @override
+  Future<ProductDataModel> getProductInCategory(
+      {required String categoryId}) async {
+    return await apiManager.getProducts(productsInCategory: categoryId);
   }
 }

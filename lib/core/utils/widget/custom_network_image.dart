@@ -1,8 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:stylehub/core/utils/colors/app_color.dart';
 
 class CustomNetWorkImage extends StatelessWidget {
-  const CustomNetWorkImage({super.key, required this.imagePath, required this.width, required this.height});
+  const CustomNetWorkImage(
+      {super.key,
+      required this.imagePath,
+      required this.width,
+      required this.height});
   final String imagePath;
   final double width;
   final double height;
@@ -13,7 +18,10 @@ class CustomNetWorkImage extends StatelessWidget {
       width: width,
       height: height,
       imageUrl: imagePath,
-      placeholder: (context, url) => const CircularProgressIndicator(),
+      placeholder: (context, url) => const Center(
+          child: CircularProgressIndicator(
+        color: AppColor.primeryColor,
+      )),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }
