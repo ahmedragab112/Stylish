@@ -31,12 +31,16 @@ class CustomLoginLister extends StatelessWidget {
           return await locator<CacheHelper>()
               .setBool(AppStrings.cacheKeyIsLogin, true)
               .then((value) {
-            context.pushReplacementNamed(AppRoutes.home, arguments: userEntity);
+            context.pushNamedAndRemoveUntil(AppRoutes.homeIntro,
+                arguments: userEntity);
             return null;
           });
         },
         fail: (message) {
-          return Navigator.pop(context);
+          Navigator.pop(context);
+          return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(message),
+          ));
         },
       ),
       child: const SizedBox.shrink(),

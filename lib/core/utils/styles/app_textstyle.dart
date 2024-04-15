@@ -4,6 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
 
 class AppTextStyle {
+  static TextStyle font10RegularGrey = GoogleFonts.montserrat(
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColor.greyColor,
+  );
   static TextStyle font12RegularPrimery = GoogleFonts.montserrat(
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,

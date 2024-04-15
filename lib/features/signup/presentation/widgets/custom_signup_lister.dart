@@ -30,9 +30,8 @@ class CustomSignUpLister extends StatelessWidget {
             return await locator<CacheHelper>()
                 .setBool(AppStrings.cacheKeyIsLogin, true)
                 .then((value) {
-              context.pushReplacementNamed(AppRoutes.home,
+              context.pushNamedAndRemoveUntil(AppRoutes.homeIntro,
                   arguments: userEntity);
-           
             });
           },
           error: (message) {
