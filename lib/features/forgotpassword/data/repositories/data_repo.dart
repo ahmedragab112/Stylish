@@ -9,7 +9,7 @@ import 'package:stylehub/features/forgotpassword/data/service/remote_datasoucre.
 import '../../../../core/error/error_model.dart';
 
 class ForgotPasswordDataRepo {
-  final RemoteDataSource dataSource;
+  final ForgotPasswordRemoteDataSource dataSource;
   const ForgotPasswordDataRepo({required this.dataSource});
   Future<ApiResponse<ApiResponseModel>> forgotPassword(
       {required String email}) async {
@@ -32,9 +32,9 @@ class ForgotPasswordDataRepo {
   }
 
   Future<ApiResponse<UserTokenModel>> resetPassword(
-      UpdatePasswordBody updatePasswordBody) async{
+      UpdatePasswordBody updatePasswordBody) async {
     try {
-      var data =await dataSource.resetPassword(updatePasswordBody);
+      var data = await dataSource.resetPassword(updatePasswordBody);
       return ApiResponse.data(data);
     } catch (e) {
       return ApiResponse.error(errorHandler: ErrorHandler.handle(e));

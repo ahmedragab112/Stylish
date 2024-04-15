@@ -7,10 +7,12 @@ import 'package:stylehub/features/onboarding/model/page_view_model.dart';
 import 'package:stylehub/features/onboarding/widgets/next_and_prev_page.dart';
 
 class PageViewBody extends StatelessWidget {
-  const PageViewBody(
-      {super.key, required this.data,});
+  const PageViewBody({
+    super.key,
+    required this.data,
+  });
   final PageViewModel data;
- 
+
   @override
   Widget build(BuildContext context) {
     return Column(
