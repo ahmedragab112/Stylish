@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/config/router/routes.dart';
+import 'package:stylehub/core/cache/shared_prefrences.dart';
+import 'package:stylehub/core/di/injection.dart';
 import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
+import 'package:stylehub/core/utils/strings/app_strings.dart';
 import 'package:stylehub/features/forgotpassword/manager/forgotpassword_cubit.dart';
 
 class ForgotPasswordListern extends StatelessWidget {
@@ -65,6 +68,16 @@ class ForgotPasswordListern extends StatelessWidget {
               child: CircularProgressIndicator(color: AppColor.primeryColor),
             ),
           );
+          return null;
+        },
+        updateUserSuccess: (userTokenModel) async {
+          Navigator.pop(context);
+          await locator<CacheHelper>()
+              .setInstance(
+                  data: AppStrings.cacheKeyUserToken, key: userTokenModel.token)
+              .then((value) {
+            context.pushNamedAndRemoveUntil(AppRoutes.homeIntro);
+          });
           return null;
         },
       ),

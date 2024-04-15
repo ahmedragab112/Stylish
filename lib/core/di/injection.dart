@@ -3,6 +3,15 @@ import 'package:stylehub/core/api/api_manger.dart';
 import 'package:stylehub/core/api/dio_singelton.dart';
 import 'package:stylehub/core/cache/shared_prefrences.dart';
 import 'package:stylehub/core/utils/constant/app_constant.dart';
+import 'package:stylehub/features/forgotpassword/data/repositories/data_repo.dart';
+import 'package:stylehub/features/forgotpassword/data/service/remote_datasoucre.dart';
+import 'package:stylehub/features/forgotpassword/data/service/remote_datasource_implementation.dart';
+import 'package:stylehub/features/forgotpassword/manager/forgotpassword_cubit.dart';
+import 'package:stylehub/features/home/data/datasources/remote/home_remote_datasoucre.dart';
+import 'package:stylehub/features/home/data/datasources/remote/home_remote_datasource_implementation.dart';
+import 'package:stylehub/features/home/data/repositories/home_repo.dart';
+import 'package:stylehub/features/home/domain/usecases/home_usecase.dart';
+import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 import 'package:stylehub/features/login/data/datasources/remote_datasoucre_implementation.dart';
 import 'package:stylehub/features/login/data/repositories/data_repo.dart';
 import 'package:stylehub/features/login/domain/repositories/login_domainrepo.dart';
@@ -16,6 +25,8 @@ import 'package:stylehub/features/signup/presentation/manager/signup_cubit.dart'
 GetIt locator = GetIt.instance;
 
 void setupLocator() {
+  locator
+      .registerLazySingleton<ApiManager>(() => ApiManager(DioFactory.getDio()));
   // Register SignUpDataRepo with its dependencies
   locator.registerLazySingleton(() => SignUpRemoteDataSoucresImplementation(
       apiManager:
@@ -36,8 +47,8 @@ void setupLocator() {
   locator.registerLazySingleton<CacheHelper>(() => CacheHelper());
 
   // Register LoginDataRepo with its dependencies
-  locator.registerLazySingleton(() => LoginRemoteDataSoucreImplementation(
-      apiManager: ApiManager(DioFactory.getDio())));
+  locator.registerLazySingleton(() =>
+      LoginRemoteDataSoucreImplementation(apiManager: locator<ApiManager>()));
 
   locator.registerLazySingleton(() => LoginDataRepo(
         loginRemoteDataSouce: locator<LoginRemoteDataSoucreImplementation>(),
@@ -50,4 +61,31 @@ void setupLocator() {
       ));
   locator.registerFactory<LoginCubit>(
       () => LoginCubit(loginUseCase: locator<LoginUseCase>()));
+
+  locator.registerLazySingleton<ForgotPasswordRemoteDataSource>(() =>
+      ForgotPasswordRemoteDataSourceImplementation(
+          apiManager: locator<ApiManager>()));
+
+  locator.registerLazySingleton<ForgotPasswordDataRepo>(
+      () => ForgotPasswordDataRepo(
+            dataSource: locator<ForgotPasswordRemoteDataSource>(),
+          ));
+
+  locator.registerFactory<ForgotPasswordCubit>(() => ForgotPasswordCubit(
+        repo: locator<ForgotPasswordDataRepo>(),
+      ));
+
+  locator.registerLazySingleton<HomeRemoteDataSource>(
+      () => HomeDataSoucreImplementation(apiManager: locator<ApiManager>()));
+
+  locator.registerLazySingleton<HomeDataRepo>(() => HomeDataRepo(
+        homeDataSoucre: locator<HomeRemoteDataSource>(),
+      ));
+
+  locator.registerLazySingleton<HomeUseCase>(() => HomeUseCase(
+        homeRepoDomain: locator<HomeDataRepo>(),
+      ));
+  locator.registerFactory<HomeCubit>(() => HomeCubit(
+        homeUseCase: locator<HomeUseCase>(),
+      ));
 }

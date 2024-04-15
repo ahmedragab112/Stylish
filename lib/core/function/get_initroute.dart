@@ -8,7 +8,11 @@ String getInitRoute() {
     if (locator<CacheHelper>()
         .getString(AppStrings.cacheKeyUserToken)
         .isNotEmpty) {
-      return AppRoutes.home;
+      if (locator<CacheHelper>().getBool(AppStrings.homeIntroVisited)) {
+        return AppRoutes.home;
+      }
+      return AppRoutes.homeIntro;
+
     }
     return AppRoutes.signIn;
   } else {

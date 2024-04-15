@@ -4,7 +4,7 @@ import 'package:stylehub/features/forgotpassword/data/model/update_password_body
 import 'package:stylehub/features/forgotpassword/data/model/user_token_model.dart';
 import 'package:stylehub/features/forgotpassword/data/model/verification_code.dart';
 
-abstract class RemoteDataSource {
+abstract class ForgotPasswordRemoteDataSource {
   Future<ApiResponseModel> forgotPassword({required String email});
 
   Future<VerificationCodeModel> verifyRestCode(RestCodeModel code);

@@ -7,7 +7,8 @@ import 'package:stylehub/features/forgotpassword/data/model/user_token_model.dar
 import 'package:stylehub/features/forgotpassword/data/model/verification_code.dart';
 import 'package:stylehub/features/forgotpassword/data/service/remote_datasoucre.dart';
 
-class ForgotPasswordRemoteDataSourceImplementation implements RemoteDataSource {
+class ForgotPasswordRemoteDataSourceImplementation
+    implements ForgotPasswordRemoteDataSource {
   final ApiManager apiManager;
   const ForgotPasswordRemoteDataSourceImplementation(
       {required this.apiManager});
