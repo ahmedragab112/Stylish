@@ -1114,8 +1114,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
-<<<<<<< HEAD
-=======
   web:
     dependency: transitive
     description:
@@ -1124,7 +1122,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.1"
->>>>>>> origin/home
   web_socket_channel:
     dependency: transitive
     description:
@@ -1166,10 +1163,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-<<<<<<< HEAD
-  dart: ">=3.2.0-0 <4.0.0"
-  flutter: ">=3.10.0"
-=======
   dart: ">=3.3.0 <4.0.0"
   flutter: ">=3.19.2"
->>>>>>> origin/home
