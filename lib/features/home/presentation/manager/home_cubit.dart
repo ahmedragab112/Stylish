@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
+import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
 import 'package:stylehub/features/home/domain/entities/product_entity.dart';
 import 'package:stylehub/features/home/domain/usecases/home_usecase.dart';
@@ -14,6 +16,9 @@ class HomeCubit extends Cubit<HomeState> {
   ProductEntity? homeProducts;
   int activeIndex = 0;
   ProductCategoryEntity? category;
+  AddToWishListModel? addProductToWishList;
+  AddToWishListModel? removeProductFromWishList;
+  UserWishListModel? getUserWishList;
   int pageIndex = 0;
 
   HomeCubit({required this.homeUseCase}) : super(HomeInitial());
