@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
 import 'package:stylehub/core/utils/layout/app_layout.dart';
