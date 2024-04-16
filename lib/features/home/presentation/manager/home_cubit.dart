@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
+import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
 import 'package:stylehub/features/home/domain/entities/product_entity.dart';
 import 'package:stylehub/features/home/domain/usecases/home_usecase.dart';
@@ -68,6 +69,42 @@ class HomeCubit extends Cubit<HomeState> {
     }, error: (error) {
       log(error.apiErrorModel.message!);
       emit(GetProductInCategoryError(error: error.apiErrorModel.message!));
+    });
+  }
+
+  Future<void> addToWishList({required WishListBody productId}) async {
+    emit(AddToWishListLoading());
+    final result = await homeUseCase.addToWishlist(productId: productId);
+    result.when(data: (data) {
+      emit(AddToWishListLoaded());
+      addProductToWishList = data;
+    }, error: (error) {
+      log(error.apiErrorModel.message!);
+      emit(AddToWishListError(error: error.apiErrorModel.message!));
+    });
+  }
+
+  Future<void> deleteWishList({required String productId}) async {
+    emit(DeleteWishListLoading());
+    final result = await homeUseCase.deleteWishlist(productId: productId);
+    result.when(data: (data) {
+      emit(DeleteWishListLoaded());
+      removeProductFromWishList = data;
+    }, error: (error) {
+      log(error.apiErrorModel.message!);
+      emit(DeleteWishListError(error: error.apiErrorModel.message!));
+    });
+  }
+
+  Future<void> getLoggedUserWishList() async {
+    emit(GetUserWishListLoading());
+    final result = await homeUseCase.getUserWishlist();
+    result.when(data: (data) {
+      emit(GetUserWishListLoaded());
+      getUserWishList = data;
+    }, error: (error) {
+      log(error.apiErrorModel.message!);
+      emit(GetUserWishListError(error: error.apiErrorModel.message!));
     });
   }
 }
