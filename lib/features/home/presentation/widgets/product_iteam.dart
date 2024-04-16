@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylehub/core/extentions/extention.dart';
@@ -6,7 +7,9 @@ import 'package:stylehub/core/utils/colors/app_color.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 import 'package:stylehub/core/utils/widget/custom_network_image.dart';
+import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/product_entity.dart';
+import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 
 class ProductIteam extends StatelessWidget {
   const ProductIteam({super.key, required this.data});
@@ -41,19 +44,30 @@ class ProductIteam extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  right: 10 ,
+                  right: 10,
                   top: 5,
-                  child: Container(
-                      padding: const EdgeInsets.all(4),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColor.primeryColor,
-                      ),
-                      child: const Icon(
-                        Icons.favorite_outline_outlined,
-                        color: Colors.white,
-                        size: 20,
-                      )),
+                  child: GestureDetector(
+                    onTap: () async {
+                      await context
+                          .read<HomeCubit>()
+                          .addToWishList(
+                              productId: WishListBody(productId: data.id!))
+                          .then((value) => context
+                              .read<HomeCubit>()
+                              .getLoggedUserWishList());
+                    },
+                    child: Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColor.primeryColor,
+                        ),
+                        child: const Icon(
+                          Icons.favorite_outline_outlined,
+                          color: Colors.white,
+                          size: 20,
+                        )),
+                  ),
                 )
               ],
             ),

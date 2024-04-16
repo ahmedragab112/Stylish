@@ -65,16 +65,15 @@ class AppRouter {
 
       case AppRoutes.categoryIteamPage:
         return MaterialPageRoute(
-          settings: settings ,
-          
-          builder: (context) => const CategoryPage());
+            settings: settings, builder: (context) => const CategoryPage());
 
       case AppRoutes.home:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => locator<HomeCubit>()
               ..getAllCategory()
-              ..getAllProducts(),
+              ..getAllProducts()
+              ..getLoggedUserWishList(),
             child: const Home(),
           ),
         );
