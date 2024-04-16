@@ -48,3 +48,43 @@ class GetProductInCategoryError extends HomeState {
   final String error;
   const GetProductInCategoryError({required this.error});
 }
+
+
+
+class AddToWishListLoading extends HomeState {}
+
+class AddToWishListLoaded extends HomeState {
+ 
+}
+
+class AddToWishListError extends HomeState {
+  final String error;
+  const AddToWishListError({required this.error});
+}
+
+
+class DeleteWishListLoading extends HomeState {}
+
+
+class DeleteWishListLoaded extends HomeState {
+ 
+}
+
+class DeleteWishListError extends HomeState {
+  final String error;
+  const DeleteWishListError({required this.error});
+}
+
+
+class GetUserWishListLoading extends HomeState {}
+
+
+class GetUserWishListLoaded extends HomeState {
+ 
+}
+
+
+class GetUserWishListError extends HomeState {
+  final String error;
+  const GetUserWishListError({required this.error});
+}
