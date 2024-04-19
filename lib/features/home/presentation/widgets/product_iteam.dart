@@ -51,10 +51,7 @@ class ProductIteam extends StatelessWidget {
                       await context
                           .read<HomeCubit>()
                           .addToWishList(
-                              productId: WishListBody(productId: data.id!))
-                          .then((value) => context
-                              .read<HomeCubit>()
-                              .getLoggedUserWishList());
+                              productId: WishListBody(productId: data.id!));
                     },
                     child: Container(
                         padding: const EdgeInsets.all(4),
