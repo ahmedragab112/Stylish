@@ -1,5 +1,6 @@
 import 'package:stylehub/core/api/api_response.dart';
 import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
+import 'package:stylehub/features/home/data/models/brands_model.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
@@ -31,4 +32,7 @@ class HomeUseCase {
 
   Future<ApiResponse<UserWishListModel>> getUserWishlist() async =>
       await homeRepoDomain.getUserWishList();
+
+  Future<ApiResponse<BrandsModel>> getAllBrands() async =>
+      await homeRepoDomain.getAllBrands();
 }

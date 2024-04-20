@@ -66,3 +66,16 @@ class GetUserWishListError extends HomeState {
   final String error;
   const GetUserWishListError({required this.error});
 }
+
+
+
+class GetAllBrandsLoading extends HomeState {}
+
+class GetAllBrandsLoaded extends HomeState {}
+
+class GetAllBrandsError extends HomeState {
+  final String error;
+  const GetAllBrandsError({required this.error});
+}
+
+

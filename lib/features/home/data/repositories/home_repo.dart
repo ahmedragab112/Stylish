@@ -4,6 +4,7 @@ import 'package:stylehub/core/api/api_response.dart';
 import 'package:stylehub/core/error/error_handler.dart';
 import 'package:stylehub/features/home/data/datasources/remote/home_remote_datasoucre.dart';
 import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
+import 'package:stylehub/features/home/data/models/brands_model.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
@@ -75,6 +76,17 @@ class HomeDataRepo implements HomeRepoDomain {
   Future<ApiResponse<UserWishListModel>> getUserWishList() async {
     try {
       var data = await homeDataSoucre.getUserWishList();
+      return ApiResponse.data(data);
+    } catch (e) {
+      log(e.toString());
+      return ApiResponse.error(errorHandler: ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<ApiResponse<BrandsModel>> getAllBrands() async {
+    try {
+      var data = await homeDataSoucre.getAllBrands();
       return ApiResponse.data(data);
     } catch (e) {
       log(e.toString());

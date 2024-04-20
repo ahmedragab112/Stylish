@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
+import 'package:stylehub/features/home/data/models/brands_model.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
@@ -14,6 +15,7 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   final HomeUseCase homeUseCase;
   ProductEntity? productInCategory;
+  BrandsModel? brands;
   ProductEntity? homeProducts;
   int activeIndex = 0;
   ProductCategoryEntity? category;
@@ -110,6 +112,18 @@ class HomeCubit extends Cubit<HomeState> {
     }, error: (error) {
       log(error.apiErrorModel.message!);
       emit(GetUserWishListError(error: error.apiErrorModel.message!));
+    });
+  }
+
+  getAllBrand() async {
+    emit(GetAllBrandsLoading());
+    final result = await homeUseCase.getAllBrands();
+    result.when(data: (data) {
+      emit(GetAllBrandsLoaded());
+      brands = data;
+    }, error: (error) {
+      log(error.apiErrorModel.message!);
+      emit(GetAllBrandsError(error: error.apiErrorModel.message!));
     });
   }
 }
