@@ -20,6 +20,7 @@ class HomeCubit extends Cubit<HomeState> {
   AddToWishListModel? addProductToWishList;
   AddToWishListModel? removeProductFromWishList;
   UserWishListModel? getUserWishList;
+  int wishlistCount = 0;
   int pageIndex = 0;
 
   HomeCubit({required this.homeUseCase}) : super(HomeInitial());
@@ -100,8 +101,12 @@ class HomeCubit extends Cubit<HomeState> {
     emit(GetUserWishListLoading());
     final result = await homeUseCase.getUserWishlist();
     result.when(data: (data) {
-      emit(GetUserWishListLoaded());
-      getUserWishList = data;
+      if (data.count == getUserWishList?.count) {
+        emit(const AddToWishListError(error: 'iteam is already in wish list'));
+      } else {
+        emit(GetUserWishListLoaded());
+        getUserWishList = data;
+      }
     }, error: (error) {
       log(error.apiErrorModel.message!);
       emit(GetUserWishListError(error: error.apiErrorModel.message!));

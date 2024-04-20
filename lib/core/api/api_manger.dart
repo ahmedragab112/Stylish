@@ -10,6 +10,7 @@ import 'package:stylehub/features/forgotpassword/data/model/update_password_body
 import 'package:stylehub/features/forgotpassword/data/model/user_token_model.dart';
 import 'package:stylehub/features/forgotpassword/data/model/verification_code.dart';
 import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
+import 'package:stylehub/features/home/data/models/brands_model.dart';
 import 'package:stylehub/features/home/data/models/category_data.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/product_data_model.dart';
@@ -63,4 +64,6 @@ abstract class ApiManager {
   Future<UserWishListModel> getUserWishList(
     @Header('token') String token,
   );
+  @GET(EndPoint.allBrands)
+  Future<BrandsModel> getAllBrands();
 }

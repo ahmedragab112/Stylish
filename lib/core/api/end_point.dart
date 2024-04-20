@@ -8,4 +8,5 @@ class EndPoint {
   static const String getAllProducts = '/api/v1/products';
   static const String addToWishList = '/api/v1/wishlist';
   static const String removeFromWishList = '/api/v1/wishlist';
+  static const String allBrands = '/api/v1/brands';
 }
