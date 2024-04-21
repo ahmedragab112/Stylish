@@ -12,7 +12,7 @@ String getInitRoute() {
         return AppRoutes.home;
       }
       return AppRoutes.homeIntro;
-
+      
     }
     return AppRoutes.signIn;
   } else {

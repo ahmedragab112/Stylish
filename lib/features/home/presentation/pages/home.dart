@@ -11,6 +11,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     var cubit = context.read<HomeCubit>();
     return Scaffold(
+      extendBody: true,
       body: BlocBuilder<HomeCubit, HomeState>(
         buildWhen: (previous, current) => current is ChangePageIndex,
         builder: (context, state) {

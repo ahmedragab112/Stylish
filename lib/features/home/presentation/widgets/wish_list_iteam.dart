@@ -80,12 +80,11 @@ class WishListIteam extends StatelessWidget {
                   onTap: () async {
                     await context
                         .read<HomeCubit>()
-                        .deleteWishList(productId: userWishList.id!)
-                        .then((value) =>
-                            context.read<HomeCubit>().getLoggedUserWishList());
+                        .deleteWishList(productId: userWishList.id!);
                   },
                   child: const Icon(
-                    Icons.favorite,
+                    Icons.delete,
+                    size: 25,
                     color: AppColor.primeryColor,
                   ),
                 ),

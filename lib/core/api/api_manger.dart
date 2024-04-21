@@ -9,9 +9,11 @@ import 'package:stylehub/features/forgotpassword/data/model/rest_code.dart';
 import 'package:stylehub/features/forgotpassword/data/model/update_password_body.dart';
 import 'package:stylehub/features/forgotpassword/data/model/user_token_model.dart';
 import 'package:stylehub/features/forgotpassword/data/model/verification_code.dart';
+import 'package:stylehub/features/home/data/models/add_product_to_cart.dart';
 import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
 import 'package:stylehub/features/home/data/models/brands_model.dart';
 import 'package:stylehub/features/home/data/models/category_data.dart';
+import 'package:stylehub/features/home/data/models/delete_iteam_fromcart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/product_data_model.dart';
 import 'package:stylehub/features/login/data/model/login_data.dart';
@@ -66,4 +68,19 @@ abstract class ApiManager {
   );
   @GET(EndPoint.allBrands)
   Future<BrandsModel> getAllBrands();
+
+  @POST(EndPoint.addProductToCart)
+  Future<AddProductToCartModel> addProductToCart(
+      @Header('token') String token, @Body() WishListBody productId);
+
+  @GET(EndPoint.addProductToCart)
+  Future<AddProductToCartModel> getLoggedUserCart(
+      @Header('token') String token);
+
+  @DELETE('${EndPoint.addProductToCart}/{productId}')
+  Future<CartIteam> deleteCartIteam(
+    @Header('token') String token,
+    @Path('productId') String productId,
+  );
+  
 }
