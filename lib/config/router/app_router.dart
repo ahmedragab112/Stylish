@@ -73,7 +73,8 @@ class AppRouter {
             create: (context) => locator<HomeCubit>()
               ..getAllCategory()
               ..getAllProducts()
-              ..getLoggedUserWishList(),
+              ..getLoggedUserWishList()
+              ..getAllBrand(),
             child: const Home(),
           ),
         );

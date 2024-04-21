@@ -79,8 +79,19 @@ class HomeCubit extends Cubit<HomeState> {
     emit(AddToWishListLoading());
     final result = await homeUseCase.addToWishlist(productId: productId);
     result.when(data: (data) {
-      emit(AddToWishListLoaded());
-      addProductToWishList = data;
+      if (getUserWishList?.count == 0) {
+        emit(AddToWishListLoaded());
+        addProductToWishList = data;
+      } else {
+        for (var i = 0; i < getUserWishList!.data!.length; i++) {
+          if (getUserWishList!.data![i].id == productId.productId) {
+            emit(const AddToWishListError(error: "Already in wishlist"));
+            return;
+          }
+        }
+        emit(AddToWishListLoaded());
+        addProductToWishList = data;
+      }
     }, error: (error) {
       log(error.apiErrorModel.message!);
       emit(AddToWishListError(error: error.apiErrorModel.message!));
@@ -103,19 +114,15 @@ class HomeCubit extends Cubit<HomeState> {
     emit(GetUserWishListLoading());
     final result = await homeUseCase.getUserWishlist();
     result.when(data: (data) {
-      if (data.count == getUserWishList?.count) {
-        emit(const AddToWishListError(error: 'iteam is already in wish list'));
-      } else {
-        emit(GetUserWishListLoaded());
-        getUserWishList = data;
-      }
+      emit(GetUserWishListLoaded());
+      getUserWishList = data;
     }, error: (error) {
       log(error.apiErrorModel.message!);
       emit(GetUserWishListError(error: error.apiErrorModel.message!));
     });
   }
 
-  getAllBrand() async {
+  Future<void> getAllBrand() async {
     emit(GetAllBrandsLoading());
     final result = await homeUseCase.getAllBrands();
     result.when(data: (data) {

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/core/function/motion_toast.dart';
@@ -11,7 +10,7 @@ class HomeListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<HomeCubit, HomeState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is GetUserWishListError) {
           errorToast(context, title: state.error);
         } else if (state is DeleteWishListLoading) {
@@ -30,9 +29,9 @@ class HomeListener extends StatelessWidget {
             context,
             title: 'iteam has been deleted from wish list',
           );
-          context.read<HomeCubit>().getLoggedUserWishList();
+          await context.read<HomeCubit>().getLoggedUserWishList();
         } else if (state is AddToWishListError) {
-         
+          Navigator.pop(context);
           errorToast(context, title: state.error);
         } else if (state is AddToWishListLoaded) {
           Navigator.pop(context);
@@ -40,7 +39,7 @@ class HomeListener extends StatelessWidget {
             context,
             title: 'iteam has been added to wish list',
           );
-          context.read<HomeCubit>().getLoggedUserWishList();
+          await context.read<HomeCubit>().getLoggedUserWishList();
         } else if (state is AddToWishListLoading) {
           showDialog(
             barrierDismissible: true,
@@ -51,6 +50,8 @@ class HomeListener extends StatelessWidget {
               ),
             ),
           );
+        } else if (state is GetAllBrandsError) {
+          errorToast(context, title: state.error);
         }
       },
       child: const SizedBox.shrink(),
