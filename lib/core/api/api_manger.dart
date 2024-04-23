@@ -16,10 +16,12 @@ import 'package:stylehub/features/home/data/models/category_data.dart';
 import 'package:stylehub/features/home/data/models/delete_iteam_fromcart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/product_data_model.dart';
+import 'package:stylehub/features/home/data/models/update_product.dart';
 import 'package:stylehub/features/login/data/model/login_data.dart';
 import 'package:stylehub/features/signup/data/models/user_data.dart';
 import 'package:stylehub/core/utils/model/user_model.dart';
 
+import '../../features/home/data/models/update_product_model.dart';
 import '../../features/home/data/models/wishlist_body.dart';
 
 part 'api_manger.g.dart';
@@ -82,5 +84,10 @@ abstract class ApiManager {
     @Header('token') String token,
     @Path('productId') String productId,
   );
-  
+
+  @PUT('${EndPoint.updateCartProduct}/{productId}')
+  Future<UpdateProductModel> updateCartProduct(
+      @Header('token') String token,
+      @Path('productId') String productId,
+      @Body() UpdateProductBody updateProductModel);
 }
