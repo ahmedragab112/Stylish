@@ -57,8 +57,8 @@ class WishListBody extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Expanded(
-                              child: Lottie.network(
-                                  'https://lottie.host/f0957798-4a27-438f-895f-d49c23ff2d51/YcH59AWcIN.json',
+                              child: Lottie.asset(
+                                  'assets/lottie/Animation - 1713658542569.json',
                                   alignment: Alignment.center,
                                   fit: BoxFit.fill),
                             ),

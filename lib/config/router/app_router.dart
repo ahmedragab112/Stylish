@@ -7,6 +7,7 @@ import 'package:stylehub/features/forgotpassword/presentation/pages/forgot_passw
 import 'package:stylehub/features/forgotpassword/presentation/pages/rest_code.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/update_user.dart';
 import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
+import 'package:stylehub/features/home/presentation/pages/product_details.dart';
 import 'package:stylehub/features/home/presentation/pages/category_iteams.dart';
 import 'package:stylehub/features/home/presentation/pages/home.dart';
 import 'package:stylehub/features/home/presentation/pages/homeintro.dart';
@@ -65,7 +66,8 @@ class AppRouter {
 
       case AppRoutes.categoryIteamPage:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => const CategoryPage());
+            settings: settings,
+            builder: (context) => const CategoryIteams());
 
       case AppRoutes.home:
         return MaterialPageRoute(
@@ -84,6 +86,10 @@ class AppRouter {
             create: (context) => locator<ForgotPasswordCubit>(),
             child: const UpdateUserPassword(),
           ),
+        );
+      case AppRoutes.productDetails:
+        return MaterialPageRoute(
+          builder: (context) => const ProductDetails(),
         );
       default:
         return MaterialPageRoute(

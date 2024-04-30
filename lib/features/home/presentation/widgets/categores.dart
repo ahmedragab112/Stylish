@@ -6,6 +6,7 @@ import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
+import 'package:stylehub/features/home/presentation/model/category_product_argument_model.dart';
 import 'package:stylehub/features/home/presentation/widgets/category_iteam.dart';
 
 class CategoresList extends StatelessWidget {
@@ -35,7 +36,10 @@ class CategoresList extends StatelessWidget {
             );
           } else if (state is HomeCategoryError) {
             return Center(
-              child: Text(state.error),
+              child: Text(
+                state.error,
+                textAlign: TextAlign.center,
+              ),
             );
           } else {
             return ListView.separated(
@@ -47,7 +51,10 @@ class CategoresList extends StatelessWidget {
                           categoryId: cubit.category?.data?[index].sId ?? '')
                       .then((value) => context.pushNamed(
                           AppRoutes.categoryIteamPage,
-                          arguments: cubit));
+                          arguments: CaterogyProductArgumentModel(
+                              categoryName:
+                                  cubit.category?.data?[index].name ?? '',
+                              cubit: cubit)));
                 },
                 child: CategoryIteam(
                   image: cubit.category?.data?[index].image ?? '',

@@ -8,4 +8,5 @@ class AppRoutes {
   static const String sendEmailRestCode = 'sendEmailRestCode';
   static const String updatePassword = 'updatePassword';
   static const String categoryIteamPage='categoryIteamPage';
+  static const String productDetails='productDetails';
 }

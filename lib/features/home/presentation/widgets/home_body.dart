@@ -74,7 +74,7 @@ class HomeBody extends StatelessWidget {
           const SliverToBoxAdapter(
             child: PopularProducts(),
           ),
-          const SliverToBoxAdapter( 
+          const SliverToBoxAdapter(
             child: VerticalSpace(12),
           ),
           BlocBuilder<HomeCubit, HomeState>(
@@ -92,7 +92,10 @@ class HomeBody extends StatelessWidget {
               } else if (state is GetAllProductError) {
                 return SliverToBoxAdapter(
                   child: Center(
-                    child: Text(state.error),
+                    child: Text(
+                      state.error,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 );
               } else {
