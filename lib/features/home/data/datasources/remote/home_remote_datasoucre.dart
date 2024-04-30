@@ -13,6 +13,8 @@ abstract class HomeRemoteDataSource {
   Future<AddToWishListModel> deleteWishList({required String productId});
 
   Future<UserWishListModel> getUserWishList();
-
+  
   Future<BrandsModel> getAllBrands();
+
+
 }

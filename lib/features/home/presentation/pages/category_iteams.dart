@@ -26,7 +26,10 @@ class CategoryPage extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(
-                    cubit.productInCategory?.data?[0].category?.name  ?? '',
+                    cubit.productInCategory!.data!.isEmpty
+                        ? ''
+                        : cubit.productInCategory?.data?[0].category?.name ??
+                            '',
                     style: AppTextStyle.font24ExtraBoldBlack
                         .copyWith(color: AppColor.primeryColor),
                   ),
