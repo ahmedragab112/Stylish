@@ -62,6 +62,7 @@ class CategoryIteams extends StatelessWidget {
                 : SliverGrid.builder(
                     itemBuilder: (context, index) => ProductIteam(
                       data: arg.cubit.productInCategory!.data![index],
+                      cubit: arg.cubit,
                     ),
                     itemCount: arg.cubit.productInCategory?.data?.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

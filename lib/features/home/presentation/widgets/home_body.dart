@@ -109,6 +109,7 @@ class HomeBody extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) => ProductIteam(
                     data: cubit.homeProducts?.data?[index] ?? DataEntity(),
+                    cubit: cubit,
                   ),
                 );
               }

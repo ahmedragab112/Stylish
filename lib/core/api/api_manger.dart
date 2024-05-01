@@ -55,6 +55,7 @@ abstract class ApiManager {
     @Query('category[in]') String? productsInCategory,
     @Query('brand') String? productsInBrand,
   });
+
   @POST(EndPoint.addToWishList)
   Future<AddToWishListModel> addToWishList(
       @Header('token') String token, @Body() WishListBody productId);

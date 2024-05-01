@@ -11,22 +11,26 @@ import 'package:stylehub/core/utils/widget/custom_network_image.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/product_entity.dart';
 import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
+import 'package:stylehub/features/home/presentation/model/product_details_args.dart';
 
 class ProductIteam extends StatelessWidget {
-  const ProductIteam({super.key, required this.data});
+  const ProductIteam({super.key, required this.data, required this.cubit});
   final DataEntity data;
+  final HomeCubit cubit;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(AppRoutes.productDetails);
+        context.pushNamed(AppRoutes.productDetails,
+            arguments: ProductDetailsArgs(cubit: cubit, data: data));
       },
       child: Container(
         foregroundDecoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.r),
-            border: Border.all(
-                color: AppColor.primeryColor.withOpacity(.5), width: 1.5)),
+          borderRadius: BorderRadius.circular(16.r),
+          border: Border.all(
+              color: AppColor.primeryColor.withOpacity(.5), width: 1.5),
+        ),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: Colors.white,

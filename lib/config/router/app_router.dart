@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/config/router/routes.dart';
+import 'package:stylehub/core/api/api_manger.dart';
+import 'package:stylehub/core/api/dio_singelton.dart';
 import 'package:stylehub/core/di/injection.dart';
+import 'package:stylehub/core/utils/constant/app_constant.dart';
+import 'package:stylehub/features/forgotpassword/data/repositories/data_repo.dart';
+import 'package:stylehub/features/forgotpassword/data/service/remote_datasoucre.dart';
+import 'package:stylehub/features/forgotpassword/data/service/remote_datasource_implementation.dart';
 import 'package:stylehub/features/forgotpassword/manager/forgotpassword_cubit.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/forgot_password.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/rest_code.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/update_user.dart';
-import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 import 'package:stylehub/features/home/presentation/pages/product_details.dart';
 import 'package:stylehub/features/home/presentation/pages/category_iteams.dart';
 import 'package:stylehub/features/home/presentation/pages/home.dart';
@@ -52,27 +57,30 @@ class AppRouter {
       case AppRoutes.forgotPassword:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => locator<ForgotPasswordCubit>(),
+            create: (context) => ForgotPasswordCubit(
+                repo: ForgotPasswordDataRepo(
+                    dataSource: ForgotPasswordRemoteDataSourceImplementation(
+                        apiManager: ApiManager(DioFactory.getDio(),
+                            baseUrl: AppConstant.signUpBaseUrl)))),
             child: const ForgotPassword(),
           ),
         );
 
       case AppRoutes.sendEmailRestCode:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => locator<ForgotPasswordCubit>(),
+            builder: (context) => BlocProvider.value(
+                  value: forgotPasswordCubit,
                   child: const RestCode(),
                 ));
 
       case AppRoutes.categoryIteamPage:
         return MaterialPageRoute(
-            settings: settings,
-            builder: (context) => const CategoryIteams());
+            settings: settings, builder: (context) => const CategoryIteams());
 
       case AppRoutes.home:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => locator<HomeCubit>()
+            create: (context) => homeCubit
               ..getAllCategory()
               ..getAllProducts()
               ..getLoggedUserWishList()
@@ -82,14 +90,18 @@ class AppRouter {
         );
       case AppRoutes.updatePassword:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => locator<ForgotPasswordCubit>(),
+          builder: (context) => BlocProvider.value(
+            value: forgotPasswordCubit,
             child: const UpdateUserPassword(),
           ),
         );
       case AppRoutes.productDetails:
         return MaterialPageRoute(
-          builder: (context) => const ProductDetails(),
+          settings: settings,
+          builder: (context) => BlocProvider.value(
+            value: homeCubit,
+            child: const ProductDetails(),
+          ),
         );
       default:
         return MaterialPageRoute(

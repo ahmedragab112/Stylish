@@ -23,6 +23,8 @@ import 'package:stylehub/features/signup/domain/usecases/signup_usecase.dart';
 import 'package:stylehub/features/signup/presentation/manager/signup_cubit.dart';
 
 GetIt locator = GetIt.instance;
+var homeCubit = locator<HomeCubit>();
+var forgotPasswordCubit = locator<ForgotPasswordCubit>();
 
 void setupLocator() {
   locator

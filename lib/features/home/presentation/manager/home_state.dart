@@ -77,5 +77,6 @@ class GetAllBrandsError extends HomeState {
   final String error;
   const GetAllBrandsError({required this.error});
 }
+class ChangeProductSliderIndex extends HomeState{}
 
 

@@ -20,7 +20,10 @@ class ForgotPasswordListern extends StatelessWidget {
           current is Loading ||
           current is SuccessRestCode ||
           current is FailRestCode ||
-          current is LoadingRestCode,
+          current is LoadingRestCode ||
+          current is UpdateUserFail ||
+          current is UpdateUserLoading ||
+          current is UpdateUserSuccess,
       listener: (context, state) => state.whenOrNull(
         success: (data) {
           Navigator.pop(context);

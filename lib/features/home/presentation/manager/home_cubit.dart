@@ -24,7 +24,7 @@ class HomeCubit extends Cubit<HomeState> {
   UserWishListModel? getUserWishList;
   int wishlistCount = 0;
   int pageIndex = 0;
-
+  int activeProductIndex = 0;
   HomeCubit({required this.homeUseCase}) : super(HomeInitial());
   Future<void> getAllCategory() async {
     emit(HomeCategoryLoading());
@@ -132,5 +132,11 @@ class HomeCubit extends Cubit<HomeState> {
       log(error.apiErrorModel.message!);
       emit(GetAllBrandsError(error: error.apiErrorModel.message!));
     });
+  }
+
+  void changeProductSliderIndex(int index) {
+    emit(HomeInitial());
+    activeProductIndex = index;
+    emit(ChangeProductSliderIndex());
   }
 }
