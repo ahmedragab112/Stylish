@@ -1,4 +1,5 @@
 class AppStrings {
+  static const String description = "Description";
  static const String productDetails = "Product Details";
   static const String popularProducts='Popular Products';
   static const String shopNow= 'Shop Now';
