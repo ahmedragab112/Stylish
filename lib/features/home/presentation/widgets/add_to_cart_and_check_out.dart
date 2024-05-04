@@ -15,7 +15,6 @@ class AddToCartAndCheckOut extends StatelessWidget {
     return Row(
       children: [
         Column(
-          
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
@@ -30,7 +29,7 @@ class AddToCartAndCheckOut extends StatelessWidget {
             )
           ],
         ),
-        const HorizantelSpace(30),
+        const HorizantelSpace(22),
         Expanded(
             child: AddToCartButton(
           text: 'Add to cart',

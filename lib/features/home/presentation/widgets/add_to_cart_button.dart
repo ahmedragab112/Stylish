@@ -11,7 +11,8 @@ class AddToCartButton extends StatelessWidget {
   const AddToCartButton(
       {super.key,
       required this.text,
-      this.icon = Icons.add_shopping_cart_sharp, this.onTap});
+      this.icon = Icons.add_shopping_cart_sharp,
+      this.onTap});
   final String text;
   final IconData icon;
 
@@ -21,20 +22,23 @@ class AddToCartButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 12.h),
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r),
           color: AppColor.blueColor,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(text,
                 style: AppTextStyle.font20SemiBoldWhite
                     .copyWith(color: Colors.white)),
-            const HorizantelSpace(24),
-            Icon(icon, color: Colors.white),
+            const HorizantelSpace(8),
+            Icon(
+              icon,
+              color: Colors.white,
+            ),
           ],
         ),
       ),

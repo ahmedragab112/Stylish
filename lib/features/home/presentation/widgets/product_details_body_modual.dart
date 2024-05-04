@@ -20,7 +20,7 @@ class ProductDetailsBodyModual extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const VerticalSpace(24),
+        const VerticalSpace(16),
         Text(
           data.title ?? '',
           style: AppTextStyle.font24ExtraBoldBlack,
@@ -55,7 +55,6 @@ class ProductDetailsBodyModual extends StatelessWidget {
           trimExpandedText: '...Show less',
           style: AppTextStyle.font14GreySemiBold,
         ),
-        const VerticalSpace(16),
       ],
     ).setPadding(context, horizontal: 16);
   }

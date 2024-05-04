@@ -17,7 +17,7 @@ class ProductSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VerticalSpace(
-      300.h,
+      200.h,
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return CarouselSlider(

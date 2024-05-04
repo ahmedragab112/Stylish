@@ -11,29 +11,33 @@ class ProductDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     ProductDetailsArgs args =
+    ProductDetailsArgs args =
         ModalRoute.of(context)!.settings.arguments as ProductDetailsArgs;
     return Scaffold(
-        body: NestedScrollView(
-            headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                  SliverAppBar(
-                      leading: IconButton(
-                          autofocus: true,
-                          onPressed: () => Navigator.pop(context),
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            color: AppColor.primeryColor,
-                          )),
-                      title: const Text(AppStrings.productDetails),
-                      actions: [
-                        Icon(
-                          Icons.add_shopping_cart_rounded,
-                          size: 30.sp,
-                          color: AppColor.primeryColor,
-                        ),
-                        const HorizantelSpace(16),
-                      ]),
-                ],
-            body:  ProductDetailsBody(args: args,)));
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          SliverAppBar(
+              leading: IconButton(
+                  autofocus: true,
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: AppColor.primeryColor,
+                  )),
+              title: const Text(AppStrings.productDetails),
+              actions: [
+                Icon(
+                  Icons.add_shopping_cart_rounded,
+                  size: 30.sp,
+                  color: AppColor.primeryColor,
+                ),
+                const HorizantelSpace(16),
+              ]),
+        ],
+        body: ProductDetailsBody(
+          args: args,
+        ),
+      ),
+    );
   }
 }

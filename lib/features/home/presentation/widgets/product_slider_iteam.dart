@@ -40,9 +40,9 @@ class SliderItem extends StatelessWidget {
               count: length,
               curve: Curves.easeIn,
               effect: ExpandingDotsEffect(
-                activeDotColor: AppColor.blueColor,
+                activeDotColor: AppColor.primeryColor,
                 dotHeight: 10.h,
-                dotColor: Colors.white,
+                dotColor: Colors.grey,
                 expansionFactor: 4,
                 dotWidth: 10.w,
               ),
