@@ -379,14 +379,14 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<AddProductToCartModel> getLoggedUserCart(String token) async {
+  Future<GetLoggedUserCartModel> getLoggedUserCart(String token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'token': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<AddProductToCartModel>(Options(
+        _setStreamType<GetLoggedUserCartModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -402,7 +402,7 @@ class _ApiManager implements ApiManager {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = AddProductToCartModel.fromJson(_result.data!);
+    final value = GetLoggedUserCartModel.fromJson(_result.data!);
     return value;
   }
 

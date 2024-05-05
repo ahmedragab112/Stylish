@@ -15,6 +15,7 @@ import 'package:stylehub/features/home/data/models/brands_model.dart';
 import 'package:stylehub/features/home/data/models/category_data.dart';
 import 'package:stylehub/features/home/data/models/clear_cart_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/delete_iteam_fromcart.dart';
+import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/product_data_model.dart';
 import 'package:stylehub/features/home/data/models/update_product.dart';
@@ -78,7 +79,7 @@ abstract class ApiManager {
       @Header('token') String token, @Body() WishListBody productId);
 
   @GET(EndPoint.addProductToCart)
-  Future<AddProductToCartModel> getLoggedUserCart(
+  Future<GetLoggedUserCartModel> getLoggedUserCart(
       @Header('token') String token);
 
   @DELETE('${EndPoint.addProductToCart}/{productId}')
