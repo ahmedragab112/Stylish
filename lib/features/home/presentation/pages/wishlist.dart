@@ -7,6 +7,7 @@ import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 import 'package:stylehub/features/home/presentation/widgets/home_listener.dart';
 import 'package:stylehub/features/home/presentation/widgets/wish_list_iteam.dart';
+import '../../data/models/get_user_wishlist_model.dart';
 
 class WishListBody extends StatelessWidget {
   const WishListBody({super.key});
@@ -25,7 +26,7 @@ class WishListBody extends StatelessWidget {
             builder: (context, state) {
               return SliverToBoxAdapter(
                 child: Text(
-                  'Total Wish List Items : ${cubit.getUserWishList?.count ?? 0}',
+                  'Total Wish List Items : ${cubit.wishlistCount}',
                   style: AppTextStyle.font18SemiBoldPrimeryPink
                       .copyWith(color: Colors.black),
                   textAlign: TextAlign.start,
@@ -51,7 +52,7 @@ class WishListBody extends StatelessWidget {
                   ),
                 );
               } else {
-                return cubit.getUserWishList?.count == 0
+                return cubit.wishlistCount== 0
                     ? SliverFillRemaining(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -73,9 +74,9 @@ class WishListBody extends StatelessWidget {
                       )
                     : SliverList.separated(
                         itemBuilder: (context, index) => WishListIteam(
-                          userWishList: cubit.getUserWishList!.data![index],
+                          userWishList: cubit.getUserWishList?.data?[index]?? Data(),
                         ),
-                        itemCount: cubit.getUserWishList?.data!.length,
+                        itemCount: cubit.getUserWishList?.data?.length??0,
                         separatorBuilder: (context, index) =>
                             const VerticalSpace(24),
                       );

@@ -80,6 +80,7 @@ class HomeCubit extends Cubit<HomeState> {
     final result = await homeUseCase.addToWishlist(productId: productId);
     result.when(data: (data) {
       if (getUserWishList?.count == 0) {
+         wishlistCount++;
         emit(AddToWishListLoaded());
         addProductToWishList = data;
       } else {
@@ -91,6 +92,7 @@ class HomeCubit extends Cubit<HomeState> {
         }
         emit(AddToWishListLoaded());
         addProductToWishList = data;
+         wishlistCount++;
       }
     }, error: (error) {
       log(error.apiErrorModel.message!);
@@ -103,6 +105,7 @@ class HomeCubit extends Cubit<HomeState> {
     final result = await homeUseCase.deleteWishlist(productId: productId);
     result.when(data: (data) {
       emit(DeleteWishListLoaded());
+       wishlistCount--;
       removeProductFromWishList = data;
     }, error: (error) {
       log(error.apiErrorModel.message!);
@@ -115,6 +118,7 @@ class HomeCubit extends Cubit<HomeState> {
     final result = await homeUseCase.getUserWishlist();
     result.when(data: (data) {
       emit(GetUserWishListLoaded());
+      wishlistCount = data.count??0;
       getUserWishList = data;
     }, error: (error) {
       log(error.apiErrorModel.message!);
