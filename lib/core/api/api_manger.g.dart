@@ -407,7 +407,7 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<CartIteam> deleteCartIteam(
+  Future<GetLoggedUserCartModel> deleteCartIteam(
     String token,
     String productId,
   ) async {
@@ -416,8 +416,8 @@ class _ApiManager implements ApiManager {
     final _headers = <String, dynamic>{r'token': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<CartIteam>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<GetLoggedUserCartModel>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -433,12 +433,12 @@ class _ApiManager implements ApiManager {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = CartIteam.fromJson(_result.data!);
+    final value = GetLoggedUserCartModel.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<UpdateProductModel> updateCartProduct(
+  Future<GetLoggedUserCartModel> updateCartProduct(
     String token,
     String productId,
     UpdateProductBody updateProductModel,
@@ -449,8 +449,8 @@ class _ApiManager implements ApiManager {
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(updateProductModel.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<UpdateProductModel>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<GetLoggedUserCartModel>(Options(
       method: 'PUT',
       headers: _headers,
       extra: _extra,
@@ -466,7 +466,7 @@ class _ApiManager implements ApiManager {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = UpdateProductModel.fromJson(_result.data!);
+    final value = GetLoggedUserCartModel.fromJson(_result.data!);
     return value;
   }
 

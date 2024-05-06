@@ -80,3 +80,22 @@ class GetAllBrandsError extends HomeState {
 class ChangeProductSliderIndex extends HomeState{}
 
 
+
+class GetLoggedUserDataLoading extends HomeState {}
+class GetLoggedUserDataLoaded extends HomeState {}
+class GetLoggedUserDataError extends HomeState {
+   final String error;
+  const GetLoggedUserDataError({required this.error});
+}
+class AddToCartLoading extends HomeState {}
+class AddToCartLoaded extends HomeState {}
+class AddToCartError extends HomeState {
+   final String error;
+  const AddToCartError({required this.error});
+}
+class DeleteCartLoading extends HomeState {}
+class DeleteCartLoaded extends HomeState {}
+class DeleteCartError extends HomeState {
+   final String error;
+  const DeleteCartError({required this.error});
+}

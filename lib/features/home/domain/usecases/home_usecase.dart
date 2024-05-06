@@ -1,6 +1,9 @@
 import 'package:stylehub/core/api/api_response.dart';
+import 'package:stylehub/features/home/data/models/add_product_to_cart.dart';
 import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
 import 'package:stylehub/features/home/data/models/brands_model.dart';
+import 'package:stylehub/features/home/data/models/clear_cart_iteam_model.dart';
+import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
@@ -35,4 +38,22 @@ class HomeUseCase {
 
   Future<ApiResponse<BrandsModel>> getAllBrands() async =>
       await homeRepoDomain.getAllBrands();
+
+  Future<ApiResponse<GetLoggedUserCartModel>> getLoggedUserCart() async =>
+      await homeRepoDomain.getLoggedUserCart();
+
+  Future<ApiResponse<AddProductToCartModel>> addProductToCart(
+          {required String id}) async =>
+      await homeRepoDomain.addProductToCart(id: id);
+
+  Future<ApiResponse<ClearCartModel>> clearUserCart() async =>
+      await homeRepoDomain.clearUserCart();
+
+  Future<ApiResponse<GetLoggedUserCartModel>> updateCart(
+          {required String productId, required String count}) async =>
+      await homeRepoDomain.updateCart(productId: productId, count: count);
+
+  Future<ApiResponse<GetLoggedUserCartModel>> deleteCartIteam(
+          {required String id}) async =>
+      await homeRepoDomain.deleteCartIteam(id: id);
 }

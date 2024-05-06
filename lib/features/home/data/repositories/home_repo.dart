@@ -3,8 +3,11 @@ import 'dart:developer';
 import 'package:stylehub/core/api/api_response.dart';
 import 'package:stylehub/core/error/error_handler.dart';
 import 'package:stylehub/features/home/data/datasources/remote/home_remote_datasoucre.dart';
+import 'package:stylehub/features/home/data/models/add_product_to_cart.dart';
 import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
 import 'package:stylehub/features/home/data/models/brands_model.dart';
+import 'package:stylehub/features/home/data/models/clear_cart_iteam_model.dart';
+import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
@@ -87,6 +90,65 @@ class HomeDataRepo implements HomeRepoDomain {
   Future<ApiResponse<BrandsModel>> getAllBrands() async {
     try {
       var data = await homeDataSoucre.getAllBrands();
+      return ApiResponse.data(data);
+    } catch (e) {
+      log(e.toString());
+      return ApiResponse.error(errorHandler: ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<ApiResponse<GetLoggedUserCartModel>> getLoggedUserCart() async {
+    try {
+      var data = await homeDataSoucre.getLoggedUserCart();
+      return ApiResponse.data(data);
+    } catch (e) {
+      log(e.toString());
+      return ApiResponse.error(errorHandler: ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<ApiResponse<AddProductToCartModel>> addProductToCart(
+      {required String id}) async {
+    try {
+      var data = await homeDataSoucre.addProductToCart(productId: id);
+      return ApiResponse.data(data);
+    } catch (e) {
+      log(e.toString());
+      return ApiResponse.error(errorHandler: ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<ApiResponse<ClearCartModel>> clearUserCart() async {
+    try {
+      var data = await homeDataSoucre.clearUserCart();
+      return ApiResponse.data(data);
+    } catch (e) {
+      log(e.toString());
+      return ApiResponse.error(errorHandler: ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<ApiResponse<GetLoggedUserCartModel>> deleteCartIteam(
+      {required String id}) async {
+    try {
+      var data = await homeDataSoucre.deleteCartIteam(id: id);
+      return ApiResponse.data(data);
+    } catch (e) {
+      log(e.toString());
+      return ApiResponse.error(errorHandler: ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<ApiResponse<GetLoggedUserCartModel>> updateCart(
+      {required String productId, required String count}) async {
+    try {
+      var data = await homeDataSoucre.updateWishList(
+          productId: productId, count: count);
       return ApiResponse.data(data);
     } catch (e) {
       log(e.toString());

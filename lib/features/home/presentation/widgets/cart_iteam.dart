@@ -45,7 +45,24 @@ class ProductCartIteam extends StatelessWidget {
                       'Shoes',
                       style: AppTextStyle.font18SemiBoldPrimeryPink,
                     ),
-                    Text('Men', style: AppTextStyle.font18SemiBoldPrimeryPink),
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 15.r,
+                          child: const CustomNetWorkImage(
+                            imagePath: 'image',
+                            width: double.infinity,
+                            height: double.infinity,
+                          ),
+                        ),
+                        const HorizantelSpace(5),
+                        Text(
+                          'brandName',
+                          style: AppTextStyle.font14GreySemiBold,
+                        ),
+                        const HorizantelSpace(5),
+                      ],
+                    ),
                     Text(
                       '3000 EGP',
                       style: AppTextStyle.font18SemiBoldPrimeryPink,

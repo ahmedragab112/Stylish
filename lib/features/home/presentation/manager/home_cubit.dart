@@ -2,8 +2,10 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:stylehub/features/home/data/models/add_product_to_cart.dart';
 import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
 import 'package:stylehub/features/home/data/models/brands_model.dart';
+import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
@@ -14,10 +16,13 @@ part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final HomeUseCase homeUseCase;
+  GetLoggedUserCartModel? cartData;
   ProductEntity? productInCategory;
   BrandsModel? brands;
   ProductEntity? homeProducts;
+  AddProductToCartModel? addProductToCartModel;
   int activeIndex = 0;
+  int cartCount = 0;
   ProductCategoryEntity? category;
   AddToWishListModel? addProductToWishList;
   AddToWishListModel? removeProductFromWishList;
@@ -80,7 +85,7 @@ class HomeCubit extends Cubit<HomeState> {
     final result = await homeUseCase.addToWishlist(productId: productId);
     result.when(data: (data) {
       if (getUserWishList?.count == 0) {
-         wishlistCount++;
+        wishlistCount++;
         emit(AddToWishListLoaded());
         addProductToWishList = data;
       } else {
@@ -92,7 +97,7 @@ class HomeCubit extends Cubit<HomeState> {
         }
         emit(AddToWishListLoaded());
         addProductToWishList = data;
-         wishlistCount++;
+        wishlistCount++;
       }
     }, error: (error) {
       log(error.apiErrorModel.message!);
@@ -105,7 +110,7 @@ class HomeCubit extends Cubit<HomeState> {
     final result = await homeUseCase.deleteWishlist(productId: productId);
     result.when(data: (data) {
       emit(DeleteWishListLoaded());
-       wishlistCount--;
+      wishlistCount--;
       removeProductFromWishList = data;
     }, error: (error) {
       log(error.apiErrorModel.message!);
@@ -118,7 +123,7 @@ class HomeCubit extends Cubit<HomeState> {
     final result = await homeUseCase.getUserWishlist();
     result.when(data: (data) {
       emit(GetUserWishListLoaded());
-      wishlistCount = data.count??0;
+      wishlistCount = data.count ?? 0;
       getUserWishList = data;
     }, error: (error) {
       log(error.apiErrorModel.message!);
@@ -142,5 +147,107 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeInitial());
     activeProductIndex = index;
     emit(ChangeProductSliderIndex());
+  }
+
+  Future<void> getLoggedUserCartData() async {
+    emit(GetLoggedUserDataLoading());
+    var result = await homeUseCase.getLoggedUserCart();
+    result.when(
+      data: (data) {
+        cartData = data;
+        cartCount = data.numOfCartItems ?? 0;
+        emit(GetLoggedUserDataLoaded());
+      },
+      error: (errorHandler) {
+        log(errorHandler.apiErrorModel.message!);
+        emit(
+            GetLoggedUserDataError(error: errorHandler.apiErrorModel.message!));
+      },
+    );
+  }
+
+  Future<void> addToCart({required String productId}) async {
+    emit(AddToCartLoading());
+    var result = await homeUseCase.addProductToCart(id: productId);
+    result.when(
+      data: (data) async {
+        if (cartCount == 0) {
+          cartCount++;
+          emit(AddToCartLoaded());
+          addProductToCartModel = data;
+          await getLoggedUserCartData();
+        } else {
+          for (var i = 0; i < cartData!.data!.products!.length; i++) {
+            if (cartData!.data!.products![i].sId == productId) {
+              emit(const AddToCartError(error: "Already in Cart"));
+              return;
+            }
+          }
+
+          addProductToCartModel = data;
+          cartCount++;
+          emit(AddToCartLoaded());
+          await getLoggedUserCartData();
+        }
+      },
+      error: (errorHandler) {
+        log(errorHandler.apiErrorModel.message!);
+        emit(AddToCartError(error: errorHandler.apiErrorModel.message!));
+      },
+    );
+  }
+
+  Future<void> deleteCartIteam({required String productId}) async {
+    emit(DeleteCartLoading());
+    var result = await homeUseCase.deleteCartIteam(id: productId);
+    result.when(
+      data: (data) async {
+        cartData = data;
+        cartCount--;
+        emit(DeleteCartLoaded());
+        await getLoggedUserCartData();
+      },
+      error: (errorHandler) {
+        log(errorHandler.apiErrorModel.message!);
+        emit(DeleteCartError(error: errorHandler.apiErrorModel.message!));
+      },
+    );
+  }
+
+  Future<void> updateCartIteam(
+      {required String productId, required int count}) async {
+    emit(GetLoggedUserDataLoading());
+    var result = await homeUseCase.updateCart(
+        productId: productId, count: count.toString());
+    result.when(
+      data: (data) async {
+        cartData = data;
+        cartCount = data.numOfCartItems ?? 0;
+        emit(GetLoggedUserDataLoaded());
+        await getLoggedUserCartData();
+      },
+      error: (errorHandler) {
+        log(errorHandler.apiErrorModel.message!);
+        emit(
+            GetLoggedUserDataError(error: errorHandler.apiErrorModel.message!));
+      },
+    );
+  }
+
+  Future<void> clearCartIteams() async {
+    emit(GetLoggedUserDataLoading());
+    var result = await homeUseCase.clearUserCart();
+    result.when(
+      data: (data) async {
+        cartCount = 0;
+        emit(GetLoggedUserDataLoaded());
+        await getLoggedUserCartData();
+      },
+      error: (errorHandler) {
+        log(errorHandler.apiErrorModel.message!);
+        emit(
+            GetLoggedUserDataError(error: errorHandler.apiErrorModel.message!));
+      },
+    );
   }
 }

@@ -31,14 +31,14 @@ class AddToCartButton extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(text,
-                style: AppTextStyle.font20SemiBoldWhite
-                    .copyWith(color: Colors.white)),
-            const HorizantelSpace(8),
             Icon(
               icon,
               color: Colors.white,
             ),
+            const HorizantelSpace(8),
+            Text(text,
+                style: AppTextStyle.font20SemiBoldWhite
+                    .copyWith(color: Colors.white)),
           ],
         ),
       ),
