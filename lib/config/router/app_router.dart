@@ -79,7 +79,11 @@ class AppRouter {
 
       case AppRoutes.categoryIteamPage:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => const CategoryIteams());
+            settings: settings,
+            builder: (context) => BlocProvider.value(
+                  value: homeCubit,
+                  child: const CategoryIteams(),
+                ));
 
       case AppRoutes.home:
         return MaterialPageRoute(
@@ -88,7 +92,8 @@ class AppRouter {
               ..getAllCategory()
               ..getAllProducts()
               ..getLoggedUserWishList()
-              ..getAllBrand(),
+              ..getAllBrand()
+              ..getLoggedUserCartData(),
             child: const Home(),
           ),
         );

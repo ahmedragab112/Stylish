@@ -42,7 +42,7 @@ class HomeListener extends StatelessWidget {
           await context.read<HomeCubit>().getLoggedUserWishList();
         } else if (state is AddToWishListLoading) {
           showDialog(
-            barrierDismissible: true,
+            barrierDismissible: false,
             context: context,
             builder: (context) => const Center(
               child: CircularProgressIndicator(
@@ -52,6 +52,72 @@ class HomeListener extends StatelessWidget {
           );
         } else if (state is GetAllBrandsError) {
           errorToast(context, title: state.error);
+        } else if (state is AddToCartLoaded) {
+          Navigator.pop(context);
+          successToast(
+            context,
+            title: 'iteam has been added to cart',
+          );
+        } else if (state is AddToCartError) {
+          Navigator.pop(context);
+          errorToast(
+            context,
+            title: state.error,
+          );
+        } else if (state is AddToCartLoading) {
+          showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) => const Center(
+              child: CircularProgressIndicator(
+                color: AppColor.primeryColor,
+              ),
+            ),
+          );
+        } else if (state is UpdateCartLoading) {
+          showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) => const Center(
+              child: CircularProgressIndicator(
+                color: AppColor.primeryColor,
+              ),
+            ),
+          );
+        } else if (state is UpdateCartLoaded) {
+          Navigator.pop(context);
+          successToast(
+            context,
+            title: 'iteam has been updated in cart',
+          );
+        } else if (state is UpdateCartError) {
+          Navigator.pop(context);
+          errorToast(
+            context,
+            title: state.error,
+          );
+        } else if (state is DeleteCartLoading) {
+          showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) => const Center(
+              child: CircularProgressIndicator(
+                color: AppColor.primeryColor,
+              ),
+            ),
+          );
+        } else if (state is DeleteCartLoaded) {
+          Navigator.pop(context);
+          successToast(
+            context,
+            title: 'iteam has been deleted from cart',
+          );
+        } else if (state is DeleteCartError) {
+          Navigator.pop(context);
+          errorToast(
+            context,
+            title: state.error,
+          );
         }
       },
       child: const SizedBox.shrink(),

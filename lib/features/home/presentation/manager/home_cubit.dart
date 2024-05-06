@@ -30,6 +30,8 @@ class HomeCubit extends Cubit<HomeState> {
   int wishlistCount = 0;
   int pageIndex = 0;
   int activeProductIndex = 0;
+  double totalPrice = 0;
+
   HomeCubit({required this.homeUseCase}) : super(HomeInitial());
   Future<void> getAllCategory() async {
     emit(HomeCategoryLoading());
@@ -155,11 +157,13 @@ class HomeCubit extends Cubit<HomeState> {
     result.when(
       data: (data) {
         cartData = data;
-        cartCount = data.numOfCartItems ?? 0;
+        cartCount = int.parse((data.numOfCartItems ?? 0).toString());
+        totalPrice = data.data?.totalCartPrice?.toDouble() ?? 0;
         emit(GetLoggedUserDataLoaded());
       },
       error: (errorHandler) {
         log(errorHandler.apiErrorModel.message!);
+        log('---------------------------------------------------------------------');
         emit(
             GetLoggedUserDataError(error: errorHandler.apiErrorModel.message!));
       },
@@ -171,24 +175,10 @@ class HomeCubit extends Cubit<HomeState> {
     var result = await homeUseCase.addProductToCart(id: productId);
     result.when(
       data: (data) async {
-        if (cartCount == 0) {
-          cartCount++;
-          emit(AddToCartLoaded());
-          addProductToCartModel = data;
-          await getLoggedUserCartData();
-        } else {
-          for (var i = 0; i < cartData!.data!.products!.length; i++) {
-            if (cartData!.data!.products![i].sId == productId) {
-              emit(const AddToCartError(error: "Already in Cart"));
-              return;
-            }
-          }
-
-          addProductToCartModel = data;
-          cartCount++;
-          emit(AddToCartLoaded());
-          await getLoggedUserCartData();
-        }
+        addProductToCartModel = data;
+        cartCount++;
+        emit(AddToCartLoaded());
+        await getLoggedUserCartData();
       },
       error: (errorHandler) {
         log(errorHandler.apiErrorModel.message!);
@@ -216,20 +206,19 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> updateCartIteam(
       {required String productId, required int count}) async {
-    emit(GetLoggedUserDataLoading());
+    emit(UpdateCartLoading());
     var result = await homeUseCase.updateCart(
         productId: productId, count: count.toString());
     result.when(
       data: (data) async {
         cartData = data;
-        cartCount = data.numOfCartItems ?? 0;
-        emit(GetLoggedUserDataLoaded());
+        cartCount =int.parse(( data.numOfCartItems ?? 0).toString());
+        emit(UpdateCartLoaded());
         await getLoggedUserCartData();
       },
       error: (errorHandler) {
         log(errorHandler.apiErrorModel.message!);
-        emit(
-            GetLoggedUserDataError(error: errorHandler.apiErrorModel.message!));
+        emit(UpdateCartError(error: errorHandler.apiErrorModel.message!));
       },
     );
   }
@@ -249,5 +238,24 @@ class HomeCubit extends Cubit<HomeState> {
             GetLoggedUserDataError(error: errorHandler.apiErrorModel.message!));
       },
     );
+  }
+
+  int increementProductCartCount(
+      int productAvailableCount, int productCartIteamCount) {
+    emit(HomeInitial());
+    if (productCartIteamCount <= productAvailableCount) {
+      productCartIteamCount++;
+    }
+    emit(IncreementCartIteamCount());
+    return productCartIteamCount;
+  }
+
+  int decreementProductCartCount(int productCartIteamCount) {
+    emit(HomeInitial());
+    if (productCartIteamCount > 0) {
+      productCartIteamCount--;
+    }
+    emit(DecreementCartIteamCount());
+    return productCartIteamCount;
   }
 }

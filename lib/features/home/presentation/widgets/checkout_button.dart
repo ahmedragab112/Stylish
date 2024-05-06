@@ -1,7 +1,4 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:stylehub/core/utils/colors/app_color.dart';
@@ -23,25 +20,18 @@ class AddToCartButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
-        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 12.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r),
-          color: AppColor.blueColor,
+          color: AppColor.primeryColor,
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(text,
-                style: AppTextStyle.font20SemiBoldWhite
-                    .copyWith(color: Colors.white)),
-            const HorizantelSpace(6),
-            Icon(
-              icon,
-              color: Colors.white,
-              size: 30,
-            ),
+            Text(text, style: AppTextStyle.font20SemiBoldWhite),
+            const HorizantelSpace(24),
+            Icon(icon, color: Colors.white),
           ],
         ),
       ),

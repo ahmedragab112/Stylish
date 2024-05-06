@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -127,17 +128,22 @@ class ProductIteam extends StatelessWidget {
                         style: AppTextStyle.font12RegularPrimery
                             .copyWith(color: Colors.black)),
                     const Spacer(),
-                    Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColor.primeryColor,
-                        ),
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 20,
-                        )),
+                    GestureDetector(
+                      onTap: () async {
+                        await cubit.addToCart(productId: data.id!);
+                      },
+                      child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColor.primeryColor,
+                          ),
+                          child: const Icon(
+                            Icons.add_shopping_cart_outlined,
+                            color: Colors.white,
+                            size: 20,
+                          )),
+                    ),
                   ],
                 ),
               ],

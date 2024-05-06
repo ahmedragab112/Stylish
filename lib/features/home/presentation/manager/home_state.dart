@@ -99,3 +99,12 @@ class DeleteCartError extends HomeState {
    final String error;
   const DeleteCartError({required this.error});
 }
+class IncreementCartIteamCount extends HomeState {}
+class DecreementCartIteamCount extends HomeState {}
+
+class UpdateCartLoading extends HomeState {}
+class UpdateCartLoaded extends HomeState {}
+class UpdateCartError extends HomeState {
+   final String error;
+  const UpdateCartError({required this.error});
+}

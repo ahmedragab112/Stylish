@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
@@ -6,12 +7,21 @@ import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 import 'package:stylehub/core/utils/widget/custom_icon.dart';
 import 'package:stylehub/core/utils/widget/custom_network_image.dart';
+import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
+import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 
 class ProductCartIteam extends StatelessWidget {
-  const ProductCartIteam({super.key});
-
+  const ProductCartIteam(
+      {super.key,
+      required this.product,
+      required this.price,
+      required this.count});
+  final Product product;
+  final String price;
+  final int count;
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<HomeCubit>();
     return Container(
       width: double.infinity,
       constraints: BoxConstraints(maxHeight: 120.h),
@@ -26,48 +36,59 @@ class ProductCartIteam extends StatelessWidget {
               borderRadius: BorderRadius.circular(15.r),
               border: Border.all(color: AppColor.primeryColor, width: 2),
             ),
-            child: CustomNetWorkImage(
-              imagePath:
-                  'https://th.bing.com/th/id/OIP.Tl6OYOGoLgCHLMY66j8CBgHaEn?w=302&h=188&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-              width: 120.w,
-              height: double.infinity,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15.r),
+              child: CustomNetWorkImage(
+                imagePath: product.imageCover ?? '',
+                width: 120.w,
+                height: double.infinity,
+              ),
             ),
           ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Shoes',
-                      style: AppTextStyle.font18SemiBoldPrimeryPink,
-                    ),
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          radius: 15.r,
-                          child: const CustomNetWorkImage(
-                            imagePath: 'image',
-                            width: double.infinity,
-                            height: double.infinity,
+                HorizantelSpace(
+                  135,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        product.title ?? '',
+                        style: AppTextStyle.font18SemiBoldPrimeryPink,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 15.r,
+                            child: CustomNetWorkImage(
+                              imagePath: product.brand?.image ?? '',
+                              width: double.infinity,
+                              height: double.infinity,
+                            ),
                           ),
-                        ),
-                        const HorizantelSpace(5),
-                        Text(
-                          'brandName',
-                          style: AppTextStyle.font14GreySemiBold,
-                        ),
-                        const HorizantelSpace(5),
-                      ],
-                    ),
-                    Text(
-                      '3000 EGP',
-                      style: AppTextStyle.font18SemiBoldPrimeryPink,
-                    )
-                  ],
+                          const HorizantelSpace(5),
+                          Text(
+                            product.brand?.name ?? '',
+                            style: AppTextStyle.font14GreySemiBold,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const HorizantelSpace(5),
+                        ],
+                      ),
+                      Text(
+                        '$price EGP',
+                        style: AppTextStyle.font18SemiBoldPrimeryPink,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      )
+                    ],
+                  ),
                 ),
                 const HorizantelSpace(10),
                 Expanded(
@@ -75,36 +96,66 @@ class ProductCartIteam extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Icon(
-                        Icons.delete_outline_rounded,
-                        color: AppColor.darkBlue,
+                      GestureDetector(
+                        onTap: () async {
+                          await cubit.deleteCartIteam(productId: product.id!);
+                        },
+                        child: const Icon(
+                          Icons.delete,
+                          size: 25,
+                          color: AppColor.primeryColor,
+                        ),
                       ),
                       Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 6.w, vertical: 10.h),
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: AppColor.blueColor,
-                            borderRadius: BorderRadius.circular(40.r),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CustomIcon(
-                                onTap: () {},
-                                icon: Icons.remove,
-                              ),
-                              Text(
-                                '2',
-                                style: AppTextStyle.font20SemiBoldWhite
-                                    .copyWith(color: Colors.white),
-                              ),
-                              CustomIcon(
-                                onTap: () {},
-                                icon: Icons.add,
-                              ),
-                            ],
-                          )),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 6.w, vertical: 10.h),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: AppColor.primeryColor,
+                          borderRadius: BorderRadius.circular(40.r),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomIcon(
+                              onTap: () async {
+                                var afterDecreement =
+                                    cubit.decreementProductCartCount(count);
+                                if (afterDecreement == 0) {
+                                  return;
+                                }
+                                await cubit.updateCartIteam(
+                                  productId: product.id!,
+                                  count: afterDecreement,
+                                );
+                              },
+                              icon: Icons.remove,
+                            ),
+                            Text(
+                              count.toString(),
+                              style: AppTextStyle.font20SemiBoldWhite
+                                  .copyWith(color: Colors.white),
+                            ),
+                            CustomIcon(
+                              onTap: () async {
+                                var afterIncreement =
+                                    cubit.increementProductCartCount(
+                                        int.parse(
+                                            (product.quantity ?? 0).toString()),
+                                        count);
+                                if (afterIncreement > product.quantity!) {
+                                  return;
+                                }
+                                await cubit.updateCartIteam(
+                                  productId: product.id!,
+                                  count: afterIncreement,
+                                );
+                              },
+                              icon: Icons.add,
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 )
