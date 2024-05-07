@@ -6,12 +6,13 @@ import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 
 class QuantityAndRating extends StatelessWidget {
-  const QuantityAndRating(
-      {super.key,
-      required this.quntity,
-      required this.rating,});
+  const QuantityAndRating({
+    super.key,
+    required this.quntity,
+    required this.rating,
+  });
   final String quntity;
-  
+
   final double rating;
 
   @override
@@ -23,8 +24,8 @@ class QuantityAndRating extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.r),
-            border:
-                Border.all(color: AppColor.primeryColor, width: 2),
+            border: Border.all(
+                color: AppColor.primeryColor.withOpacity(.30), width: 1),
           ),
           child: Text(
             '$quntity Avaliable',
@@ -41,7 +42,6 @@ class QuantityAndRating extends StatelessWidget {
         const HorizantelSpace(4),
         Text('$rating ', style: AppTextStyle.font18SemiBoldPrimeryPink),
         const HorizantelSpace(20),
-     
       ],
     );
   }

@@ -38,7 +38,7 @@ Map<String, dynamic> _$MetadataToJson(Metadata instance) => <String, dynamic>{
     };
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
-      sId: json['sId'] as String?,
+      sId: json['_id'] as String?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       image: json['image'] as String?,

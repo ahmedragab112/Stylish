@@ -1,31 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
-import 'package:stylehub/features/home/presentation/model/product_details_args.dart';
+import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 import 'package:stylehub/features/home/presentation/widgets/add_to_cart_and_check_out.dart';
+import 'package:stylehub/features/home/presentation/widgets/loading_effect.dart';
+import 'package:stylehub/features/home/presentation/widgets/loading_product_details.dart';
 import 'package:stylehub/features/home/presentation/widgets/product_details_body_modual.dart';
 import 'package:stylehub/features/home/presentation/widgets/product_slider.dart';
 
 class ProductDetailsBody extends StatelessWidget {
-  const ProductDetailsBody({super.key, required this.args});
+  const ProductDetailsBody({
+    super.key,
+  });
 
-  final ProductDetailsArgs args;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ProductSlider(
-          cubit: args.cubit,
-          data: args.data,
-        ),
-        ProductDetailsBodyModual(
-          cubit: args.cubit,
-          data: args.data,
-        ),
-        const VerticalSpace(48),
-        AddToCartAndCheckOut(
-          data: args.data,
-        )
-      ],
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        if (state is GetSpacificIteamLoading) {
+          return Column(
+            children: [
+              const LoadingProductDetails(),
+              Expanded(
+                child: ListView.separated(
+                  separatorBuilder: (context, index) => const VerticalSpace(10),
+                  itemBuilder: (context, index) => const LoadingEffect(),
+                  itemCount: 20,
+                ),
+              ),
+            ],
+          );
+        } else if (state is GetSpacificIteamError) {
+          return Center(
+            child: Text(state.error),
+          );
+        }
+        return const Column(
+          children: [
+            ProductSlider(),
+            ProductDetailsBodyModual(),
+            VerticalSpace(48),
+            AddToCartAndCheckOut()
+          ],
+        );
+      },
     );
   }
 }

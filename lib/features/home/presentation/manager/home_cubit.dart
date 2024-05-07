@@ -7,6 +7,8 @@ import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
 import 'package:stylehub/features/home/data/models/brands_model.dart';
 import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
+import 'package:stylehub/features/home/data/models/spacific_brand_model.dart';
+import 'package:stylehub/features/home/data/models/spacific_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
 import 'package:stylehub/features/home/domain/entities/product_entity.dart';
@@ -31,8 +33,10 @@ class HomeCubit extends Cubit<HomeState> {
   int pageIndex = 0;
   int activeProductIndex = 0;
   double totalPrice = 0;
-
+  SpacificIteamModel? spacificIteamModel;
+  SpacificBrandDataModel? spacificBrandDataModel;
   HomeCubit({required this.homeUseCase}) : super(HomeInitial());
+  ProductEntity? productInBrand;
   Future<void> getAllCategory() async {
     emit(HomeCategoryLoading());
     final result = await homeUseCase.getAllCategory();
@@ -212,7 +216,7 @@ class HomeCubit extends Cubit<HomeState> {
     result.when(
       data: (data) async {
         cartData = data;
-        cartCount =int.parse(( data.numOfCartItems ?? 0).toString());
+        cartCount = int.parse((data.numOfCartItems ?? 0).toString());
         emit(UpdateCartLoaded());
         await getLoggedUserCartData();
       },
@@ -257,5 +261,48 @@ class HomeCubit extends Cubit<HomeState> {
     }
     emit(DecreementCartIteamCount());
     return productCartIteamCount;
+  }
+
+  Future<void> getSpacifcIteam({required String productId}) async {
+    emit(GetSpacificIteamLoading());
+    var result = await homeUseCase.getSpecificProductIteam(productId);
+    result.when(
+      data: (data) async {
+        spacificIteamModel = data;
+        emit(GetSpacificIteamLoaded());
+      },
+      error: (errorHandler) {
+        log(errorHandler.apiErrorModel.message!);
+        emit(GetSpacificIteamError(error: errorHandler.apiErrorModel.message!));
+      },
+    );
+  }
+
+  Future<void> getSpacificBrand({required String brandId}) async {
+    emit(GetSpacificBrandLoading());
+    var result = await homeUseCase.getSpacificBrand(brandId);
+    result.when(
+      data: (data) async {
+        spacificBrandDataModel = data;
+        emit(GetSpacificBrandLoaded());
+      },
+      error: (errorHandler) {
+        log(errorHandler.apiErrorModel.message!);
+        emit(GetSpacificBrandError(error: errorHandler.apiErrorModel.message!));
+      },
+    );
+  }
+
+  Future<void> getProductInBrand({required String brandId}) async {
+    emit(GetProductInBrandLoading());
+    final result = await homeUseCase.getProductsInBrand(brandId: brandId);
+    result.when(data: (data) {
+      productInBrand = data;
+      emit(GetProductInBrandLoaded());
+     
+    }, error: (error) {
+      log(error.apiErrorModel.message!);
+      emit(GetProductInBrandError(error: error.apiErrorModel.message!));
+    });
   }
 }

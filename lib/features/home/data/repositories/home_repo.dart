@@ -9,6 +9,8 @@ import 'package:stylehub/features/home/data/models/brands_model.dart';
 import 'package:stylehub/features/home/data/models/clear_cart_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
+import 'package:stylehub/features/home/data/models/spacific_brand_model.dart';
+import 'package:stylehub/features/home/data/models/spacific_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
 import 'package:stylehub/features/home/domain/entities/product_entity.dart';
@@ -149,6 +151,40 @@ class HomeDataRepo implements HomeRepoDomain {
     try {
       var data = await homeDataSoucre.updateWishList(
           productId: productId, count: count);
+      return ApiResponse.data(data);
+    } catch (e) {
+      log(e.toString());
+      return ApiResponse.error(errorHandler: ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<ApiResponse<SpacificIteamModel>> getSpecificProductIteam(
+      String id) async {
+    try {
+      var data = await homeDataSoucre.getSpecificProductIteam(id);
+      return ApiResponse.data(data);
+    } catch (e) {
+      log(e.toString());
+      return ApiResponse.error(errorHandler: ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<ApiResponse<SpacificBrandDataModel>> getSpacificBrand(String id) async{
+  try {
+      var data = await homeDataSoucre.getSpecificBrandIteam(id);
+      return ApiResponse.data(data);
+    } catch (e) {
+      log(e.toString());
+      return ApiResponse.error(errorHandler: ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<ApiResponse<ProductEntity>> getProductsInBrand({required String brandId}) async{
+   try {
+      var data = await homeDataSoucre.getProductsInBrand(brandId:  brandId);
       return ApiResponse.data(data);
     } catch (e) {
       log(e.toString());

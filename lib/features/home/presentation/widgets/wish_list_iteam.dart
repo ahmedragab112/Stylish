@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stylehub/config/router/routes.dart';
 import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
@@ -16,7 +19,9 @@ class WishListIteam extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.pushNamed(AppRoutes.productDetails, arguments: userWishList.id);
+      },
       child: Container(
         foregroundDecoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),
@@ -58,10 +63,16 @@ class WishListIteam extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      CustomNetWorkImage(
-                        imagePath: userWishList.brand?.image ?? "",
-                        width: 20,
-                        height: 20,
+                      GestureDetector(
+                        onTap: () {
+                          context.pushNamed(AppRoutes.brandProduct,
+                    arguments: userWishList.brand?.sId);
+                        },
+                        child: CustomNetWorkImage(
+                          imagePath: userWishList.brand?.image ?? "",
+                          width: 20,
+                          height: 20,
+                        ),
                       ),
                       const HorizantelSpace(10),
                       Text(

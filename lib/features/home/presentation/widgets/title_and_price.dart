@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stylehub/config/router/routes.dart';
+import 'package:stylehub/core/extentions/extention.dart';
 
 import 'package:stylehub/core/utils/colors/app_color.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
@@ -11,10 +14,11 @@ class TitleAndPrice extends StatelessWidget {
       {super.key,
       required this.title,
       required this.price,
-      required this.brandImage});
+      required this.brandImage, required this.brandId});
   final String title;
   final String price;
   final String brandImage;
+  final String brandId;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -32,10 +36,15 @@ class TitleAndPrice extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
             const HorizantelSpace(20),
-            CustomNetWorkImage(
-              imagePath: brandImage,
-              width: 60.w,
-              height: 60.h,
+            GestureDetector(
+              onTap: () {
+                context.pushNamed(AppRoutes.brandProduct, arguments: brandId);
+              },
+              child: CustomNetWorkImage(
+                imagePath: brandImage,
+                width: 60.w,
+                height: 60.h,
+              ),
             )
           ],
         ),

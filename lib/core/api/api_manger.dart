@@ -17,6 +17,8 @@ import 'package:stylehub/features/home/data/models/clear_cart_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/product_data_model.dart';
+import 'package:stylehub/features/home/data/models/spacific_brand_model.dart';
+import 'package:stylehub/features/home/data/models/spacific_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/update_product.dart';
 import 'package:stylehub/features/login/data/model/login_data.dart';
 import 'package:stylehub/features/signup/data/models/user_data.dart';
@@ -45,6 +47,8 @@ abstract class ApiManager {
 
   @GET(EndPoint.getAlllCategories)
   Future<CategoryData> getAllCategories();
+  @GET('${EndPoint.getAllProducts}/{id}')
+  Future<SpacificIteamModel> getSpecificProductIteam(@Path('id') String id);
 
   @GET(EndPoint.getAllProducts)
   Future<ProductDataModel> getProducts({
@@ -54,8 +58,6 @@ abstract class ApiManager {
     @Query('category[in]') String? productsInCategory,
     @Query('brand') String? productsInBrand,
   });
-  
-
 
   @POST(EndPoint.addToWishList)
   Future<AddToWishListModel> addToWishList(
@@ -73,6 +75,8 @@ abstract class ApiManager {
   );
   @GET(EndPoint.allBrands)
   Future<BrandsModel> getAllBrands();
+  @GET('${EndPoint.allBrands}/{id}')
+  Future<SpacificBrandDataModel> getSpacificBrand(@Path('id') String id);
 
   @POST(EndPoint.addProductToCart)
   Future<AddProductToCartModel> addProductToCart(

@@ -11,6 +11,8 @@ import 'package:stylehub/features/home/data/models/clear_cart_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/product_data_model.dart';
+import 'package:stylehub/features/home/data/models/spacific_brand_model.dart';
+import 'package:stylehub/features/home/data/models/spacific_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/update_product.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 
@@ -87,4 +89,14 @@ class HomeDataSoucreImplementation implements HomeRemoteDataSource {
       await apiManager.clearUserCart(
         locator<CacheHelper>().getString(AppStrings.cacheKeyUserToken),
       );
+
+  @override
+  Future<SpacificIteamModel> getSpecificProductIteam(String id) async =>
+      await apiManager.getSpecificProductIteam(id);
+
+  @override
+  Future<SpacificBrandDataModel> getSpecificBrandIteam(String id) async => await apiManager.getSpacificBrand(id);
+  
+  @override
+  Future<ProductDataModel> getProductsInBrand({required String brandId}) async => await apiManager.getProducts(productsInBrand: brandId);
 }

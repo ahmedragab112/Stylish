@@ -11,6 +11,7 @@ import 'package:stylehub/features/forgotpassword/manager/forgotpassword_cubit.da
 import 'package:stylehub/features/forgotpassword/presentation/pages/forgot_password.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/rest_code.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/update_user.dart';
+import 'package:stylehub/features/home/presentation/pages/brand_product.dart';
 import 'package:stylehub/features/home/presentation/pages/product_details.dart';
 import 'package:stylehub/features/home/presentation/pages/category_iteams.dart';
 import 'package:stylehub/features/home/presentation/pages/home.dart';
@@ -24,6 +25,10 @@ import 'package:stylehub/features/signup/presentation/pages/singup.dart';
 
 class AppRouter {
   static Route<Widget> onGenrateRoute(RouteSettings settings) {
+    String? args;
+    if (settings.arguments is String) {
+      args = settings.arguments as String;
+    }
     switch (settings.name) {
       case AppRoutes.signUp:
         return MaterialPageRoute(
@@ -109,9 +114,19 @@ class AppRouter {
           settings: settings,
           builder: (context) => BlocProvider.value(
             value: homeCubit,
-            child: const ProductDetails(),
+            child: ProductDetails(id: args!),
           ),
         );
+      case AppRoutes.brandProduct:
+        return MaterialPageRoute(
+            settings: settings,
+            builder: (context) => BlocProvider.value(
+                  value: homeCubit
+                    ..getSpacificBrand(brandId: args!)
+                    ..getProductInBrand(brandId: args),
+                  child: const BrandProducts(),
+                ));
+
       default:
         return MaterialPageRoute(
           builder: (context) => const Scaffold(

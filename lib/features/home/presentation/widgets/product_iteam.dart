@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +11,6 @@ import 'package:stylehub/core/utils/widget/custom_network_image.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/product_entity.dart';
 import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
-import 'package:stylehub/features/home/presentation/model/product_details_args.dart';
 
 class ProductIteam extends StatelessWidget {
   const ProductIteam({super.key, required this.data, required this.cubit});
@@ -23,8 +21,7 @@ class ProductIteam extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(AppRoutes.productDetails,
-            arguments: ProductDetailsArgs(cubit: cubit, data: data));
+        context.pushNamed(AppRoutes.productDetails, arguments: data.id);
       },
       child: Container(
         foregroundDecoration: BoxDecoration(

@@ -189,6 +189,33 @@ class _ApiManager implements ApiManager {
   }
 
   @override
+  Future<SpacificIteamModel> getSpecificProductIteam(String id) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<SpacificIteamModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/v1/products/${id}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = SpacificIteamModel.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<ProductDataModel> getProducts({
     String? sortType,
     String? minPrice,
@@ -343,6 +370,33 @@ class _ApiManager implements ApiManager {
               baseUrl,
             ))));
     final value = BrandsModel.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<SpacificBrandDataModel> getSpacificBrand(String id) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SpacificBrandDataModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/v1/brands/${id}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = SpacificBrandDataModel.fromJson(_result.data!);
     return value;
   }
 

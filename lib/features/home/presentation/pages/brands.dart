@@ -65,7 +65,7 @@ class BrandsBody extends StatelessWidget {
                     ),
                     itemBuilder: (BuildContext context, int index) {
                       return BrandIteam(
-                          data: cubit.brands?.data?[index] ?? Data());
+                          data: cubit.brands?.data?[index]??Data() );
                     },
                     itemCount: cubit.brands?.data?.length ?? 0,
                   );

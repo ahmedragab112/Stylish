@@ -15,16 +15,16 @@ class CustomIcon extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColor.primeryColor,
           border: Border.all(
-            color: AppColor.blueColor,
+            color: Colors.white,
             width: 2,
           ),
           shape: BoxShape.circle,
         ),
         child: Icon(
           icon,
-          color: AppColor.primeryColor,
+          color: Colors.white,
           size: 20.sp,
         ),
       ),

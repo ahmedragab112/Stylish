@@ -6,12 +6,15 @@ import 'package:stylehub/features/home/data/models/clear_cart_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
 import 'package:stylehub/features/home/data/models/product_data_model.dart';
+import 'package:stylehub/features/home/data/models/spacific_brand_model.dart';
+import 'package:stylehub/features/home/data/models/spacific_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 
 abstract class HomeRemoteDataSource {
   Future<CategoryData> getAllCategory();
   Future<ProductDataModel> getAllProduct();
   Future<ProductDataModel> getProductInCategory({required String categoryId});
+    Future<ProductDataModel> getProductsInBrand({required String brandId});
   Future<AddToWishListModel> addToWishList({required WishListBody productId});
   Future<AddToWishListModel> deleteWishList({required String productId});
 
@@ -26,4 +29,6 @@ abstract class HomeRemoteDataSource {
   Future<GetLoggedUserCartModel> deleteCartIteam({required String id});
 
   Future<ClearCartModel> clearUserCart();
+Future<SpacificIteamModel> getSpecificProductIteam(String id);
+Future<SpacificBrandDataModel> getSpecificBrandIteam(String id);
 }

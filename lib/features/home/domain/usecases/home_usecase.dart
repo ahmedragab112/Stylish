@@ -5,6 +5,8 @@ import 'package:stylehub/features/home/data/models/brands_model.dart';
 import 'package:stylehub/features/home/data/models/clear_cart_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
+import 'package:stylehub/features/home/data/models/spacific_brand_model.dart';
+import 'package:stylehub/features/home/data/models/spacific_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
 import 'package:stylehub/features/home/domain/entities/product_entity.dart';
@@ -56,4 +58,16 @@ class HomeUseCase {
   Future<ApiResponse<GetLoggedUserCartModel>> deleteCartIteam(
           {required String id}) async =>
       await homeRepoDomain.deleteCartIteam(id: id);
+
+  Future<ApiResponse<SpacificIteamModel>> getSpecificProductIteam(
+          String id) async =>
+      await homeRepoDomain.getSpecificProductIteam(id);
+
+  Future<ApiResponse<SpacificBrandDataModel>> getSpacificBrand(
+          String id) async =>
+      await homeRepoDomain.getSpacificBrand(id);
+
+  Future<ApiResponse<ProductEntity>> getProductsInBrand(
+          {required String brandId}) async =>
+      await homeRepoDomain.getProductsInBrand(brandId: brandId);
 }

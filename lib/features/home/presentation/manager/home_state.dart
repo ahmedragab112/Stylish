@@ -108,3 +108,27 @@ class UpdateCartError extends HomeState {
    final String error;
   const UpdateCartError({required this.error});
 }
+
+
+class GetSpacificIteamLoading extends HomeState {}
+class GetSpacificIteamLoaded extends HomeState {}
+class GetSpacificIteamError extends HomeState {
+   final String error;
+  const GetSpacificIteamError({required this.error});
+}
+
+
+class GetSpacificBrandLoading extends HomeState {}
+class GetSpacificBrandLoaded extends HomeState {}
+class GetSpacificBrandError extends HomeState {
+   final String error;
+  const GetSpacificBrandError({required this.error});
+}
+
+class GetProductInBrandLoading extends HomeState {}
+class GetProductInBrandLoaded extends HomeState {}
+class GetProductInBrandError extends HomeState {
+   final String error;
+  const GetProductInBrandError({required this.error});
+}
+

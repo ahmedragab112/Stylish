@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/core/utils/styles/app_textstyle.dart';
-import 'package:stylehub/features/home/domain/entities/product_entity.dart';
+import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 import 'package:stylehub/features/home/presentation/widgets/add_to_Cart_button.dart';
 
 class AddToCartAndCheckOut extends StatelessWidget {
-  const AddToCartAndCheckOut({super.key, required this.data});
-
-  final DataEntity data;
+  const AddToCartAndCheckOut({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<HomeCubit>();
     return Row(
       children: [
         Column(
@@ -23,7 +23,7 @@ class AddToCartAndCheckOut extends StatelessWidget {
             ),
             const VerticalSpace(10),
             Text(
-              'EGP ${data.price}',
+              'EGP ${cubit.spacificIteamModel?.data?.price ?? '0'}',
               style: AppTextStyle.font24ExtraBoldBlack
                   .copyWith(fontWeight: FontWeight.w500),
             )
@@ -33,7 +33,10 @@ class AddToCartAndCheckOut extends StatelessWidget {
         Expanded(
             child: AddToCartButton(
           text: 'Add to cart',
-          onTap: () {},
+          onTap: () {
+            cubit.addToCart(
+                productId: cubit.spacificIteamModel!.data!.id ?? '');
+          },
         )),
       ],
     ).setPadding(context, horizontal: 16);
