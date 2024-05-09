@@ -24,8 +24,8 @@ class AddToCartAndCheckOut extends StatelessWidget {
             const VerticalSpace(10),
             Text(
               'EGP ${cubit.spacificIteamModel?.data?.price ?? '0'}',
-              style: AppTextStyle.font24ExtraBoldBlack
-                  .copyWith(fontWeight: FontWeight.w500),
+              style: AppTextStyle.font20SemiBoldWhite
+                  .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
             )
           ],
         ),

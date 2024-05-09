@@ -39,7 +39,7 @@ class AddToCartButton extends StatelessWidget {
             Icon(
               icon,
               color: Colors.white,
-              size: 30,
+              size: 20.sp,
             ),
           ],
         ),

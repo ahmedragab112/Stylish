@@ -36,13 +36,16 @@ class ProductDetailsBody extends StatelessWidget {
             child: Text(state.error),
           );
         }
-        return const Column(
-          children: [
-            ProductSlider(),
-            ProductDetailsBodyModual(),
-            VerticalSpace(48),
-            AddToCartAndCheckOut()
-          ],
+        return const SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              ProductSlider(),
+              ProductDetailsBodyModual(),
+              VerticalSpace(48),
+              AddToCartAndCheckOut()
+            ],
+          ),
         );
       },
     );

@@ -37,10 +37,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                   )),
               title: const Text(AppStrings.productDetails),
               actions: [
-                Icon(
-                  Icons.add_shopping_cart_rounded,
-                  size: 30.sp,
-                  color: AppColor.primeryColor,
+                IconButton(
+                  icon: Icon(Icons.add_shopping_cart_rounded,
+                      size: 30.sp, color: AppColor.primeryColor),
+                  onPressed: () async {
+                    await context
+                        .read<HomeCubit>()
+                        .addToCart(productId: widget.id);
+                  },
                 ),
                 const HorizantelSpace(16),
               ]),

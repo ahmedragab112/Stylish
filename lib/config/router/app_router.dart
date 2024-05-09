@@ -23,6 +23,8 @@ import 'package:stylehub/features/onboarding/view/onboarding_view.dart';
 import 'package:stylehub/features/signup/presentation/manager/signup_cubit.dart';
 import 'package:stylehub/features/signup/presentation/pages/singup.dart';
 
+const Duration kanimationDuration = Duration(seconds: 1);
+
 class AppRouter {
   static Route<Widget> onGenrateRoute(RouteSettings settings) {
     String? args;
@@ -76,23 +78,42 @@ class AppRouter {
         );
 
       case AppRoutes.sendEmailRestCode:
-        return MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
+        return PageRouteBuilder(
+            transitionDuration: kanimationDuration,
+            settings: settings,
+            transitionsBuilder: (_, animation, __, child) => SlideTransition(
+                  position: animation.drive(Tween<Offset>(
+                      begin: const Offset(1, 0), end: Offset.zero)),
+                  child: child,
+                ),
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                BlocProvider.value(
                   value: forgotPasswordCubit,
                   child: const RestCode(),
                 ));
 
       case AppRoutes.categoryIteamPage:
-        return MaterialPageRoute(
+        return PageRouteBuilder(
+            transitionDuration: kanimationDuration,
             settings: settings,
-            builder: (context) => BlocProvider.value(
+            transitionsBuilder: (_, animation, __, child) => FadeTransition(
+                  opacity: animation,
+                  child: child,
+                ),
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                BlocProvider.value(
                   value: homeCubit,
                   child: const CategoryIteams(),
                 ));
 
       case AppRoutes.home:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
+        return PageRouteBuilder(
+          transitionDuration: kanimationDuration,
+          transitionsBuilder: (_, animation, __, child) => FadeTransition(
+            opacity: animation,
+            child: child,
+          ),
+          pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
             create: (context) => homeCubit
               ..getAllCategory()
               ..getAllProducts()
@@ -103,24 +124,45 @@ class AppRouter {
           ),
         );
       case AppRoutes.updatePassword:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider.value(
+        return PageRouteBuilder(
+          transitionDuration: kanimationDuration,
+          transitionsBuilder: (_, animation, __, child) => ScaleTransition(
+            alignment: Alignment.centerLeft,
+            scale: animation,
+            child: child,
+          ),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              BlocProvider.value(
             value: forgotPasswordCubit,
             child: const UpdateUserPassword(),
           ),
         );
       case AppRoutes.productDetails:
-        return MaterialPageRoute(
+        return PageRouteBuilder(
+          transitionDuration: kanimationDuration,
+          transitionsBuilder: (_, animation, __, child) => ScaleTransition(
+            alignment: Alignment.topLeft,
+            scale: animation,
+            child: child,
+          ),
           settings: settings,
-          builder: (context) => BlocProvider.value(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              BlocProvider.value(
             value: homeCubit,
             child: ProductDetails(id: args!),
           ),
         );
       case AppRoutes.brandProduct:
-        return MaterialPageRoute(
+        return PageRouteBuilder(
+            transitionDuration: kanimationDuration,
+            transitionsBuilder: (_, animation, __, child) => ScaleTransition(
+                  alignment: Alignment.bottomCenter,
+                  scale: animation,
+                  child: child,
+                ),
             settings: settings,
-            builder: (context) => BlocProvider.value(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                BlocProvider.value(
                   value: homeCubit
                     ..getSpacificBrand(brandId: args!)
                     ..getProductInBrand(brandId: args),
