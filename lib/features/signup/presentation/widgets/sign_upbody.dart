@@ -36,20 +36,26 @@ class SignUpBody extends StatelessWidget {
         const VerticalSpace(10),
         const AgreeToRules(),
         const VerticalSpace(20),
-        CustomButton(
-          text: AppStrings.createAccount,
-          onTap: () async {
-            if (bloc.formKey.currentState!.validate()) {
-              await bloc.signUp();
-            }
-          },
+        ElasticIn(
+          duration: const Duration(milliseconds: 1000),
+          child: CustomButton(
+            text: AppStrings.createAccount,
+            onTap: () async {
+              if (bloc.formKey.currentState!.validate()) {
+                await bloc.signUp();
+              }
+            },
+          ),
         ),
         const VerticalSpace(20),
-        Text(
-          AppStrings.orContinueWith,
-          style: AppTextStyle.font12RegularPrimery
-              .copyWith(color: AppColor.greyColor),
-          textAlign: TextAlign.center,
+        FadeInUp(
+          duration: const Duration(milliseconds: 1000),
+          child: Text(
+            AppStrings.orContinueWith,
+            style: AppTextStyle.font12RegularPrimery
+                .copyWith(color: AppColor.greyColor),
+            textAlign: TextAlign.center,
+          ),
         ),
         const VerticalSpace(20),
         const Divider(

@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/core/function/password_validation.dart';
@@ -22,66 +23,78 @@ class SignUpModual extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
-          CustomTextFiled(
-            controller: bloc.nameController,
-            hintText: AppStrings.name,
-            prefixIcon: Icon(
-              Icons.person,
-              color: Theme.of(context).primaryColor,
-            ),
-            validator: (value) {
-              if (value!.isEmpty) {
-                return AppStrings.pleaseEnterValidName;
-              }
-              return null;
-            },
-          ),
-          const VerticalSpace(31),
-          CustomTextFiled(
-            validator: (value) {
-              if (value!.isEmpty || !AppRegex.isEmailValid(value)) {
-                return AppStrings.pleaseEnterValidEmail;
-              }
-              return null;
-            },
-            controller: bloc.emailController,
-            hintText: AppStrings.email,
-            prefixIcon: Icon(
-              Icons.email_outlined,
-              color: Theme.of(context).primaryColor,
+          FadeInRight(
+              duration: const Duration(milliseconds: 1000),
+            child: CustomTextFiled(
+              controller: bloc.nameController,
+              hintText: AppStrings.name,
+              prefixIcon: Icon(
+                Icons.person,
+                color: Theme.of(context).primaryColor,
+              ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return AppStrings.pleaseEnterValidName;
+                }
+                return null;
+              },
             ),
           ),
           const VerticalSpace(31),
-          CustomTextFiled(
-            validator: (phoneNumber) {
-              if (phoneNumber!.isEmpty) {
-                return AppStrings.pleaseEnterValidPhone;
-              } else if (!AppRegex.hasMatchPhoneNumber(phoneNumber)) {
-                return AppStrings.enterOnlyEgyptionNumber;
-              }
-              return null;
-            },
-            controller: bloc.phoneController,
-            hintText: AppStrings.phone,
-            prefixIcon: Icon(
-              Icons.phone,
-              color: Theme.of(context).primaryColor,
+          FadeInLeft(
+              duration: const Duration(milliseconds: 1000),
+            child: CustomTextFiled(
+              validator: (value) {
+                if (value!.isEmpty || !AppRegex.isEmailValid(value)) {
+                  return AppStrings.pleaseEnterValidEmail;
+                }
+                return null;
+              },
+              controller: bloc.emailController,
+              hintText: AppStrings.email,
+              prefixIcon: Icon(
+                Icons.email_outlined,
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+          ),
+          const VerticalSpace(31),
+          FadeInRight(
+              duration: const Duration(milliseconds: 1000),
+            child: CustomTextFiled(
+              validator: (phoneNumber) {
+                if (phoneNumber!.isEmpty) {
+                  return AppStrings.pleaseEnterValidPhone;
+                } else if (!AppRegex.hasMatchPhoneNumber(phoneNumber)) {
+                  return AppStrings.enterOnlyEgyptionNumber;
+                }
+                return null;
+              },
+              controller: bloc.phoneController,
+              hintText: AppStrings.phone,
+              prefixIcon: Icon(
+                Icons.phone,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
           ),
           const VerticalSpace(31),
           BlocBuilder<SignupCubit, SignupState>(
             builder: (context, state) {
-              return CustomTextFiled(
-                validator: passwordValidation,
-                controller: bloc.passwordController,
-                hintText: AppStrings.password,
-                prefixIcon: Icon(
-                  Icons.lock,
-                  color: Theme.of(context).primaryColor,
-                ),
-                obscureText: bloc.isObscure,
-                suffixIcon: SignUpEye(
-                  bloc: bloc,
+              return FadeInLeft(
+                  duration: const Duration(milliseconds: 1000),
+                child: CustomTextFiled(
+                  validator: passwordValidation,
+                  controller: bloc.passwordController,
+                  hintText: AppStrings.password,
+                  prefixIcon: Icon(
+                    Icons.lock,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  obscureText: bloc.isObscure,
+                  suffixIcon: SignUpEye(
+                    bloc: bloc,
+                  ),
                 ),
               );
             },
@@ -89,23 +102,26 @@ class SignUpModual extends StatelessWidget {
           const VerticalSpace(31),
           BlocBuilder<SignupCubit, SignupState>(
             builder: (context, state) {
-              return CustomTextFiled(
-                validator: (value) {
-                  if (bloc.rePasswordController.text !=
-                      bloc.passwordController.text) {
-                    return AppStrings.pleaseConfirmTheRightPassword;
-                  }
-                  return null;
-                },
-                controller: bloc.rePasswordController,
-                hintText: AppStrings.confirmPassword,
-                prefixIcon: Icon(
-                  Icons.lock,
-                  color: Theme.of(context).primaryColor,
-                ),
-                obscureText: bloc.isObscure,
-                suffixIcon: SignUpEye(
-                  bloc: bloc,
+              return FadeInRight(
+                duration: const Duration(milliseconds: 1000),
+                child: CustomTextFiled(
+                  validator: (value) {
+                    if (bloc.rePasswordController.text !=
+                        bloc.passwordController.text) {
+                      return AppStrings.pleaseConfirmTheRightPassword;
+                    }
+                    return null;
+                  },
+                  controller: bloc.rePasswordController,
+                  hintText: AppStrings.confirmPassword,
+                  prefixIcon: Icon(
+                    Icons.lock,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  obscureText: bloc.isObscure,
+                  suffixIcon: SignUpEye(
+                    bloc: bloc,
+                  ),
                 ),
               );
             },

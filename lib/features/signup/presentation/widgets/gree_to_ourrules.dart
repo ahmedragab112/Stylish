@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylehub/core/utils/colors/app_color.dart';
@@ -9,24 +10,29 @@ class AgreeToRules extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox( 
-      width: 258.w, 
-      height: 30.h,
-      child: RichText(
-        textAlign:  TextAlign.start,
-        text: TextSpan(children: [
-          TextSpan(
-            text: AppStrings.byClickingThe,
-            style: AppTextStyle.font12RegularPrimery
-                .copyWith(color: AppColor.greyPrimary),
-          ),
-          TextSpan(
-              text: AppStrings.signup, style: AppTextStyle.font12RegularPrimery),
-          TextSpan(
-              text: AppStrings.youAgree,
+    return BounceInUp(
+      from: 200,
+      duration: const Duration(milliseconds: 1000),
+      child: SizedBox(
+        width: 258.w,
+        height: 30.h,
+        child: RichText(
+          textAlign: TextAlign.start,
+          text: TextSpan(children: [
+            TextSpan(
+              text: AppStrings.byClickingThe,
               style: AppTextStyle.font12RegularPrimery
-                  .copyWith(color: AppColor.greyPrimary))
-        ]),
+                  .copyWith(color: AppColor.greyPrimary),
+            ),
+            TextSpan(
+                text: AppStrings.signup,
+                style: AppTextStyle.font12RegularPrimery),
+            TextSpan(
+                text: AppStrings.youAgree,
+                style: AppTextStyle.font12RegularPrimery
+                    .copyWith(color: AppColor.greyPrimary))
+          ]),
+        ),
       ),
     );
   }
