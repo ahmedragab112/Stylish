@@ -1,7 +1,8 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive/hive.dart';
 import 'package:stylehub/core/cache/shared_prefrences.dart';
 import 'package:stylehub/core/cache/user_data_model.dart';
 import 'package:stylehub/core/di/injection.dart';
@@ -17,6 +18,7 @@ part 'login_cubit.freezed.dart';
 class LoginCubit extends Cubit<LoginState> {
   var formKey = GlobalKey<FormState>();
   final LoginUseCase loginUseCase;
+  UserData? userData;
   bool isobscureText = true;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -31,12 +33,13 @@ class LoginCubit extends Cubit<LoginState> {
     data.when(data: (userEntity) async {
       await locator<CacheHelper>().setInstance(
           data: userEntity.token, key: AppStrings.cacheKeyUserToken);
-      Box userBox = Hive.box<UserData>(AppConstant.userBox);
-      await userBox.add(UserData(
-        email: userEntity.user?.email,
-        name: userEntity.user?.name,
-      ),);
-
+      await userBox.add(
+      UserData(
+        email:userEntity.user!.email , 
+        name: userEntity.user!.name,
+      )
+      );
+      getUserData();
       emit((LoginState.success(userEntity: userEntity)));
     }, error: (error) {
       emit(LoginState.fail(message: error.apiErrorModel.message!));
@@ -47,5 +50,12 @@ class LoginCubit extends Cubit<LoginState> {
     emit(const LoginState.initial());
     isobscureText = !isobscureText;
     emit(const LoginState.changeObsuerText());
+  }
+
+  void getUserData() {
+    emit(const LoginState.initial());
+    userData = userBox.values.toList()[0];
+    log(userData?.name ?? '');
+    emit(const LoginState.cacheUserData());
   }
 }

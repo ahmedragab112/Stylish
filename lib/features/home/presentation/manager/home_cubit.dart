@@ -167,7 +167,6 @@ class HomeCubit extends Cubit<HomeState> {
         cartData = data;
         cartCount = int.parse((data.numOfCartItems ?? 0).toString());
         totalPrice = data.data?.totalCartPrice?.toDouble() ?? 0;
-        getUserData();
         emit(GetLoggedUserDataLoaded());
       },
       error: (errorHandler) {

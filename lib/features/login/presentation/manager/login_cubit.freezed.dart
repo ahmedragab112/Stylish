@@ -23,6 +23,7 @@ mixin _$LoginState {
     required TResult Function(String message) fail,
     required TResult Function() loading,
     required TResult Function() changeObsuerText,
+    required TResult Function() cacheUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$LoginState {
     TResult? Function(String message)? fail,
     TResult? Function()? loading,
     TResult? Function()? changeObsuerText,
+    TResult? Function()? cacheUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$LoginState {
     TResult Function(String message)? fail,
     TResult Function()? loading,
     TResult Function()? changeObsuerText,
+    TResult Function()? cacheUserData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$LoginState {
     required TResult Function(Fail value) fail,
     required TResult Function(Loading value) loading,
     required TResult Function(_ChangeObsuerText value) changeObsuerText,
+    required TResult Function(_CacheUserData value) cacheUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$LoginState {
     TResult? Function(Fail value)? fail,
     TResult? Function(Loading value)? loading,
     TResult? Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult? Function(_CacheUserData value)? cacheUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$LoginState {
     TResult Function(Fail value)? fail,
     TResult Function(Loading value)? loading,
     TResult Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult Function(_CacheUserData value)? cacheUserData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +141,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String message) fail,
     required TResult Function() loading,
     required TResult Function() changeObsuerText,
+    required TResult Function() cacheUserData,
   }) {
     return initial();
   }
@@ -147,6 +154,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String message)? fail,
     TResult? Function()? loading,
     TResult? Function()? changeObsuerText,
+    TResult? Function()? cacheUserData,
   }) {
     return initial?.call();
   }
@@ -159,6 +167,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(String message)? fail,
     TResult Function()? loading,
     TResult Function()? changeObsuerText,
+    TResult Function()? cacheUserData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -175,6 +184,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(Fail value) fail,
     required TResult Function(Loading value) loading,
     required TResult Function(_ChangeObsuerText value) changeObsuerText,
+    required TResult Function(_CacheUserData value) cacheUserData,
   }) {
     return initial(this);
   }
@@ -187,6 +197,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(Fail value)? fail,
     TResult? Function(Loading value)? loading,
     TResult? Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult? Function(_CacheUserData value)? cacheUserData,
   }) {
     return initial?.call(this);
   }
@@ -199,6 +210,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(Fail value)? fail,
     TResult Function(Loading value)? loading,
     TResult Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult Function(_CacheUserData value)? cacheUserData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -282,6 +294,7 @@ class _$SuccessImpl implements Success {
     required TResult Function(String message) fail,
     required TResult Function() loading,
     required TResult Function() changeObsuerText,
+    required TResult Function() cacheUserData,
   }) {
     return success(userEntity);
   }
@@ -294,6 +307,7 @@ class _$SuccessImpl implements Success {
     TResult? Function(String message)? fail,
     TResult? Function()? loading,
     TResult? Function()? changeObsuerText,
+    TResult? Function()? cacheUserData,
   }) {
     return success?.call(userEntity);
   }
@@ -306,6 +320,7 @@ class _$SuccessImpl implements Success {
     TResult Function(String message)? fail,
     TResult Function()? loading,
     TResult Function()? changeObsuerText,
+    TResult Function()? cacheUserData,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -322,6 +337,7 @@ class _$SuccessImpl implements Success {
     required TResult Function(Fail value) fail,
     required TResult Function(Loading value) loading,
     required TResult Function(_ChangeObsuerText value) changeObsuerText,
+    required TResult Function(_CacheUserData value) cacheUserData,
   }) {
     return success(this);
   }
@@ -334,6 +350,7 @@ class _$SuccessImpl implements Success {
     TResult? Function(Fail value)? fail,
     TResult? Function(Loading value)? loading,
     TResult? Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult? Function(_CacheUserData value)? cacheUserData,
   }) {
     return success?.call(this);
   }
@@ -346,6 +363,7 @@ class _$SuccessImpl implements Success {
     TResult Function(Fail value)? fail,
     TResult Function(Loading value)? loading,
     TResult Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult Function(_CacheUserData value)? cacheUserData,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -432,6 +450,7 @@ class _$FailImpl implements Fail {
     required TResult Function(String message) fail,
     required TResult Function() loading,
     required TResult Function() changeObsuerText,
+    required TResult Function() cacheUserData,
   }) {
     return fail(message);
   }
@@ -444,6 +463,7 @@ class _$FailImpl implements Fail {
     TResult? Function(String message)? fail,
     TResult? Function()? loading,
     TResult? Function()? changeObsuerText,
+    TResult? Function()? cacheUserData,
   }) {
     return fail?.call(message);
   }
@@ -456,6 +476,7 @@ class _$FailImpl implements Fail {
     TResult Function(String message)? fail,
     TResult Function()? loading,
     TResult Function()? changeObsuerText,
+    TResult Function()? cacheUserData,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -472,6 +493,7 @@ class _$FailImpl implements Fail {
     required TResult Function(Fail value) fail,
     required TResult Function(Loading value) loading,
     required TResult Function(_ChangeObsuerText value) changeObsuerText,
+    required TResult Function(_CacheUserData value) cacheUserData,
   }) {
     return fail(this);
   }
@@ -484,6 +506,7 @@ class _$FailImpl implements Fail {
     TResult? Function(Fail value)? fail,
     TResult? Function(Loading value)? loading,
     TResult? Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult? Function(_CacheUserData value)? cacheUserData,
   }) {
     return fail?.call(this);
   }
@@ -496,6 +519,7 @@ class _$FailImpl implements Fail {
     TResult Function(Fail value)? fail,
     TResult Function(Loading value)? loading,
     TResult Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult Function(_CacheUserData value)? cacheUserData,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -557,6 +581,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function(String message) fail,
     required TResult Function() loading,
     required TResult Function() changeObsuerText,
+    required TResult Function() cacheUserData,
   }) {
     return loading();
   }
@@ -569,6 +594,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function(String message)? fail,
     TResult? Function()? loading,
     TResult? Function()? changeObsuerText,
+    TResult? Function()? cacheUserData,
   }) {
     return loading?.call();
   }
@@ -581,6 +607,7 @@ class _$LoadingImpl implements Loading {
     TResult Function(String message)? fail,
     TResult Function()? loading,
     TResult Function()? changeObsuerText,
+    TResult Function()? cacheUserData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -597,6 +624,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function(Fail value) fail,
     required TResult Function(Loading value) loading,
     required TResult Function(_ChangeObsuerText value) changeObsuerText,
+    required TResult Function(_CacheUserData value) cacheUserData,
   }) {
     return loading(this);
   }
@@ -609,6 +637,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function(Fail value)? fail,
     TResult? Function(Loading value)? loading,
     TResult? Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult? Function(_CacheUserData value)? cacheUserData,
   }) {
     return loading?.call(this);
   }
@@ -621,6 +650,7 @@ class _$LoadingImpl implements Loading {
     TResult Function(Fail value)? fail,
     TResult Function(Loading value)? loading,
     TResult Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult Function(_CacheUserData value)? cacheUserData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -677,6 +707,7 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
     required TResult Function(String message) fail,
     required TResult Function() loading,
     required TResult Function() changeObsuerText,
+    required TResult Function() cacheUserData,
   }) {
     return changeObsuerText();
   }
@@ -689,6 +720,7 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
     TResult? Function(String message)? fail,
     TResult? Function()? loading,
     TResult? Function()? changeObsuerText,
+    TResult? Function()? cacheUserData,
   }) {
     return changeObsuerText?.call();
   }
@@ -701,6 +733,7 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
     TResult Function(String message)? fail,
     TResult Function()? loading,
     TResult Function()? changeObsuerText,
+    TResult Function()? cacheUserData,
     required TResult orElse(),
   }) {
     if (changeObsuerText != null) {
@@ -717,6 +750,7 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
     required TResult Function(Fail value) fail,
     required TResult Function(Loading value) loading,
     required TResult Function(_ChangeObsuerText value) changeObsuerText,
+    required TResult Function(_CacheUserData value) cacheUserData,
   }) {
     return changeObsuerText(this);
   }
@@ -729,6 +763,7 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
     TResult? Function(Fail value)? fail,
     TResult? Function(Loading value)? loading,
     TResult? Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult? Function(_CacheUserData value)? cacheUserData,
   }) {
     return changeObsuerText?.call(this);
   }
@@ -741,6 +776,7 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
     TResult Function(Fail value)? fail,
     TResult Function(Loading value)? loading,
     TResult Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult Function(_CacheUserData value)? cacheUserData,
     required TResult orElse(),
   }) {
     if (changeObsuerText != null) {
@@ -752,4 +788,130 @@ class _$ChangeObsuerTextImpl implements _ChangeObsuerText {
 
 abstract class _ChangeObsuerText implements LoginState {
   const factory _ChangeObsuerText() = _$ChangeObsuerTextImpl;
+}
+
+/// @nodoc
+abstract class _$$CacheUserDataImplCopyWith<$Res> {
+  factory _$$CacheUserDataImplCopyWith(
+          _$CacheUserDataImpl value, $Res Function(_$CacheUserDataImpl) then) =
+      __$$CacheUserDataImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CacheUserDataImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$CacheUserDataImpl>
+    implements _$$CacheUserDataImplCopyWith<$Res> {
+  __$$CacheUserDataImplCopyWithImpl(
+      _$CacheUserDataImpl _value, $Res Function(_$CacheUserDataImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CacheUserDataImpl implements _CacheUserData {
+  const _$CacheUserDataImpl();
+
+  @override
+  String toString() {
+    return 'LoginState.cacheUserData()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CacheUserDataImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(UserEntity userEntity) success,
+    required TResult Function(String message) fail,
+    required TResult Function() loading,
+    required TResult Function() changeObsuerText,
+    required TResult Function() cacheUserData,
+  }) {
+    return cacheUserData();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(UserEntity userEntity)? success,
+    TResult? Function(String message)? fail,
+    TResult? Function()? loading,
+    TResult? Function()? changeObsuerText,
+    TResult? Function()? cacheUserData,
+  }) {
+    return cacheUserData?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(UserEntity userEntity)? success,
+    TResult Function(String message)? fail,
+    TResult Function()? loading,
+    TResult Function()? changeObsuerText,
+    TResult Function()? cacheUserData,
+    required TResult orElse(),
+  }) {
+    if (cacheUserData != null) {
+      return cacheUserData();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(Success value) success,
+    required TResult Function(Fail value) fail,
+    required TResult Function(Loading value) loading,
+    required TResult Function(_ChangeObsuerText value) changeObsuerText,
+    required TResult Function(_CacheUserData value) cacheUserData,
+  }) {
+    return cacheUserData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(Success value)? success,
+    TResult? Function(Fail value)? fail,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult? Function(_CacheUserData value)? cacheUserData,
+  }) {
+    return cacheUserData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(Success value)? success,
+    TResult Function(Fail value)? fail,
+    TResult Function(Loading value)? loading,
+    TResult Function(_ChangeObsuerText value)? changeObsuerText,
+    TResult Function(_CacheUserData value)? cacheUserData,
+    required TResult orElse(),
+  }) {
+    if (cacheUserData != null) {
+      return cacheUserData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CacheUserData implements LoginState {
+  const factory _CacheUserData() = _$CacheUserDataImpl;
 }

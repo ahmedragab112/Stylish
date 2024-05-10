@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:stylehub/core/cache/user_data_model.dart';
 import 'package:stylehub/features/home/presentation/pages/brands.dart';
 import 'package:stylehub/features/home/presentation/pages/cart.dart';
 import 'package:stylehub/features/home/presentation/pages/profile_body.dart';
@@ -12,6 +14,8 @@ class AppConstant {
   static const String userBox = 'userBox';
 }
 
+Duration kanimationDuration = const Duration(milliseconds: 1000);
+Box<UserData> userBox = Hive.box<UserData>(AppConstant.userBox);
 List<Widget> screens = const [
   HomeBody(),
   WishListBody(),

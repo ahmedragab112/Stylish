@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/core/utils/constant/app_constant.dart';
@@ -10,6 +12,9 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubit = context.read<HomeCubit>();
+    var user = userBox.get(0);
+    log(user?.email ??
+        '---------------------------------------------------------------------');
     return Scaffold(
       extendBody: true,
       body: BlocBuilder<HomeCubit, HomeState>(

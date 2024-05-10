@@ -1,5 +1,7 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stylehub/config/router/app_router.dart';
 import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/core/utils/strings/app_strings.dart';
@@ -19,27 +21,39 @@ class ForgotPasswordBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TitileText(
-          text: AppStrings.forgotPassword,
+        BounceInDown(
+          duration: kanimationDuration,
+          child: const TitileText(
+            text: AppStrings.forgotPassword,
+          ),
         ),
         const VerticalSpace(18),
-        CustomTextFiled(
-          hintText: AppStrings.emailAddress,
-          controller: bloc.controller,
-          prefixIcon: const Icon(
-            Icons.email,
+        BounceInUp(
+          duration: kanimationDuration,
+          child: CustomTextFiled(
+            hintText: AppStrings.emailAddress,
+            controller: bloc.controller,
+            prefixIcon: const Icon(
+              Icons.email,
+            ),
           ),
         ),
         const VerticalSpace(30),
-        const ForgotPasswordRichText(
-          text: AppStrings.sendEmailRest,
+        FadeInUp(
+          duration: kanimationDuration,
+          child: const ForgotPasswordRichText(
+            text: AppStrings.sendEmailRest,
+          ),
         ),
         const VerticalSpace(30),
-        CustomButton(
-          text: AppStrings.submit,
-          onTap: () async {
-            await bloc.sendEmailVerification(email: bloc.controller.text);
-          },
+        ElasticIn(
+          duration: kanimationDuration,
+          child: CustomButton(
+            text: AppStrings.submit,
+            onTap: () async {
+              await bloc.sendEmailVerification(email: bloc.controller.text);
+            },
+          ),
         ),
         const ForgotPasswordListern()
       ],
