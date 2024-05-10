@@ -7,20 +7,9 @@ import 'package:stylehub/core/utils/strings/app_strings.dart';
 import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 import 'package:stylehub/features/home/presentation/widgets/product_details_body.dart';
 
-class ProductDetails extends StatefulWidget {
+class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key, required this.id});
   final String id;
-
-  @override
-  State<ProductDetails> createState() => _ProductDetailsState();
-}
-
-class _ProductDetailsState extends State<ProductDetails> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<HomeCubit>().getSpacifcIteam(productId: widget.id);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +32,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   onPressed: () async {
                     await context
                         .read<HomeCubit>()
-                        .addToCart(productId: widget.id);
+                        .addToCart(productId: id);
                   },
                 ),
                 const HorizantelSpace(16),

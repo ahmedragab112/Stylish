@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/config/router/routes.dart';
@@ -24,8 +25,11 @@ class SignUpBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const TitileText(
-          text: AppStrings.creatAccount,
+        BounceInDown(
+          from: 100,
+          child: const TitileText(
+            text: AppStrings.creatAccount,
+          ),
         ),
         const VerticalSpace(35),
         const SignUpModual(),

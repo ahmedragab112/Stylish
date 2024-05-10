@@ -148,26 +148,27 @@ class AppRouter {
           settings: settings,
           pageBuilder: (context, animation, secondaryAnimation) =>
               BlocProvider.value(
-            value: homeCubit,
-            child: ProductDetails(id: args!),
+            value: homeCubit..getSpacifcIteam(productId: args!),
+            child: ProductDetails(id: args),
           ),
         );
       case AppRoutes.brandProduct:
         return PageRouteBuilder(
-            transitionDuration: kanimationDuration,
-            transitionsBuilder: (_, animation, __, child) => ScaleTransition(
-                  alignment: Alignment.bottomCenter,
-                  scale: animation,
-                  child: child,
-                ),
-            settings: settings,
-            pageBuilder: (context, animation, secondaryAnimation) =>
-                BlocProvider.value(
-                  value: homeCubit
-                    ..getSpacificBrand(brandId: args!)
-                    ..getProductInBrand(brandId: args),
-                  child: const BrandProducts(),
-                ));
+          transitionDuration: kanimationDuration,
+          transitionsBuilder: (_, animation, __, child) => ScaleTransition(
+            alignment: Alignment.bottomCenter,
+            scale: animation,
+            child: child,
+          ),
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              BlocProvider.value(
+            value: homeCubit
+              ..getSpacificBrand(brandId: args!)
+              ..getProductInBrand(brandId: args),
+            child: const BrandProducts(),
+          ),
+        );
 
       default:
         return MaterialPageRoute(

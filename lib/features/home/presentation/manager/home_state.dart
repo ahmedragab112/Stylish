@@ -132,3 +132,5 @@ class GetProductInBrandError extends HomeState {
   const GetProductInBrandError({required this.error});
 }
 
+
+class GetUserDataLoaded extends HomeState {}

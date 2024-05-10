@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/config/router/routes.dart';
@@ -28,41 +29,50 @@ class LoginBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const TitileText(
-            text: AppStrings.welcomeBack,
+          BounceInDown(
+            duration: const Duration(milliseconds: 1000),
+            child: const TitileText(
+              text: AppStrings.welcomeBack,
+            ),
           ),
           const VerticalSpace(35),
-          CustomTextFiled(
-            controller: bloc.emailController,
-            hintText: AppStrings.userNameOrEmail,
-            prefixIcon: const Icon(
-              Icons.person,
+          FadeInLeft(
+            duration: const Duration(milliseconds: 1000),
+            child: CustomTextFiled(
+              controller: bloc.emailController,
+              hintText: AppStrings.userNameOrEmail,
+              prefixIcon: const Icon(
+                Icons.person,
+              ),
+              validator: (value) {
+                if (value!.isEmpty || !AppRegex.isEmailValid(value)) {
+                  return AppStrings.pleaseEnterValidEmail;
+                }
+                return null;
+              },
             ),
-            validator: (value) {
-              if (value!.isEmpty || !AppRegex.isEmailValid(value)) {
-                return AppStrings.pleaseEnterValidEmail;
-              }
-              return null;
-            },
           ),
           const VerticalSpace(31),
           BlocBuilder<LoginCubit, LoginState>(
             builder: (context, state) {
-              return CustomTextFiled(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return AppStrings.pleaseEnterValidPassword;
-                  }
-                  return null;
-                },
-                controller: bloc.passwordController,
-                hintText: AppStrings.password,
-                prefixIcon: const Icon(
-                  Icons.lock,
-                ),
-                obscureText: bloc.isobscureText,
-                suffixIcon: CustomEye(
-                  bloc: bloc,
+              return FadeInRight(
+                duration: const Duration(milliseconds: 1000),
+                child: CustomTextFiled(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return AppStrings.pleaseEnterValidPassword;
+                    }
+                    return null;
+                  },
+                  controller: bloc.passwordController,
+                  hintText: AppStrings.password,
+                  prefixIcon: const Icon(
+                    Icons.lock,
+                  ),
+                  obscureText: bloc.isobscureText,
+                  suffixIcon: CustomEye(
+                    bloc: bloc,
+                  ),
                 ),
               );
             },
@@ -79,20 +89,26 @@ class LoginBody extends StatelessWidget {
             ),
           ),
           const VerticalSpace(52),
-          CustomButton(
-            text: AppStrings.login,
-            onTap: () async {
-              if (bloc.formKey.currentState!.validate()) {
-                await bloc.login();
-              }
-            },
+          BounceInUp(
+            delay: const Duration(milliseconds: 1000),
+            child: CustomButton(
+              text: AppStrings.login,
+              onTap: () async {
+                if (bloc.formKey.currentState!.validate()) {
+                  await bloc.login();
+                }
+              },
+            ),
           ),
           const VerticalSpace(75),
-          Text(
-            AppStrings.orContinueWith,
-            style: AppTextStyle.font12RegularPrimery
-                .copyWith(color: AppColor.greyColor),
-            textAlign: TextAlign.center,
+          FadeInUp(
+            from: 200,
+            child: Text(
+              AppStrings.orContinueWith,
+              style: AppTextStyle.font12RegularPrimery
+                  .copyWith(color: AppColor.greyColor),
+              textAlign: TextAlign.center,
+            ),
           ),
           const VerticalSpace(20),
           const Divider(
@@ -102,12 +118,15 @@ class LoginBody extends StatelessWidget {
           const VerticalSpace(20),
           const AnOtherLoginWays(),
           const VerticalSpace(28),
-          CustomRichText(
-            text: AppStrings.creatAccount,
-            headLineText: AppStrings.signup,
-            onTap: () {
-              context.pushReplacementNamed(AppRoutes.signUp);
-            },
+          BounceInRight(
+            duration: const Duration(milliseconds: 1000),
+            child: CustomRichText(
+              text: AppStrings.creatAccount,
+              headLineText: AppStrings.signup,
+              onTap: () {
+                context.pushReplacementNamed(AppRoutes.signUp);
+              },
+            ),
           ),
           const CustomLoginLister()
         ],

@@ -9,6 +9,7 @@ import 'package:stylehub/features/home/presentation/widgets/home_body.dart';
 class AppConstant {
   static const String baseUrl = 'https://route-ecommerce.onrender.com';
   static const String signUpBaseUrl = 'https://ecommerce.routemisr.com';
+  static const String userBox = 'userBox';
 }
 
 List<Widget> screens = const [

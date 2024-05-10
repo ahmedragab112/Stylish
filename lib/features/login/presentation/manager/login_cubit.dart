@@ -1,8 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive/hive.dart';
 import 'package:stylehub/core/cache/shared_prefrences.dart';
+import 'package:stylehub/core/cache/user_data_model.dart';
 import 'package:stylehub/core/di/injection.dart';
+import 'package:stylehub/core/utils/constant/app_constant.dart';
 import 'package:stylehub/core/utils/entity/singup_entitey.dart';
 import 'package:stylehub/core/utils/strings/app_strings.dart';
 import 'package:stylehub/features/login/data/model/login_data.dart';
@@ -28,6 +31,12 @@ class LoginCubit extends Cubit<LoginState> {
     data.when(data: (userEntity) async {
       await locator<CacheHelper>().setInstance(
           data: userEntity.token, key: AppStrings.cacheKeyUserToken);
+      Box userBox = Hive.box<UserData>(AppConstant.userBox);
+      await userBox.add(UserData(
+        email: userEntity.user?.email,
+        name: userEntity.user?.name,
+      ),);
+
       emit((LoginState.success(userEntity: userEntity)));
     }, error: (error) {
       emit(LoginState.fail(message: error.apiErrorModel.message!));

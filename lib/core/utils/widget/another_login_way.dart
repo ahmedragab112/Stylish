@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:stylehub/core/utils/images/app_assets.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
@@ -8,15 +9,21 @@ class AnOtherLoginWays extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CustomLoginCircle(
-          image: AppAssets.google,
+        BounceInLeft(
+          duration: const Duration(milliseconds: 1000),
+          child: const CustomLoginCircle(
+            image: AppAssets.google,
+          ),
         ),
-        HorizantelSpace(20),
-        CustomLoginCircle(
-          image: AppAssets.facebook,
+        const HorizantelSpace(20),
+        BounceInRight(
+          duration: const Duration(milliseconds: 1000),
+          child: const CustomLoginCircle(
+            image: AppAssets.facebook,
+          ),
         ),
       ],
     );
