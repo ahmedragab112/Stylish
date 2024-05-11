@@ -31,8 +31,9 @@ class CustomLoginLister extends StatelessWidget {
           return await locator<CacheHelper>()
               .setBool(AppStrings.cacheKeyIsLogin, true)
               .then((value) {
-            context.pushNamedAndRemoveUntil(AppRoutes.homeIntro,
-                arguments: userEntity);
+            context.pushNamedAndRemoveUntil(
+              AppRoutes.homeIntro,
+            );
             return null;
           });
         },

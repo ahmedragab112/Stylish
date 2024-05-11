@@ -10,4 +10,5 @@ class AppRoutes {
   static const String categoryIteamPage = 'categoryIteamPage';
   static const String productDetails = 'productDetails';
   static const String brandProduct = 'BrandProducts';
+    static const String profile = 'profile';
 }

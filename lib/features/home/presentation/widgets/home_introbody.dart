@@ -1,4 +1,6 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:stylehub/config/router/app_router.dart';
 import 'package:stylehub/config/router/routes.dart';
 import 'package:stylehub/core/cache/shared_prefrences.dart';
 import 'package:stylehub/core/di/injection.dart';
@@ -13,35 +15,41 @@ class HomeIntroBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Text(
-          AppStrings.youAuthSuccess,
-          style: AppTextStyle.font36BoldBlack.copyWith(
-            color: Colors.white,
+    return SlideInUp(
+      duration: kanimationDuration,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            AppStrings.youAuthSuccess,
+            style: AppTextStyle.font36BoldBlack.copyWith(
+              color: Colors.white,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
-        ),
-        const VerticalSpace(14),
-        Text(
-          AppStrings.findItHere,
-          style: AppTextStyle.font14GreySemiBold,
-          textAlign: TextAlign.center,
-        ),
-        const VerticalSpace(44),
-        CustomButton(
-          text: AppStrings.getStarted,
-          onTap: () async {
-            await locator<CacheHelper>()
-                .setBool(AppStrings.homeIntroVisited, true)
-                .then((value) {
-              context.pushReplacementNamed(AppRoutes.home);
-            });
-          },
-        )
-      ],
-    ).setPadding(context, vertical: 34, horizontal: 38);
+          const VerticalSpace(14),
+          Text(
+            AppStrings.findItHere,
+            style: AppTextStyle.font14GreySemiBold,
+            textAlign: TextAlign.center,
+          ),
+          const VerticalSpace(44),
+          ElasticInUp(
+            duration: kanimationDuration,
+            child: CustomButton(
+              text: AppStrings.getStarted,
+              onTap: () async {
+                await locator<CacheHelper>()
+                    .setBool(AppStrings.homeIntroVisited, true)
+                    .then((value) {
+                  context.pushReplacementNamed(AppRoutes.home);
+                });
+              },
+            ),
+          )
+        ],
+      ).setPadding(context, vertical: 34, horizontal: 38),
+    );
   }
 }

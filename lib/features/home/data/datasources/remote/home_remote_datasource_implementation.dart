@@ -1,6 +1,7 @@
 import 'package:stylehub/core/api/api_manger.dart';
 import 'package:stylehub/core/cache/shared_prefrences.dart';
 import 'package:stylehub/core/di/injection.dart';
+import 'package:stylehub/core/utils/model/user_model.dart';
 import 'package:stylehub/core/utils/strings/app_strings.dart';
 import 'package:stylehub/features/home/data/datasources/remote/home_remote_datasoucre.dart';
 import 'package:stylehub/features/home/data/models/add_product_to_cart.dart';
@@ -10,6 +11,7 @@ import 'package:stylehub/features/home/data/models/category_data.dart';
 import 'package:stylehub/features/home/data/models/clear_cart_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
+import 'package:stylehub/features/home/data/models/password_model.dart';
 import 'package:stylehub/features/home/data/models/product_data_model.dart';
 import 'package:stylehub/features/home/data/models/spacific_brand_model.dart';
 import 'package:stylehub/features/home/data/models/spacific_iteam_model.dart';
@@ -95,8 +97,17 @@ class HomeDataSoucreImplementation implements HomeRemoteDataSource {
       await apiManager.getSpecificProductIteam(id);
 
   @override
-  Future<SpacificBrandDataModel> getSpecificBrandIteam(String id) async => await apiManager.getSpacificBrand(id);
-  
+  Future<SpacificBrandDataModel> getSpecificBrandIteam(String id) async =>
+      await apiManager.getSpacificBrand(id);
+
   @override
-  Future<ProductDataModel> getProductsInBrand({required String brandId}) async => await apiManager.getProducts(productsInBrand: brandId);
+  Future<ProductDataModel> getProductsInBrand(
+          {required String brandId}) async =>
+      await apiManager.getProducts(productsInBrand: brandId);
+
+  @override
+  Future<UserModel> updateLoggedUserData(
+          {
+          required PasswordModel passwordModel}) async =>
+      await apiManager.updateLoggedUserPassword( locator<CacheHelper>().getString(AppStrings.cacheKeyUserToken), passwordModel);
 }

@@ -3,7 +3,6 @@ import 'package:hive/hive.dart';
 import 'package:stylehub/core/cache/user_data_model.dart';
 import 'package:stylehub/features/home/presentation/pages/brands.dart';
 import 'package:stylehub/features/home/presentation/pages/cart.dart';
-import 'package:stylehub/features/home/presentation/pages/profile_body.dart';
 import 'package:stylehub/features/home/presentation/pages/setting_body.dart';
 import 'package:stylehub/features/home/presentation/pages/wishlist.dart';
 import 'package:stylehub/features/home/presentation/widgets/home_body.dart';
@@ -21,6 +20,6 @@ List<Widget> screens = const [
   WishListBody(),
   CartBody(),
   BrandsBody(),
-  ProfileBody(),
+
   SettingBody(),
 ];

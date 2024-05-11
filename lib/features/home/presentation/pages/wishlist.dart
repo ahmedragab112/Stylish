@@ -1,7 +1,9 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:stylehub/core/extentions/extention.dart';
+import 'package:stylehub/core/utils/constant/app_constant.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
 import 'package:stylehub/core/utils/styles/app_textstyle.dart';
 import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
@@ -25,11 +27,14 @@ class WishListBody extends StatelessWidget {
             buildWhen: (previous, current) => current is GetUserWishListLoaded,
             builder: (context, state) {
               return SliverToBoxAdapter(
-                child: Text(
-                  'Total Wish List Items : ${cubit.wishlistCount}',
-                  style: AppTextStyle.font18SemiBoldPrimeryPink
-                      .copyWith(color: Colors.black),
-                  textAlign: TextAlign.start,
+                child: FadeInUpBig(
+                  duration: kanimationDuration,
+                  child: Text(
+                    'Total Wish List Items : ${cubit.wishlistCount}',
+                    style: AppTextStyle.font18SemiBoldPrimeryPink
+                        .copyWith(color: Colors.black),
+                    textAlign: TextAlign.start,
+                  ),
                 ),
               );
             },
@@ -52,7 +57,7 @@ class WishListBody extends StatelessWidget {
                   ),
                 );
               } else {
-                return cubit.wishlistCount== 0
+                return cubit.wishlistCount == 0
                     ? SliverFillRemaining(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -73,10 +78,24 @@ class WishListBody extends StatelessWidget {
                         ),
                       )
                     : SliverList.separated(
-                        itemBuilder: (context, index) => WishListIteam(
-                          userWishList: cubit.getUserWishList?.data?[index]?? Data(),
-                        ),
-                        itemCount: cubit.getUserWishList?.data?.length??0,
+                        itemBuilder: (context, index) => index.isEven
+                            ? FadeInLeftBig(
+                                duration: kanimationDuration,
+                                child: WishListIteam(
+                                  userWishList:
+                                      cubit.getUserWishList?.data?[index] ??
+                                          Data(),
+                                ),
+                              )
+                            : FadeInRightBig(
+                                duration: kanimationDuration,
+                                child: WishListIteam(
+                                  userWishList:
+                                      cubit.getUserWishList?.data?[index] ??
+                                          Data(),
+                                ),
+                              ),
+                        itemCount: cubit.getUserWishList?.data?.length ?? 0,
                         separatorBuilder: (context, index) =>
                             const VerticalSpace(24),
                       );

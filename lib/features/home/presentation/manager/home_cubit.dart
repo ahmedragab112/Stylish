@@ -2,29 +2,39 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:hive/hive.dart';
+import 'package:flutter/material.dart';
+import 'package:stylehub/core/cache/user_data_model.dart';
 import 'package:stylehub/core/utils/constant/app_constant.dart';
+import 'package:stylehub/core/utils/entity/singup_entitey.dart';
 import 'package:stylehub/features/home/data/models/add_product_to_cart.dart';
 import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
 import 'package:stylehub/features/home/data/models/brands_model.dart';
 import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
+import 'package:stylehub/features/home/data/models/password_model.dart';
 import 'package:stylehub/features/home/data/models/spacific_brand_model.dart';
 import 'package:stylehub/features/home/data/models/spacific_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
 import 'package:stylehub/features/home/domain/entities/category_intiy.dart';
 import 'package:stylehub/features/home/domain/entities/product_entity.dart';
 import 'package:stylehub/features/home/domain/usecases/home_usecase.dart';
-import 'package:stylehub/features/signup/data/models/user_data.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final HomeUseCase homeUseCase;
+    final forgotPasswordValidationKey = GlobalKey<FormState>();
+  TextEditingController changePasswordNewPasswordController = TextEditingController();
+  TextEditingController changePasswordNewPasswordConfirmController = TextEditingController();
+
+  TextEditingController changePasswordController = TextEditingController();
+
+
   GetLoggedUserCartModel? cartData;
   ProductEntity? productInCategory;
   BrandsModel? brands;
   UserData? userData;
+  UserEntity? userEntity;
   ProductEntity? homeProducts;
   AddProductToCartModel? addProductToCartModel;
   int activeIndex = 0;
@@ -311,8 +321,32 @@ class HomeCubit extends Cubit<HomeState> {
 
   void getUserData() {
     emit(HomeInitial());
-    var notesBox = Hive.box<UserData>(AppConstant.userBox);
-    userData = notesBox.values.toList()[0];
+    var user = userBox.values.toList();
+    userData = user[0];
+    log('-------------------------------------------------------------------------------');
+    log(userData!.name!);
+    log('------------------------------------------------------------------------------');
+    log('-------------------------------------------------------------------------------');
+    log(userData!.email!);
+    log('------------------------------------------------------------------------------');
     emit(GetUserDataLoaded());
   }
+
+  Future<void> updateLoggedUserPassword() async {
+    emit(UpdateLoggedUserPasswordLoading());
+    final result = await homeUseCase.updateLoggedUserPassword(
+        passwordModel: PasswordModel(
+          currentPassword: changePasswordController.text, 
+          password:changePasswordNewPasswordController.text , 
+          rePassword:changePasswordNewPasswordConfirmController.text 
+        ));
+    result.when(data: (data) {
+      userEntity = data;
+      emit(UpdateLoggedUserPasswordLoaded());
+    }, error: (error) {
+      log(error.apiErrorModel.message!);
+      emit(UpdateLoggedUserPasswordError(error: error.apiErrorModel.message!));
+    });
+  }
+
 }

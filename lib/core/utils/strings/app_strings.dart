@@ -1,12 +1,12 @@
 class AppStrings {
   static const String description = "Description";
- static const String productDetails = "Product Details";
-  static const String popularProducts='Popular Products';
-  static const String shopNow= 'Shop Now';
-  static const String sort= 'Sort & Filter';
+  static const String productDetails = "Product Details";
+  static const String popularProducts = 'Popular Products';
+  static const String shopNow = 'Shop Now';
+  static const String sort = 'Sort & Filter';
   static const String allCategory = "All Category";
-  static const String searchForYourBrand= "Search for your brand";
-  static const String homeIntroVisited=' Home Intro Visited';
+  static const String searchForYourBrand = "Search for your brand";
+  static const String homeIntroVisited = ' Home Intro Visited';
   static const String findItHere = "Find it here, buy it now!";
   static const String youAuthSuccess = "You want Authentic, here you go!";
   static const String restPassword = 'Rest Password';
@@ -39,6 +39,8 @@ class AppStrings {
   static const String pleaseEnterValidPhone = "Please Enter Valid Phone";
   static const String pleaseEnterValidPassword = "Please Enter Valid Password";
   static const String signup = "Sign Up ";
+  static const String logOut = ' Log Out ';
+  static const String youWillBackToLogin = "You will be back to Login page";
   static const String pleaseConfirmTheRightPassword =
       "Please Confirm The Right Password";
   static const String chooseProducts = "Choose Products";

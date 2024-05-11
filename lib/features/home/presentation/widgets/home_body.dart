@@ -26,7 +26,7 @@ class HomeBody extends StatelessWidget {
     return RefreshIndicator(
       color: AppColor.primeryColor,
       onRefresh: () async {
-        cubit
+      cubit
           ..getAllCategory()
           ..getAllProducts();
       },
@@ -35,8 +35,8 @@ class HomeBody extends StatelessWidget {
           const SliverToBoxAdapter(
             child: VerticalSpace(10),
           ),
-          const SliverToBoxAdapter(
-            child: CustomAppBar(),
+           SliverToBoxAdapter(
+            child: CustomAppBar(cubit: cubit,),
           ),
           const SliverToBoxAdapter(
             child: VerticalSpace(16),

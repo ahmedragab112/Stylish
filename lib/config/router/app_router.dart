@@ -11,11 +11,13 @@ import 'package:stylehub/features/forgotpassword/manager/forgotpassword_cubit.da
 import 'package:stylehub/features/forgotpassword/presentation/pages/forgot_password.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/rest_code.dart';
 import 'package:stylehub/features/forgotpassword/presentation/pages/update_user.dart';
+import 'package:stylehub/features/home/presentation/manager/home_cubit.dart';
 import 'package:stylehub/features/home/presentation/pages/brand_product.dart';
 import 'package:stylehub/features/home/presentation/pages/product_details.dart';
 import 'package:stylehub/features/home/presentation/pages/category_iteams.dart';
 import 'package:stylehub/features/home/presentation/pages/home.dart';
 import 'package:stylehub/features/home/presentation/pages/homeintro.dart';
+import 'package:stylehub/features/home/presentation/pages/profile_body.dart';
 import 'package:stylehub/features/login/presentation/manager/login_cubit.dart';
 import 'package:stylehub/features/login/presentation/pages/login.dart';
 import 'package:stylehub/features/onboarding/manager/onboarding_cubit.dart';
@@ -28,8 +30,13 @@ const Duration kanimationDuration = Duration(seconds: 1);
 class AppRouter {
   static Route<Widget> onGenrateRoute(RouteSettings settings) {
     String? args;
+    HomeCubit? cubit;
     if (settings.arguments is String) {
       args = settings.arguments as String;
+    }
+
+    if (settings.arguments is HomeCubit) {
+      cubit = settings.arguments as HomeCubit;
     }
     switch (settings.name) {
       case AppRoutes.signUp:
@@ -49,7 +56,10 @@ class AppRouter {
         );
       case AppRoutes.homeIntro:
         return MaterialPageRoute(
-          builder: (context) => const HomeIntro(),
+          builder: (context) => BlocProvider<HomeCubit>.value(
+            value: homeCubit,
+            child: const HomeIntro(),
+          ),
         );
 
       case AppRoutes.onBoarding:
@@ -114,12 +124,13 @@ class AppRouter {
             child: child,
           ),
           pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
-            create: (context) => homeCubit
+            create: (context) => locator<HomeCubit>()
               ..getAllCategory()
               ..getAllProducts()
               ..getLoggedUserWishList()
               ..getAllBrand()
-              ..getLoggedUserCartData(),
+              ..getLoggedUserCartData()
+              ..getUserData(),
             child: const Home(),
           ),
         );
@@ -170,6 +181,17 @@ class AppRouter {
           ),
         );
 
+      case AppRoutes.profile:
+        return PageRouteBuilder(
+          transitionDuration: kanimationDuration,
+          transitionsBuilder: (_, animation, __, child) => ScaleTransition(
+            alignment: Alignment.centerLeft,
+            scale: animation,
+            child: child,
+          ),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+               Profile(cubit: cubit!,),
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => const Scaffold(

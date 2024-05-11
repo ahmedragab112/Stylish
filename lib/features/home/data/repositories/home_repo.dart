@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:stylehub/core/api/api_response.dart';
 import 'package:stylehub/core/error/error_handler.dart';
+import 'package:stylehub/core/utils/entity/singup_entitey.dart';
 import 'package:stylehub/features/home/data/datasources/remote/home_remote_datasoucre.dart';
 import 'package:stylehub/features/home/data/models/add_product_to_cart.dart';
 import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
@@ -9,6 +10,7 @@ import 'package:stylehub/features/home/data/models/brands_model.dart';
 import 'package:stylehub/features/home/data/models/clear_cart_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
+import 'package:stylehub/features/home/data/models/password_model.dart';
 import 'package:stylehub/features/home/data/models/spacific_brand_model.dart';
 import 'package:stylehub/features/home/data/models/spacific_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
@@ -171,8 +173,9 @@ class HomeDataRepo implements HomeRepoDomain {
   }
 
   @override
-  Future<ApiResponse<SpacificBrandDataModel>> getSpacificBrand(String id) async{
-  try {
+  Future<ApiResponse<SpacificBrandDataModel>> getSpacificBrand(
+      String id) async {
+    try {
       var data = await homeDataSoucre.getSpecificBrandIteam(id);
       return ApiResponse.data(data);
     } catch (e) {
@@ -182,9 +185,23 @@ class HomeDataRepo implements HomeRepoDomain {
   }
 
   @override
-  Future<ApiResponse<ProductEntity>> getProductsInBrand({required String brandId}) async{
-   try {
-      var data = await homeDataSoucre.getProductsInBrand(brandId:  brandId);
+  Future<ApiResponse<ProductEntity>> getProductsInBrand(
+      {required String brandId}) async {
+    try {
+      var data = await homeDataSoucre.getProductsInBrand(brandId: brandId);
+      return ApiResponse.data(data);
+    } catch (e) {
+      log(e.toString());
+      return ApiResponse.error(errorHandler: ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<ApiResponse<UserEntity>> updateLoggedUserPassword(
+      {required PasswordModel passwordModel}) async {
+    try {
+      var data = await homeDataSoucre.updateLoggedUserData(
+          passwordModel: passwordModel);
       return ApiResponse.data(data);
     } catch (e) {
       log(e.toString());

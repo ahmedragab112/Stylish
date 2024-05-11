@@ -134,3 +134,11 @@ class GetProductInBrandError extends HomeState {
 
 
 class GetUserDataLoaded extends HomeState {}
+
+
+class UpdateLoggedUserPasswordLoading extends HomeState {}
+class UpdateLoggedUserPasswordLoaded extends HomeState {}
+class UpdateLoggedUserPasswordError extends HomeState {
+   final String error;
+  const UpdateLoggedUserPasswordError({required this.error});
+}

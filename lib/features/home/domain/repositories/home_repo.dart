@@ -1,10 +1,12 @@
 import 'package:stylehub/core/api/api_response.dart';
+import 'package:stylehub/core/utils/entity/singup_entitey.dart';
 import 'package:stylehub/features/home/data/models/add_product_to_cart.dart';
 import 'package:stylehub/features/home/data/models/add_towishlist_model.dart';
 import 'package:stylehub/features/home/data/models/brands_model.dart';
 import 'package:stylehub/features/home/data/models/clear_cart_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/get_logged_user_cart.dart';
 import 'package:stylehub/features/home/data/models/get_user_wishlist_model.dart';
+import 'package:stylehub/features/home/data/models/password_model.dart';
 import 'package:stylehub/features/home/data/models/spacific_brand_model.dart';
 import 'package:stylehub/features/home/data/models/spacific_iteam_model.dart';
 import 'package:stylehub/features/home/data/models/wishlist_body.dart';
@@ -40,5 +42,8 @@ abstract class HomeRepoDomain {
       {required String id});
   Future<ApiResponse<SpacificIteamModel>> getSpecificProductIteam(String id);
   Future<ApiResponse<SpacificBrandDataModel>> getSpacificBrand(String id);
-  Future<ApiResponse<ProductEntity>> getProductsInBrand({required String brandId});
+  Future<ApiResponse<ProductEntity>> getProductsInBrand(
+      {required String brandId});
+  Future<ApiResponse<UserEntity>> updateLoggedUserPassword(
+      {required PasswordModel passwordModel});
 }

@@ -31,16 +31,17 @@ class LoginCubit extends Cubit<LoginState> {
             email: emailController.text.trim(),
             password: passwordController.text.trim()));
     data.when(data: (userEntity) async {
-      await locator<CacheHelper>().setInstance(
-          data: userEntity.token, key: AppStrings.cacheKeyUserToken);
-      await userBox.add(
-      UserData(
-        email:userEntity.user!.email , 
-        name: userEntity.user!.name,
-      )
-      );
-      getUserData();
-      emit((LoginState.success(userEntity: userEntity)));
+      await Future.wait([
+        locator<CacheHelper>().setInstance(
+            data: userEntity.token, key: AppStrings.cacheKeyUserToken),
+        userBox.add(UserData(
+          email: userEntity.user!.email,
+          name: userEntity.user!.name,
+        ))
+      ]).whenComplete(() {
+        log('complete caching ------------------------------------------------------');
+        emit((LoginState.success(userEntity: userEntity)));
+      });
     }, error: (error) {
       emit(LoginState.fail(message: error.apiErrorModel.message!));
     });
@@ -50,12 +51,5 @@ class LoginCubit extends Cubit<LoginState> {
     emit(const LoginState.initial());
     isobscureText = !isobscureText;
     emit(const LoginState.changeObsuerText());
-  }
-
-  void getUserData() {
-    emit(const LoginState.initial());
-    userData = userBox.values.toList()[0];
-    log(userData?.name ?? '');
-    emit(const LoginState.cacheUserData());
   }
 }

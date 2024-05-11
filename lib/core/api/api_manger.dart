@@ -24,6 +24,7 @@ import 'package:stylehub/features/login/data/model/login_data.dart';
 import 'package:stylehub/features/signup/data/models/user_data.dart';
 import 'package:stylehub/core/utils/model/user_model.dart';
 
+import '../../features/home/data/models/password_model.dart';
 import '../../features/home/data/models/wishlist_body.dart';
 
 part 'api_manger.g.dart';
@@ -102,4 +103,8 @@ abstract class ApiManager {
   Future<ClearCartModel> clearUserCart(
     @Header('token') String token,
   );
+
+  @PUT(EndPoint.updateLoggedUserPassword)
+  Future<UserModel> updateLoggedUserPassword(
+      @Header('token') String token, @Body() PasswordModel passwordModel);
 }

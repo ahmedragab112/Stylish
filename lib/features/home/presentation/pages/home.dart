@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylehub/core/utils/constant/app_constant.dart';
@@ -12,9 +11,6 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubit = context.read<HomeCubit>();
-    var user = userBox.get(0);
-    log(user?.email ??
-        '---------------------------------------------------------------------');
     return Scaffold(
       extendBody: true,
       body: BlocBuilder<HomeCubit, HomeState>(
@@ -23,7 +19,9 @@ class Home extends StatelessWidget {
           return SafeArea(child: screens[cubit.pageIndex]);
         },
       ),
-      bottomNavigationBar: const CustomBottonNavigationBar(),
+      bottomNavigationBar: SlideInUp(
+          duration: const Duration(seconds: 1),
+          child: const CustomBottonNavigationBar()),
     );
   }
 }

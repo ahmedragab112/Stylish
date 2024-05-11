@@ -9,6 +9,6 @@ class EndPoint {
   static const String addToWishList = '/api/v1/wishlist';
   static const String removeFromWishList = '/api/v1/wishlist';
   static const String allBrands = '/api/v1/brands';
+  static const String updateLoggedUserPassword = '/api/v1/users/changeMyPassword';
   static const String addProductToCart = '/api/v1/cart';
-  
 }

@@ -42,11 +42,7 @@ class CustomBottonNavigationBar extends StatelessWidget {
                   activeIcon:
                       CustomBottomNavIcon(icon: Icons.add_business_outlined),
                   label: 'Brands'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle_outlined),
-                  activeIcon:
-                      CustomBottomNavIcon(icon: Icons.account_circle_outlined),
-                  label: 'Profile'),
+             
               BottomNavigationBarItem(
                   icon: Icon(Icons.settings_outlined),
                   activeIcon:

@@ -16,13 +16,13 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   setupLocator();
   await Hive.initFlutter();
- await   Hive.openBox<UserData>(AppConstant.userBox);
   Hive.registerAdapter(UserDataAdapter());
+  await Hive.openBox<UserData>(AppConstant.userBox);
+
   await Future.wait([
     locator<CacheHelper>().init(),
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
     ScreenUtil.ensureScreenSize(),
-   
   ]);
   runApp(const StyLish());
 }

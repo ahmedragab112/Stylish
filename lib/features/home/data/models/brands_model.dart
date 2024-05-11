@@ -31,6 +31,7 @@ class Metadata {
 }
 @JsonSerializable()
 class Data {
+  @JsonKey(name: '_id')
   String? sId;
   String? name;
   String? slug;

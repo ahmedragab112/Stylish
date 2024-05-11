@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -31,11 +32,13 @@ class CartBody extends StatelessWidget {
                       current is GetLoggedUserDataLoaded,
                   builder: (context, state) {
                     return SliverToBoxAdapter(
-                      child: Text(
-                        'Total Cart  Items : ${cubit.cartCount}',
-                        style: AppTextStyle.font18SemiBoldPrimeryPink
-                            .copyWith(color: Colors.black),
-                        textAlign: TextAlign.start,
+                      child: FadeInUpBig(
+                        child: Text(
+                          'Total Cart  Items : ${cubit.cartCount}',
+                          style: AppTextStyle.font18SemiBoldPrimeryPink
+                              .copyWith(color: Colors.black),
+                          textAlign: TextAlign.start,
+                        ),
                       ),
                     );
                   },
@@ -80,18 +83,37 @@ class CartBody extends StatelessWidget {
                               ),
                             )
                           : SliverList.separated(
-                              itemBuilder: (context, index) => ProductCartIteam(
-                                product: cubit.cartData!.data!.products![index]
-                                        .product ??
-                                    Product(),
-                                price: (cubit.cartData!.data!.products![index]
-                                            .price ??
-                                        0)
-                                    .toString(),
-                                count:int.parse(( cubit.cartData!.data!.products![index]
-                                        .count ??
-                                    0).toString()),
-                              ),
+                              itemBuilder: (context, index) => index.isEven
+                                  ? FadeInLeftBig(
+                                      child: ProductCartIteam(
+                                        product: cubit.cartData!.data!
+                                                .products![index].product ??
+                                            Product(),
+                                        price: (cubit.cartData!.data!
+                                                    .products![index].price ??
+                                                0)
+                                            .toString(),
+                                        count: int.parse((cubit.cartData!.data!
+                                                    .products![index].count ??
+                                                0)
+                                            .toString()),
+                                      ),
+                                    )
+                                  : FadeInRightBig(
+                                      child: ProductCartIteam(
+                                        product: cubit.cartData!.data!
+                                                .products![index].product ??
+                                            Product(),
+                                        price: (cubit.cartData!.data!
+                                                    .products![index].price ??
+                                                0)
+                                            .toString(),
+                                        count: int.parse((cubit.cartData!.data!
+                                                    .products![index].count ??
+                                                0)
+                                            .toString()),
+                                      ),
+                                    ),
                               itemCount:
                                   cubit.cartData?.data?.products?.length ?? 0,
                               separatorBuilder: (context, index) =>
@@ -107,35 +129,39 @@ class CartBody extends StatelessWidget {
           ),
           Row(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Total price ',
-                    style: AppTextStyle.font18SemiBoldPrimeryPink.copyWith(
-                        color: AppColor.primeryColor.withOpacity(.60)),
-                  ),
-                  const VerticalSpace(10),
-                  BlocBuilder<HomeCubit, HomeState>(
-                    buildWhen: (previous, current) =>
-                        current is GetLoggedUserDataLoaded ||
-                        current is GetLoggedUserDataError ||
-                        current is GetLoggedUserDataLoading,
-                    builder: (context, state) {
-                      return Text(
-                        'EGP ${cubit.totalPrice.toInt().toString()}',
-                        style: AppTextStyle.font18SemiBoldPrimeryPink
-                            .copyWith(fontWeight: FontWeight.w500),
-                      );
-                    },
-                  )
-                ],
+              BounceInRight(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Total price ',
+                      style: AppTextStyle.font18SemiBoldPrimeryPink.copyWith(
+                          color: AppColor.primeryColor.withOpacity(.60)),
+                    ),
+                    const VerticalSpace(10),
+                    BlocBuilder<HomeCubit, HomeState>(
+                      buildWhen: (previous, current) =>
+                          current is GetLoggedUserDataLoaded ||
+                          current is GetLoggedUserDataError ||
+                          current is GetLoggedUserDataLoading,
+                      builder: (context, state) {
+                        return Text(
+                          'EGP ${cubit.totalPrice.toInt().toString()}',
+                          style: AppTextStyle.font18SemiBoldPrimeryPink
+                              .copyWith(fontWeight: FontWeight.w500),
+                        );
+                      },
+                    )
+                  ],
+                ),
               ),
               const HorizantelSpace(30),
-              const Expanded(
-                child: AddToCartButton(
-                  text: 'Check Out',
-                  icon: Icons.arrow_right_alt_rounded,
+              BounceInLeft(
+                child: const Expanded(
+                  child: AddToCartButton(
+                    text: 'Check Out',
+                    icon: Icons.arrow_right_alt_rounded,
+                  ),
                 ),
               ),
             ],
