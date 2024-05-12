@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylehub/core/extentions/extention.dart';
 import 'package:stylehub/core/utils/regex/app_regex.dart';
 import 'package:stylehub/core/utils/spaceing/spaceing.dart';
@@ -88,10 +87,10 @@ class UpdatePasword extends StatelessWidget {
         ],
       ).setOnlyPadding(
         context,
-        left: 8.w,
-        right: 18.w,
-        top: 8.h,
-        bottom: 8.h,
+        left: 8,
+        right: 18,
+        top: 8,
+        bottom: 8,
       ),
     );
   }

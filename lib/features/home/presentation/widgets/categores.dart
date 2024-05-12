@@ -17,6 +17,7 @@ class CategoresList extends StatelessWidget {
     return Container(
       height: 150.h,
       padding: EdgeInsets.all(8.sp),
+      alignment: Alignment.center,
       foregroundDecoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
           border: Border.all(
@@ -32,7 +33,9 @@ class CategoresList extends StatelessWidget {
           var cubit = context.read<HomeCubit>();
           if (state is HomeCategoryLoading) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: AppColor.primeryColor,
+              ),
             );
           } else if (state is HomeCategoryError) {
             return Center(

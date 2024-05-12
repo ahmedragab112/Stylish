@@ -32,7 +32,7 @@ part 'api_manger.g.dart';
 @RestApi(baseUrl: AppConstant.baseUrl)
 abstract class ApiManager {
   factory ApiManager(Dio dio, {String baseUrl}) = _ApiManager;
-
+  
   @POST(EndPoint.signUpEndPoint)
   Future<UserModel> signUpUser(@Body() UserData userData);
   @POST(EndPoint.loginEndPoint)

@@ -18,7 +18,6 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(UserDataAdapter());
   await Hive.openBox<UserData>(AppConstant.userBox);
-
   await Future.wait([
     locator<CacheHelper>().init(),
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),

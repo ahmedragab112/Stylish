@@ -4,8 +4,10 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stylehub/core/cache/shared_prefrences.dart';
+import 'package:stylehub/core/cache/user_data_model.dart';
 import 'package:stylehub/core/di/injection.dart';
 import 'package:stylehub/core/error/error_model.dart';
+import 'package:stylehub/core/utils/constant/app_constant.dart';
 import 'package:stylehub/core/utils/strings/app_strings.dart';
 import 'package:stylehub/features/forgotpassword/data/model/rest_code.dart';
 import 'package:stylehub/features/forgotpassword/data/model/update_password_body.dart';
@@ -64,7 +66,6 @@ class ForgotPasswordCubit extends Cubit<ForgotpasswordState> {
     data.when(data: (data) async {
       await locator<CacheHelper>()
           .setInstance(data: data.token, key: AppStrings.cacheKeyUserToken);
-
       emit(ForgotpasswordState.updateUserSuccess(userTokenModel: data));
     }, error: (error) {
       log(error.apiErrorModel.message!);

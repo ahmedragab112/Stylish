@@ -86,7 +86,9 @@ class HomeBody extends StatelessWidget {
               if (state is GetAllProductLoading) {
                 return const SliverToBoxAdapter(
                   child: Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: AppColor.primeryColor,
+                    ),
                   ),
                 );
               } else if (state is GetAllProductError) {

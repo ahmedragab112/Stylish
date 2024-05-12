@@ -7,6 +7,8 @@ import 'package:stylehub/core/utils/entity/singup_entitey.dart';
 import 'package:stylehub/core/utils/strings/app_strings.dart';
 import 'package:stylehub/features/signup/data/models/user_data.dart';
 import 'package:stylehub/features/signup/domain/usecases/signup_usecase.dart';
+import 'package:stylehub/core/cache/user_data_model.dart' as user_box;
+import '../../../../core/utils/constant/app_constant.dart';
 
 part 'signup_state.dart';
 part 'signup_cubit.freezed.dart';
@@ -33,8 +35,14 @@ class SignupCubit extends Cubit<SignupState> {
             password: passwordController.text));
     data.when(
         data: (data) async {
-          await locator<CacheHelper>()
-              .setInstance(data: data.token, key: AppStrings.cacheKeyUserToken);
+          await Future.wait([
+            locator<CacheHelper>().setInstance(
+                data: data.token, key: AppStrings.cacheKeyUserToken),
+            userBox.add(user_box.UserData(
+              email: data.user!.email!,
+              name: data.user!.name,
+            ))
+          ]);
           emit(SignupState.success(userEntity: data));
         },
         error: (error) =>

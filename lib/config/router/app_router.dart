@@ -61,7 +61,7 @@ class AppRouter {
             child: const HomeIntro(),
           ),
         );
-
+        
       case AppRoutes.onBoarding:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
@@ -189,8 +189,9 @@ class AppRouter {
             scale: animation,
             child: child,
           ),
-          pageBuilder: (context, animation, secondaryAnimation) =>
-               Profile(cubit: cubit!,),
+          pageBuilder: (context, animation, secondaryAnimation) => Profile(
+            cubit: cubit!,
+          ),
         );
       default:
         return MaterialPageRoute(
