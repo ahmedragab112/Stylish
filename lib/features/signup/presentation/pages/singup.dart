@@ -1,3 +1,5 @@
+import 'package:cookie_jar/cookie_jar.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'package:stylehub/features/signup/presentation/widgets/sign_upbody.dart';
@@ -19,3 +21,4 @@ class SignUp extends StatelessWidget {
     ));
   }
 }
+
